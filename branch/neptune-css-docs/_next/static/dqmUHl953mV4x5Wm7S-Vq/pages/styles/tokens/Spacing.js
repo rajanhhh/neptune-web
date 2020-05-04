@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[58],{Jfwd:function(n,w,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/styles/tokens/Spacing",function(){return o("Yiyu")}])}},[["Jfwd",0,1,2]]]);
