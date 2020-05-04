@@ -4,7 +4,7 @@ h1[id] + p {
 }
 
 @media (min-width: 767px) {
-  h1[id] + p {
+  h1.colored-dot + p {
     font-size: calc(var(--spacer) * 2.5);
     line-height: calc(var(--spacer) * 4);
   }
