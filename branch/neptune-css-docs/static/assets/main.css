@@ -210,3 +210,8 @@ img {
 .docs-table li {
   list-style-type: none;
 }
+
+.docs-is-visible {
+  color: #468847;
+  background-color: #dff0d8 !important;
+}
