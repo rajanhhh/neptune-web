@@ -96,9 +96,9 @@ p + h2[id] {
 
 .Nav__Group {
   padding: var(--space-16) var(--space-16) var(--space-8);
-  font-size: 12px;
+  font-size: var(--font-size-x-small);
   text-transform: uppercase;
-  color: #829ca9;
+  color: var(--gray-light);
 }
 
 .Sidebar .Nav__Group {
