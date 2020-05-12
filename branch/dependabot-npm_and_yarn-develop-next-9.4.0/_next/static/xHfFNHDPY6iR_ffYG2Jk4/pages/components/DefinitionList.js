@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[27],{L5tT:function(n,o,i){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/DefinitionList",function(){return i("SB0l")}])}},[["L5tT",0,1,5,8,2,3,4,6,7]]]);

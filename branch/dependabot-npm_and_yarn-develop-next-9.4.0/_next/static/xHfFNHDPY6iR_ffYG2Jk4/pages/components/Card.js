@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[20],{KquB:function(n,o,w){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/Card",function(){return w("8t5b")}])}},[["KquB",0,1,5,8,2,3,4,6,7]]]);

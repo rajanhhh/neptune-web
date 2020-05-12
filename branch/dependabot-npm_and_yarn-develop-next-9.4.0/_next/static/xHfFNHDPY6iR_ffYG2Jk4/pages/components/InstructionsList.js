@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[36],{cXsn:function(n,o,s){(window.__NEXT_P=window.__NEXT_P||[]).push(["/components/InstructionsList",function(){return s("DtIx")}])}},[["cXsn",0,1,5,8,2,3,4,6,7]]]);
