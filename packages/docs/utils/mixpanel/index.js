@@ -1,7 +1,7 @@
 import mixpanel from 'mixpanel-browser';
 
 // we sent data to Mixpanel only from prod instance (https://transferwise.github.io/neptune-web)
-const { isProdInstance } = process.env;
+const { IS_PROD_INSTANCE } = process.env;
 
 export const Events = {
   /**
@@ -22,20 +22,12 @@ export function initMixpanel() {
   });
 
   window.addEventListener('accepttwcookieconsent', () => {
-    console.log("addEventListener('accepttwcookieconsent'");
     mixpanel.opt_in_tracking();
   });
 }
 
-export function trackingFromWeb(callback) {
-  // send event only from client (web) side
-  if (typeof window !== 'undefined') {
-    callback();
-  }
-}
-
 export function trackEvent(name, props) {
-  if (isProdInstance) {
+  if (IS_PROD_INSTANCE) {
     // https://developer.mixpanel.com/docs/javascript-full-api-reference#mixpaneltrack
     mixpanel.track(eventNamePrefix(name), props);
   } else {
@@ -45,7 +37,7 @@ export function trackEvent(name, props) {
 }
 
 export function trackLink(selector, name, props) {
-  if (isProdInstance) {
+  if (IS_PROD_INSTANCE) {
     // https://developer.mixpanel.com/docs/javascript-full-api-reference#mixpaneltrack_links
     mixpanel.track_links(selector, eventNamePrefix(name), props);
   } else {

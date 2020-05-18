@@ -4,7 +4,6 @@ import { withRouter } from 'next/router';
 import Link from './Link';
 
 import { getFirstPageInSection, getPageFromPath } from '../utils/pageUtils';
-
 import sections from '../utils/sections';
 
 import Sidebar from './Sidebar';

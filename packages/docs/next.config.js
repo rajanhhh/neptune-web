@@ -13,14 +13,13 @@ const withTM = require('next-transpile-modules');
 
 const pageExtensions = ['js', 'mdx'];
 
+const isProdMode = process.env.NODE_ENV === 'production';
+
 const branch = getBranch.sync();
-const assetPrefix =
-  process.env.NODE_ENV === 'production'
-    ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`
-    : '';
-// const isProdInstance =
-//   process.env.NODE_ENV === 'production' && (branch === 'master' || branch === 'mixpanel-setup');
-const isProdInstance = true;
+const isMasterBranch = branch === 'master';
+
+const assetPrefix = isProdMode ? `/neptune-web${isMasterBranch ? '' : `/branch/${branch}`}` : '';
+const isProdInstance = isProdMode && isMasterBranch;
 
 module.exports = () =>
   withTM(
@@ -33,7 +32,7 @@ module.exports = () =>
             assetPrefix,
             env: {
               ASSET_PREFIX: assetPrefix,
-              isProdInstance,
+              IS_PROD_INSTANCE: isProdInstance,
             },
             webpack: (config) => {
               config.module.rules.push({
