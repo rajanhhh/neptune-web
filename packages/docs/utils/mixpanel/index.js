@@ -11,11 +11,13 @@ export const Events = {
 };
 
 export function initMixpanel() {
+  console.log('initMixpanel');
   mixpanel.init('8ba4a7a5182f05e0a79ded57d5d2f051', {
     // We add "opt_out_tracking_by_default=true" and "opt_out_persistence_by_default=true" to mixpanel.init
     // so we don't set cookies and don't track customers before they give us their consent
     opt_out_tracking_by_default: true,
     opt_out_persistence_by_default: true,
+    // secure_cookie: true,
     debug: true,
   });
 
