@@ -19,7 +19,8 @@ const branch = getBranch.sync();
 const isMasterBranch = branch === 'master';
 
 const assetPrefix = isProdMode ? `/neptune-web${isMasterBranch ? '' : `/branch/${branch}`}` : '';
-const isProdInstance = isProdMode && isMasterBranch;
+// const isProdInstance = isProdMode && isMasterBranch;
+const isProdInstance = true;
 
 module.exports = () =>
   withTM(
