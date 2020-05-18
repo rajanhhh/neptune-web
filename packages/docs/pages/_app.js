@@ -15,15 +15,15 @@ import '../static/assets/main.css';
 
 class MyApp extends App {
   componentDidMount() {
+    const { pathname } = Router;
+    if (pathname === '/') {
+      Router.push(`${process.env.NODE_ENV === 'production' ? '/neptune-web/' : '/'}about/Home`);
+    }
     initMixpanel();
     trackingFromWeb(() => {
       console.log('trackingFromWeb');
       trackLink('.Nav__Link', Events.PAGE_VIEWED, { page: window.location.pathname });
     });
-    const { pathname } = Router;
-    if (pathname === '/') {
-      Router.push(`${process.env.NODE_ENV === 'production' ? '/neptune-web/' : '/'}about/Home`);
-    }
   }
 
   render() {

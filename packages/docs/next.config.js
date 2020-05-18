@@ -18,9 +18,9 @@ const assetPrefix =
   process.env.NODE_ENV === 'production'
     ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`
     : '';
-const isProdInstance =
-  process.env.NODE_ENV === 'production' && (branch === 'master' || branch === 'mixpanel-setup');
-// const isProdInstance = true;
+// const isProdInstance =
+//   process.env.NODE_ENV === 'production' && (branch === 'master' || branch === 'mixpanel-setup');
+const isProdInstance = true;
 
 module.exports = () =>
   withTM(
