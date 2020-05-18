@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import Layout from '../components/Layout';
 
-import { initMixpanel } from '../utils/mixpanel';
+import { Events, initMixpanel, trackingFromWeb, trackLink } from '../utils/mixpanel';
 
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import 'currency-flags/dist/currency-flags.min.css';
@@ -16,6 +16,10 @@ import '../static/assets/main.css';
 class MyApp extends App {
   componentDidMount() {
     initMixpanel();
+    trackingFromWeb(() => {
+      console.log('trackingFromWeb');
+      trackLink('.Nav__Link', Events.PAGE_VIEWED, { page: window.location.pathname });
+    });
     const { pathname } = Router;
     if (pathname === '/') {
       Router.push(`${process.env.NODE_ENV === 'production' ? '/neptune-web/' : '/'}about/Home`);
