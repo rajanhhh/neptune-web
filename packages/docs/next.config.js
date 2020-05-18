@@ -18,6 +18,8 @@ const assetPrefix =
   process.env.NODE_ENV === 'production'
     ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`
     : '';
+// const isProdInstance = process.env.NODE_ENV === 'production' && branch === 'master';
+const isProdInstance = true;
 
 module.exports = () =>
   withTM(
@@ -30,6 +32,7 @@ module.exports = () =>
             assetPrefix,
             env: {
               ASSET_PREFIX: assetPrefix,
+              isProdInstance,
             },
             webpack: (config) => {
               config.module.rules.push({

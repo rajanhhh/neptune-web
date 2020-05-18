@@ -4,6 +4,8 @@ import { withRouter } from 'next/router';
 import Link from './Link';
 
 import { getFirstPageInSection, getPageFromPath } from '../utils/pageUtils';
+import { Events, trackingFromWeb, trackLink } from '../utils/mixpanel';
+
 import sections from '../utils/sections';
 
 import Sidebar from './Sidebar';
@@ -11,6 +13,10 @@ import Logo from '../static/assets/img/logo_full_inverse.svg';
 import ThreeColumnLayout from './layout/threeColumnLayout';
 
 const githubURL = `https://github.com/transferwise/neptune-web/edit/master/packages/docs/pages`;
+
+trackingFromWeb(() => {
+  trackLink('.Nav__Link', Events.PAGE_VIEWED, { page: window.location.pathname });
+});
 
 const Layout = ({ children, router: { pathname } }) => {
   const pathParts = pathname.split('/');

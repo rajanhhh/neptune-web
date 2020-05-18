@@ -4,6 +4,9 @@ import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import Layout from '../components/Layout';
+
+import { initMixpanel } from '../utils/mixpanel';
+
 import '@transferwise/neptune-css/dist/css/neptune.css';
 import 'currency-flags/dist/currency-flags.min.css';
 import '@transferwise/icons/dist/icons.min.css';
@@ -12,6 +15,7 @@ import '../static/assets/main.css';
 
 class MyApp extends App {
   componentDidMount() {
+    initMixpanel();
     const { pathname } = Router;
     if (pathname === '/') {
       Router.push(`${process.env.NODE_ENV === 'production' ? '/neptune-web/' : '/'}about/Home`);
@@ -25,6 +29,7 @@ class MyApp extends App {
       <>
         <Head>
           <title>Neptune Design System — TransferWise</title>
+          <script src="https://transferwise.com/cookie-consent.js" />
         </Head>
 
         <Layout>

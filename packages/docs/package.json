@@ -53,7 +53,8 @@
     "react-docgen": "5.3.0",
     "react-docgen-external-proptypes-handler": "^2.0.0",
     "react-live": "^2.2.2",
-    "rehype-slug": "^3.0.0"
+    "rehype-slug": "^3.0.0",
+    "mixpanel-browser": "^2.35.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
