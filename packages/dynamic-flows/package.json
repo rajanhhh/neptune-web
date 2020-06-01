@@ -3,7 +3,7 @@
   "version": "2.2.3",
   "description": "Transferwise dynamic flows and forms",
   "license": "Apache-2.0",
-  "main": "./build/es/polyfill/index.js",
+  "main": "./build/umd/polyfill/index.js",
   "module": "./build/es/polyfill/index.js",
   "style": "./build/main.css",
   "sideEffects": [
@@ -27,6 +27,8 @@
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
     "build:compile-css": "gulp lessCompiler --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
+    "build:umd": "NODE_ENV=umd rollup -c",
+    "build:umd-nopolyfill": "NODE_ENV=umd-nopolyfill rollup -c",
     "build:es": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:es-nopolyfill": "NODE_ENV=es-nopolyfill babel src -d build/es/no-polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/polyfill",
@@ -43,6 +45,9 @@
     "@babel/plugin-transform-react-jsx": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.4.5",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.3",
+    "@rollup/plugin-node-resolve": "^7.1.3",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-info": "^5.3.18",
@@ -51,7 +56,11 @@
     "@transferwise/less-config": "^1.0.1",
     "@transferwise/test-config": "^1.0.1",
     "babel-loader": "^8.1.0",
-    "babel-preset-minify": "^0.5.1"
+    "babel-preset-minify": "^0.5.1",
+    "rollup": "^2.7.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-uglify": "^6.0.4"
   },
   "peerDependencies": {
     "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
