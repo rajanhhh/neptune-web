@@ -1,0 +1,10 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
+import { Badge } from '@transferwise/components';
+import code from '../../liveEditorCode/badge.code';
+
+<LiveEditorBlock code={code} scope={{ Badge }} />
+<GeneratePropsTable componentName="Badge" />
+
+export const meta = {
+  name: 'Badge',
+};

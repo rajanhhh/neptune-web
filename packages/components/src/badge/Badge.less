@@ -1,0 +1,38 @@
+@import 'bootstrap/less/variables';
+
+@badge-base-name: tw-badge;
+
+@badge-diameter-sm: 2rem;
+@badge-diameter-lg: @badge-diameter-sm + 1rem;
+
+.@{badge-base-name} {
+  position: relative;
+  display: inline-block;
+
+  & > &__content {
+    position: absolute;
+    bottom: -@badge-diameter-sm / 2;
+    right: -@badge-diameter-sm / 2;
+    width: @badge-diameter-sm;
+    height: @badge-diameter-sm;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    user-select: none;
+
+    & * {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &--lg {
+    & > &__content {
+      width: @badge-diameter-lg;
+      height: @badge-diameter-lg;
+      margin: -@badge-diameter-lg 0 0 (@badge-diameter-lg * 2);
+    }
+  }
+}
