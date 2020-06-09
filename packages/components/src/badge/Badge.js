@@ -4,20 +4,17 @@ import classNames from 'classnames';
 
 import './Badge.css';
 
-const BASE_CLASS_NAME = 'tw-badge';
-
 const Badge = ({
   badge,
   className,
   children,
-  ...rest
 }) => {
-  const classes = classNames(BASE_CLASS_NAME, className);
+  const classes = classNames('tw-badge', className);
 
   return (
-    <div className={classes} {...rest}>
+    <div className={classes}>
       {children}
-      <div className={`${BASE_CLASS_NAME}__content`}>
+      <div className='tw-badge__content'>
         {badge}
       </div>
     </div>
