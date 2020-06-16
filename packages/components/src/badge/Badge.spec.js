@@ -5,7 +5,7 @@ import Badge from '.';
 
 describe('Badge', () => {
   const defaultProps = {
-    badge: <div />
+    badge: <div />,
   };
   const childText = 'badge-child';
   const child = <div>{childText}</div>;
@@ -14,7 +14,7 @@ describe('Badge', () => {
     return render(
       <Badge {...defaultProps} {...props}>
         {children}
-      </Badge>
+      </Badge>,
     );
   };
 
@@ -22,11 +22,7 @@ describe('Badge', () => {
 
   it('renders the badge content', () => {
     const badgeText = 'badge-text';
-    const badge = (
-      <div>
-        {badgeText}
-      </div>
-    );
+    const badge = <div>{badgeText}</div>;
     const { getByText } = renderBadge({ badge });
     expect(getByText(badgeText).tagName).toBe('DIV');
   });
