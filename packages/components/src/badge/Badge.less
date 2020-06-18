@@ -1,7 +1,6 @@
 @import 'bootstrap/less/variables';
 
-@badge-diameter-sm: 2rem;
-@badge-diameter-lg: @badge-diameter-sm + 1rem;
+@badge-size-mobile: 16px;
 
 .tw-badge {
   position: relative;
@@ -9,10 +8,10 @@
 
   & > &__content {
     position: absolute;
-    bottom: -@badge-diameter-sm / 2;
-    right: -@badge-diameter-sm / 2;
-    width: @badge-diameter-sm;
-    height: @badge-diameter-sm;
+    bottom: -@badge-size-mobile / 2;
+    right: -@badge-size-mobile / 2;
+    width: @badge-size-mobile;
+    height: @badge-size-mobile;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -24,14 +23,6 @@
     & * {
       max-height: 100%;
       max-width: 100%;
-    }
-  }
-
-  &--lg {
-    & > &__content {
-      width: @badge-diameter-lg;
-      height: @badge-diameter-lg;
-      margin: -@badge-diameter-lg 0 0 (@badge-diameter-lg * 2);
     }
   }
 }
