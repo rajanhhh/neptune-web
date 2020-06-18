@@ -4,19 +4,13 @@ import classNames from 'classnames';
 
 import './Badge.css';
 
-const Badge = ({
-  badge,
-  className,
-  children,
-}) => {
+const Badge = ({ badge, className, children }) => {
   const classes = classNames('tw-badge', className);
 
   return (
     <div className={classes}>
       {children}
-      <div className='tw-badge__content'>
-        {badge}
-      </div>
+      <div className="tw-badge__content">{badge}</div>
     </div>
   );
 };
