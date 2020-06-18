@@ -1,6 +1,6 @@
 import React from 'react';
 import Badge from './Badge';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean, select } from '@storybook/addon-knobs';
 
 export default {
   component: Badge,
@@ -10,6 +10,9 @@ export default {
 export const basic = () => {
   const BadgeInnerText = text('Badge Inner Text', 'Content');
   const BadgeText = text('BadgeText', 'B');
+  const outline = boolean('Outline', false);
+  const variant = select('Variant', ['light', 'dark'], 'light');
+
   return (
     <Badge
       badge={
@@ -25,6 +28,8 @@ export const basic = () => {
           {BadgeText}
         </div>
       }
+      outline={outline}
+      variant={variant}
     >
       <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
         {BadgeInnerText}

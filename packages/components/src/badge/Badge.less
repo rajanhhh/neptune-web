@@ -1,10 +1,26 @@
 @import 'bootstrap/less/variables';
 
 @badge-size-mobile: 16px;
+@badge-border-light: rgba(255, 255, 255, 0.08);
+@badge-border-dark: rgba(0, 0, 0, 0.08);
 
 .tw-badge {
   position: relative;
   display: inline-block;
+  border: none;
+
+  &.outline {
+    border-style: inset;
+    border-width: 1px;
+  }
+
+  &.light {
+    border-color: @badge-border-light;
+  }
+
+  &.dark {
+    border-color: @badge-border-dark;
+  }
 
   & > &__content {
     position: absolute;

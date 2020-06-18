@@ -4,8 +4,15 @@ import classNames from 'classnames';
 
 import './Badge.css';
 
-const Badge = ({ badge, className, children }) => {
-  const classes = classNames('tw-badge', className);
+const Badge = ({ badge, className, outline, variant, children }) => {
+  const classes = classNames(
+    'tw-badge',
+    {
+      outline,
+    },
+    variant,
+    className,
+  );
 
   return (
     <div className={classes}>
@@ -17,11 +24,15 @@ const Badge = ({ badge, className, children }) => {
 
 Badge.propTypes = {
   badge: Types.node.isRequired,
+  outline: Types.bool,
+  variant: Types.oneOf(['light', 'dark']),
   className: Types.string,
   children: Types.node.isRequired,
 };
 
 Badge.defaultProps = {
+  outline: false,
+  variant: 'light',
   className: null,
 };
 
