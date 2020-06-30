@@ -1,38 +1,53 @@
 @import 'bootstrap/less/variables';
 
-@badge-size-mobile: 16px;
+@badge-size-small: 16px;
+@badge-size-large: 20px;
+@badge-offset: 4px;
+@badge-gap: 2px;
+@badge-border: 1px;
 @badge-border-light: rgba(255, 255, 255, 0.08);
 @badge-border-dark: rgba(0, 0, 0, 0.08);
 
 .tw-badge {
   position: relative;
   display: inline-block;
-  border: none;
 
-  &.outline {
-    border-style: inset;
-    border-width: 1px;
-  }
+  --badge-size: @badge-size-small;
+  --badge-mask-offset: calc(var(--badge-size) / 2 - @badge-offset);
+  --badge-border-color: @badge-border-light;
 
-  &.light {
-    border-color: @badge-border-light;
+  &.lg {
+    --badge-size: @badge-size-large;
   }
 
   &.dark {
-    border-color: @badge-border-dark;
+    --badge-border-color: @badge-border-dark;
+  }
+
+  & > &__children {
+    mask-image: radial-gradient(
+      circle at top calc(100% - var(--badge-mask-offset)) left calc(100% - var(--badge-mask-offset)),
+      transparent 0,
+      transparent calc(var(--badge-size) / 2 + @badge-gap),
+      black calc(var(--badge-size) / 2 + @badge-gap + 0.5px)
+    );
   }
 
   & > &__content {
     position: absolute;
-    bottom: -@badge-size-mobile / 2;
-    right: -@badge-size-mobile / 2;
-    width: @badge-size-mobile;
-    height: @badge-size-mobile;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+    bottom: -@badge-offset;
+    right: -@badge-offset;
+
+    width: var(--badge-size);
+    height: var(--badge-size);
+    box-sizing: border-box;
     border-radius: 50%;
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     overflow: hidden;
     user-select: none;
 
@@ -40,5 +55,11 @@
       max-height: 100%;
       max-width: 100%;
     }
+  }
+
+  &.outline > &__content {
+    border-style: solid inset solid solid;
+    border-width: @badge-border;
+    border-color: var(--badge-border-color);
   }
 }

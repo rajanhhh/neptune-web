@@ -23,12 +23,15 @@ describe('Badge', () => {
   it('renders the badge content', () => {
     const badgeText = 'badge-text';
     const badge = <div>{badgeText}</div>;
+
     const { getByText } = renderBadge({ badge });
-    expect(getByText(badgeText).tagName).toBe('DIV');
+
+    expect(getByText(badgeText).parentElement).toHaveClass('tw-badge__content');
   });
 
   it('renders badge children', () => {
     const { getByText } = renderBadge();
-    expect(getByText(childText).tagName).toBe('DIV');
+
+    expect(getByText(childText).parentElement).toHaveClass('tw-badge__children');
   });
 });
