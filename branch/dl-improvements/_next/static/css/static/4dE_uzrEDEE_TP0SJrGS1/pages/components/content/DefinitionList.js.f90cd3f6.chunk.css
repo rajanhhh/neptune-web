@@ -1,0 +1,1 @@
+.tw-definition-list__item dd{word-break:break-all}@media (min-width:576px){.tw-definition-list--columns{display:grid;grid-template-columns:1fr 1fr}.tw-definition-list--horizontal .tw-definition-list__item{display:grid;grid-template-columns:minmax(150px,30%) auto;grid-gap:2rem}.tw-definition-list--horizontal .tw-definition-list__item dd{margin-bottom:var(--space-8)}}
