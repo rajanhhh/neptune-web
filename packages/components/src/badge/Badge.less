@@ -20,7 +20,7 @@
     --badge-size: @badge-size-large;
   }
 
-  &.tw-badge-dark {
+  &.tw-badge-border-dark {
     --badge-border-color: @badge-border-dark;
   }
 
@@ -57,7 +57,8 @@
     }
   }
 
-  &.tw-badge-bordered > &__content {
+  &.tw-badge-border-light > &__content,
+  &.tw-badge-border-dark > &__content {
     border-style: solid inset solid solid;
     border-width: @badge-border;
     border-color: var(--badge-border-color);

@@ -5,12 +5,12 @@ import { Size } from '../common';
 
 import './Badge.css';
 
-const Badge = ({ badge, className, size, bordered, variant, children }) => {
+const Badge = ({ badge, className, size, border, children }) => {
+  const borderVariant = typeof border === 'string' ? border : Badge.Border.LIGHT;
   const classes = classNames(
     'tw-badge',
     {
-      'tw-badge-bordered': bordered,
-      [`tw-badge-${variant}`]: bordered,
+      [`tw-badge-border-${borderVariant}`]: !!border,
     },
     `tw-badge-${size}`,
     className,
@@ -24,24 +24,25 @@ const Badge = ({ badge, className, size, bordered, variant, children }) => {
   );
 };
 
-Badge.Size = Size;
-Badge.Variant = {
-  DARK: 'darl',
+Badge.Size = {
+  LARGE: Size.LARGE,
+};
+Badge.Border = {
+  LIGHT: 'light',
+  DARK: 'dark',
 };
 
 Badge.propTypes = {
   badge: Types.node.isRequired,
-  bordered: Types.bool,
   size: Types.oneOf([Badge.Size.LARGE]),
-  variant: Types.oneOf([Badge.Variant.DARK]),
+  border: Types.oneOfType([Types.oneOf(Object.values(Badge.Border)), Types.bool]),
   className: Types.string,
   children: Types.node.isRequired,
 };
 
 Badge.defaultProps = {
-  size: 'sm',
-  bordered: false,
-  variant: 'light',
+  size: null,
+  border: 'light',
   className: null,
 };
 

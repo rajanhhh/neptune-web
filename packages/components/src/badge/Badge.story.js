@@ -22,16 +22,14 @@ export const ExampleBadgeCss = {
 export const basic = () => {
   const BadgeInnerText = text('Badge Inner Text', 'Content');
   const BadgeText = text('BadgeText', 'B');
-  const bordered = boolean('bordered', false);
-  const variant = select('Variant', ['light', 'dark'], 'light');
-  const size = select('Size', ['sm', 'lg'], 'size');
+  const border = select('Border', ['', Badge.Border.LIGHT, Badge.Border.DARK]);
+  const large = boolean('large', false);
 
   return (
     <Badge
       badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
-      bordered={bordered}
-      variant={variant}
-      size={size}
+      border={border}
+      size={large ? Badge.Size.LARGE : null}
     >
       <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
         {BadgeInnerText}
