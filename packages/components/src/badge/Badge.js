@@ -9,7 +9,7 @@ const Badge = ({ badge, className, size, bordered, variant, children }) => {
   const classes = classNames(
     'tw-badge',
     {
-      bordered: 'tw-badge-bordered',
+      'tw-badge-bordered': bordered,
       [`tw-badge-${variant}`]: bordered,
     },
     `tw-badge-${size}`,

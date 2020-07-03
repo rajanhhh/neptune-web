@@ -16,11 +16,11 @@
   --badge-mask-offset: calc(var(--badge-size) / 2 - @badge-offset);
   --badge-border-color: @badge-border-light;
 
-  &.lg {
+  &.tw-badge-lg {
     --badge-size: @badge-size-large;
   }
 
-  &.dark {
+  &.tw-badge-dark {
     --badge-border-color: @badge-border-dark;
   }
 
@@ -57,7 +57,7 @@
     }
   }
 
-  &.bordered > &__content {
+  &.tw-badge-bordered > &__content {
     border-style: solid inset solid solid;
     border-width: @badge-border;
     border-color: var(--badge-border-color);
