@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.1...@transferwise/neptune-docs@4.4.2) (2020-06-30)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.4.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.0...@transferwise/neptune-docs@4.4.1) (2020-06-30)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [4.4.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.3.0...@transferwise/neptune-docs@4.4.0) (2020-06-30)
+
+
+### Features
+
+* allow NavigationOption to render illustrations ([#443](https://github.com/transferwise/neptune-web/issues/443)) ([7c855f3](https://github.com/transferwise/neptune-web/commit/7c855f36653d10e1e73573112f1a5f80abc5bdf9))
+
+
+
+
+
+# [4.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.16...@transferwise/neptune-docs@4.3.0) (2020-06-29)
+
+
+### Features
+
+* avatar component ([#417](https://github.com/transferwise/neptune-web/issues/417)) ([5f629d4](https://github.com/transferwise/neptune-web/commit/5f629d413a8455f0863800f1e8ee614774b925de))
+
+
+
+
+
+## [4.2.16](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.15...@transferwise/neptune-docs@4.2.16) (2020-06-26)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.15](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.14...@transferwise/neptune-docs@4.2.15) (2020-06-24)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.14](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.13...@transferwise/neptune-docs@4.2.14) (2020-06-24)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.2.13](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.12...@transferwise/neptune-docs@4.2.13) (2020-06-21)
+
+
+
+## [4.2.12](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.11...@transferwise/neptune-docs@4.2.12) (2020-06-18)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
 ## [4.2.11](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.2.10...@transferwise/neptune-docs@4.2.11) (2020-06-09)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "27.7.0",
+  "version": "27.11.2",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -19,22 +19,21 @@
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
-    "dev:watch-less": "gulp lessWatcher --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
+    "dev:watch-less": "gulp watchLess --dest=src",
     "dev:storybook": "start-storybook -p 3001",
-    "docs": "npm-run-all --parallel docs:*",
-    "docs:babel": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js' -w",
-    "docs:watch-less": "gulp lessWatcher --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
     "build": "npm-run-all build:*",
     "build:clean": "rm -rf lib build",
-    "build:compile-css": "gulp lessCompiler --gulpfile=../../node_modules/@transferwise/less-config --dest=src",
+    "build:compile-css": "gulp compileLess --dest=src",
     "build:umd": "NODE_ENV=umd rollup -c",
     "build:umd-nopolyfill": "NODE_ENV=umd-nopolyfill rollup -c",
     "build:es": "NODE_ENV=es babel src -d build/es/polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:es-nopolyfill": "NODE_ENV=es-nopolyfill babel src -d build/es/no-polyfill --ignore '**/*.spec.js','**/*.story.js'",
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/polyfill",
     "build:copy-files2": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/no-polyfill",
-    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:bundleSize",
+    "docs": "yarn build",
+    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:bundleSize && yarn test:lint",
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
+    "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
     "test:bundleSize": "bundlesize",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "yarn lint --fix"
@@ -54,8 +53,8 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@transferwise/less-config": "^1.0.1",
-    "@transferwise/test-config": "^1.0.1",
+    "@transferwise/less-config": "^1.0.3",
+    "@transferwise/test-config": "^1.0.2",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1",
     "bundlesize": "^0.18.0",
@@ -76,7 +75,7 @@
     "@babel/runtime": "^7.9.2",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^1.0.0",
-    "@transferwise/neptune-css": "^1.2.1",
+    "@transferwise/neptune-css": "^1.2.3",
     "classnames": "^2.2.6",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.5",
@@ -86,16 +85,5 @@
     "react-required-if": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

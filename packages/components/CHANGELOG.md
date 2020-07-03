@@ -3,6 +3,112 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.11.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.1...@transferwise/components@27.11.2) (2020-06-30)
+
+
+### Bug Fixes
+
+* add null check for select box ([#454](https://github.com/transferwise/neptune-web/issues/454)) ([5cefc2c](https://github.com/transferwise/neptune-web/commit/5cefc2cbf3ee51a14ab84b2a3e2d05a0a82cc459))
+
+
+
+
+
+## [27.11.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.0...@transferwise/components@27.11.1) (2020-06-30)
+
+
+### Bug Fixes
+
+* add missing NavigationOptionsList export ([#453](https://github.com/transferwise/neptune-web/issues/453)) ([ac232d2](https://github.com/transferwise/neptune-web/commit/ac232d21a992c766b1df55f0fd1e2d1d073f70a7))
+
+
+
+
+
+# [27.11.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.10.0...@transferwise/components@27.11.0) (2020-06-30)
+
+
+### Features
+
+* allow NavigationOption to render illustrations ([#443](https://github.com/transferwise/neptune-web/issues/443)) ([7c855f3](https://github.com/transferwise/neptune-web/commit/7c855f36653d10e1e73573112f1a5f80abc5bdf9))
+
+
+
+
+
+# [27.10.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.9.0...@transferwise/components@27.10.0) (2020-06-29)
+
+
+### Features
+
+* avatar component ([#417](https://github.com/transferwise/neptune-web/issues/417)) ([5f629d4](https://github.com/transferwise/neptune-web/commit/5f629d413a8455f0863800f1e8ee614774b925de))
+
+
+
+
+
+# [27.9.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.8.0...@transferwise/components@27.9.0) (2020-06-26)
+
+
+### Features
+
+* add NavigationOptionsList component ([#444](https://github.com/transferwise/neptune-web/issues/444)) ([427a51b](https://github.com/transferwise/neptune-web/commit/427a51b9872978a3b2fe4f3fe0a383f2aacb469b))
+
+
+
+
+
+# [27.8.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.3...@transferwise/components@27.8.0) (2020-06-24)
+
+
+### Features
+
+* improve NavigationOption semantics ([#438](https://github.com/transferwise/neptune-web/issues/438)) ([aa53995](https://github.com/transferwise/neptune-web/commit/aa539953ee6d1dc5610cc197ecf285c0a74f456c))
+
+
+
+
+
+## [27.7.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.2...@transferwise/components@27.7.3) (2020-06-24)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [27.7.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.1...@transferwise/components@27.7.2) (2020-06-21)
+
+### Bug Fixes
+
+* Fixing docs css reload ([#409](https://github.com/transferwise/neptune-web/pull/439/commits/04b1424cf694c6e047086b9d83ea0e3ecb4280e5))
+
+* Change dates in the date lookup to use buttons ([#431](https://github.com/transferwise/neptune-web/pull/439/commits/3fb6e10c8ffef4f19c6bb3c0f66db8aee59bb0d4))
+
+### Misc
+
+* Setup a11y tools ([#380](https://github.com/transferwise/neptune-web/pull/439/commits/1324d6f66191b1fdcfdd64932189c2610f156f75))
+
+* Improving docs and tools ([#424](https://github.com/transferwise/neptune-web/pull/439/commits/a9ab3ed8ebedc5baa908e79ea078a578be68693a))
+
+* Fix lint-stage ([#436](https://github.com/transferwise/neptune-web/pull/439/commits/d2b77895e1caab66bdabc8a2b1dee220d2218cd4))
+
+## [27.7.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.7.0...@transferwise/components@27.7.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* handle errors in getVelocity ([#430](https://github.com/transferwise/neptune-web/issues/430)) ([31c05ea](https://github.com/transferwise/neptune-web/commit/31c05ea8e14b085b1c8886d5fc1394fc4ebb119b))
+
+
+### Performance Improvements
+
+* remove propTypes from components and dynamic-flows build ([#416](https://github.com/transferwise/neptune-web/issues/416)) ([8dadc0d](https://github.com/transferwise/neptune-web/commit/8dadc0d5a1c14173f1d0a0146fc6505a749c71c8))
+
+
+
+
+
 # [27.7.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.6.1...@transferwise/components@27.7.0) (2020-06-09)
 
 
