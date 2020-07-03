@@ -1,8 +1,8 @@
-import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
-import { Badge } from '@transferwise/components';
-import code from '../../liveEditorCode/badge.code';
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import { Badge, Avatar } from '@transferwise/components';
+import code from '../../../liveEditorCode/badge.code';
 
-<LiveEditorBlock code={code} scope={{ Badge }} />
+<LiveEditorBlock code={code} scope={{ Badge, Avatar }} />
 <GeneratePropsTable componentName="Badge" />
 
 export const meta = {

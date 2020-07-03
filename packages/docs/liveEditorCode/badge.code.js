@@ -1,9 +1,18 @@
-import { ExampleBadgeCss } from '../../components/src/badge/Badge.spec';
-
 <Badge
-  badge={ <div style={ExampleBadgeCss}>B</div> }
+  size={ Badge.Size.LARGE }
+  badge={ <div style={{
+    background: 'var(--color-positive)',
+    width: '100%',
+    height: '100%',
+    color: 'white',
+    fontSize: '10px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}>B</div> }
 >
-  <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
-    Content
-  </div>
+
+  <Avatar type={Avatar.Type.INITIALS} size={Avatar.Size.LARGE}>
+    TW
+  </Avatar>
 </Badge>
