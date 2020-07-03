@@ -83,6 +83,7 @@ describe('Server side rendering', () => {
     SnackbarContext: {
       children: jest.fn(),
     },
+    Badge: { size: null },
   };
 
   componentNames.forEach((componentName) => {
