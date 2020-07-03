@@ -1,18 +1,19 @@
 import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
+import { Size } from '../common';
 
 import './Badge.css';
 
-const Badge = ({ badge, className, size, outline, variant, children }) => {
+const Badge = ({ badge, className, size, bordered, variant, children }) => {
   const classes = classNames(
     'tw-badge',
     {
-      outline,
-      [variant]: outline,
+      bordered: 'tw-badge-bordered',
+      [`tw-badge-${variant}`]: bordered,
     },
+    `tw-badge-${size}`,
     className,
-    size,
   );
 
   return (
@@ -23,18 +24,23 @@ const Badge = ({ badge, className, size, outline, variant, children }) => {
   );
 };
 
+Badge.Size = Size;
+Badge.Variant = {
+  DARK: 'darl',
+};
+
 Badge.propTypes = {
   badge: Types.node.isRequired,
-  outline: Types.bool,
-  size: Types.oneOf(['sm', 'lg']),
-  variant: Types.oneOf(['light', 'dark']),
+  bordered: Types.bool,
+  size: Types.oneOf([Badge.Size.LARGE]),
+  variant: Types.oneOf([Badge.Variant.DARK]),
   className: Types.string,
   children: Types.node.isRequired,
 };
 
 Badge.defaultProps = {
   size: 'sm',
-  outline: false,
+  bordered: false,
   variant: 'light',
   className: null,
 };
