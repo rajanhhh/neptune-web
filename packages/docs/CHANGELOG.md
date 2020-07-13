@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.6.2...@transferwise/neptune-docs@4.6.3) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
+## [4.6.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.6.1...@transferwise/neptune-docs@4.6.2) (2020-07-09)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.6.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.6.0...@transferwise/neptune-docs@4.6.1) (2020-07-08)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [4.6.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.5.1...@transferwise/neptune-docs@4.6.0) (2020-07-08)
+
+
+### Features
+
+* fix avatar sizes, add inverse and backgroundColor props ([#464](https://github.com/transferwise/neptune-web/issues/464)) ([77a8f2b](https://github.com/transferwise/neptune-web/commit/77a8f2b3b7bea1598bb008ee5027e847e7698a7f))
+
+
+
+
+
+## [4.5.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.5.0...@transferwise/neptune-docs@4.5.1) (2020-07-08)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+# [4.5.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.5...@transferwise/neptune-docs@4.5.0) (2020-07-07)
+
+
+### Features
+
+* add responsive features to image ([#429](https://github.com/transferwise/neptune-web/issues/429)) ([323e8f2](https://github.com/transferwise/neptune-web/commit/323e8f29b01bf709eba514e10c0e080948bcc621))
+
+
+
+
+
+## [4.4.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.4...@transferwise/neptune-docs@4.4.5) (2020-07-06)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.4.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.3...@transferwise/neptune-docs@4.4.4) (2020-07-01)
+
+**Note:** Version bump only for package @transferwise/neptune-docs
+
+
+
+
+
+## [4.4.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.2...@transferwise/neptune-docs@4.4.3) (2020-07-01)
+
+
+### Bug Fixes
+
+* added className support to markdown ([#456](https://github.com/transferwise/neptune-web/issues/456)) ([69fc5e7](https://github.com/transferwise/neptune-web/commit/69fc5e726d0e61c2a408240cf2a29eef6b6902d2))
+
+
+
+
+
 ## [4.4.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-docs@4.4.1...@transferwise/neptune-docs@4.4.2) (2020-06-30)
 
 **Note:** Version bump only for package @transferwise/neptune-docs

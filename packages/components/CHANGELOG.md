@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.13.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.13.1...@transferwise/components@27.13.2) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
+## [27.13.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.13.0...@transferwise/components@27.13.1) (2020-07-09)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+# [27.13.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.12.1...@transferwise/components@27.13.0) (2020-07-08)
+
+
+### Features
+
+* fix avatar sizes, add inverse and backgroundColor props ([#464](https://github.com/transferwise/neptune-web/issues/464)) ([77a8f2b](https://github.com/transferwise/neptune-web/commit/77a8f2b3b7bea1598bb008ee5027e847e7698a7f))
+
+
+
+
+
+## [27.12.1](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.12.0...@transferwise/components@27.12.1) (2020-07-08)
+
+
+### Bug Fixes
+
+* disable spellcheck in the select search ([#466](https://github.com/transferwise/neptune-web/issues/466)) ([966b608](https://github.com/transferwise/neptune-web/commit/966b60876540282c04583d8ffbec606ebae38e83))
+
+
+
+
+
+# [27.12.0](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.5...@transferwise/components@27.12.0) (2020-07-07)
+
+
+### Features
+
+* add responsive features to image ([#429](https://github.com/transferwise/neptune-web/issues/429)) ([323e8f2](https://github.com/transferwise/neptune-web/commit/323e8f29b01bf709eba514e10c0e080948bcc621))
+
+
+
+
+
+## [27.11.5](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.4...@transferwise/components@27.11.5) (2020-07-06)
+
+
+### Bug Fixes
+
+* move class styling to less ([#458](https://github.com/transferwise/neptune-web/issues/458)) ([8b17a8b](https://github.com/transferwise/neptune-web/commit/8b17a8b8bf5cc36851dbc37d4c4f9929ce2b137e))
+
+
+
+
+
+## [27.11.4](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.3...@transferwise/components@27.11.4) (2020-07-01)
+
+**Note:** Version bump only for package @transferwise/components
+
+
+
+
+
+## [27.11.3](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.2...@transferwise/components@27.11.3) (2020-07-01)
+
+
+### Bug Fixes
+
+* added className support to markdown ([#456](https://github.com/transferwise/neptune-web/issues/456)) ([69fc5e7](https://github.com/transferwise/neptune-web/commit/69fc5e726d0e61c2a408240cf2a29eef6b6902d2))
+
+
+
+
+
 ## [27.11.2](https://github.com/transferwise/neptune-web/compare/@transferwise/components@27.11.1...@transferwise/components@27.11.2) (2020-06-30)
 
 
