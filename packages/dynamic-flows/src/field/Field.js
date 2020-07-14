@@ -1,325 +1,149 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import { Alert, InstructionsList } from '@transferwise/components';
-import FormControl from '../formControl';
-import { FormControlType, Size } from '../common';
+import ControlFeedback from './controlFeedback';
 
-import { getControlType } from '../common/requirements';
 import { getValidationFailures } from '../common/validation/validation-failures';
+import { getValidModelParts } from '../common/validation/valid-model';
 
-export const FieldTypes = {
-  STRING: 'string',
-  NUMBER: 'number',
-  INTEGER: 'integer',
-  BOOLEAN: 'boolean',
-};
-
-export const FieldFormats = {
-  DATE: 'date',
-  PHONE: 'phone',
-  BASE_64_URL: 'base64url',
-  PASSWORD: 'password',
-  EMAIL: 'email',
-  URI: 'uri',
-};
-
-const DefaultValidationMessages = {
-  REQUIRED: 'Required',
-  PATTERN: 'Incorrect format',
-  MINLENGTH: 'The value is too short',
-  MAXLENGTH: 'The value is too long',
-  MIN: 'The value is too low',
-  MAX: 'The value is too high',
-};
-
-export default class Field extends Component {
-  static propTypes = {
-    name: Types.string.isRequired,
-    value: Types.oneOfType([
-      Types.string,
-      Types.number,
-      Types.bool,
-      Types.object,
-      Types.shape({
-        value: Types.any.isRequired,
-        label: Types.node,
-        icon: Types.string,
-        currency: Types.string,
-        note: Types.node,
-        secondary: Types.node,
-      }),
-    ]),
-    field: Types.shape({
-      type: Types.oneOf(Object.values(FieldTypes)).isRequired,
-      label: Types.string.isRequired,
-      required: Types.bool,
-      disabled: Types.bool,
-      hidden: Types.bool,
-      readOnly: Types.bool,
-      autoComplete: Types.bool,
-      placeholder: Types.string,
-      searchPlaceholder: Types.string,
-      control: Types.oneOf(Object.values(FormControlType)),
-      format: Types.oneOf(Object.values(FieldFormats)),
-      displayPattern: Types.string,
-      help: Types.shape({
-        message: Types.string,
-        image: Types.string,
-        list: Types.arrayOf(Types.string),
-        do: Types.arrayOf(Types.string),
-        dont: Types.arrayOf(Types.string),
-      }),
-
-      pattern: Types.string,
-      minLength: Types.number,
-      maxLength: Types.number,
-
-      minimum: Types.number,
-      maximum: Types.number,
-
-      uploadProps: Types.shape({
-        animationDelay: Types.number,
-        csButtonText: Types.string,
-        csFailureText: Types.string,
-        csSuccessText: Types.string,
-        csTooLargeMessage: Types.string,
-        csWrongTypeMessage: Types.string,
-        httpOptions: Types.shape({}),
-        maxSize: Types.number,
-        onCancel: Types.func,
-        onFailure: Types.func,
-        onStart: Types.func,
-        onSuccess: Types.func,
-        psButtonText: Types.string,
-        psFailureText: Types.string,
-        psProcessingText: Types.string,
-        psSuccessText: Types.string,
-        size: Types.string,
-        usAccept: Types.oneOf(['*', 'image/*', 'application/*']),
-        usButtonText: Types.string,
-        usDisabled: Types.bool,
-        usDropMessage: Types.string,
-        usHelpImage: Types.string,
-        usLabel: Types.string,
-        usPlaceholder: Types.string,
-      }),
-
-      options: Types.arrayOf(
-        Types.shape({
-          id: Types.string,
-          label: Types.oneOfType([Types.node, Types.string]).isRequired,
-          value: Types.oneOfType([
-            Types.number,
-            Types.string,
-            Types.bool,
-            Types.object,
-            Types.instanceOf(Date),
-          ]).isRequired,
-          header: Types.node,
-          icon: Types.string,
-          currency: Types.string,
-          note: Types.node,
-          secondary: Types.oneOfType([Types.node, Types.string]),
-          separator: Types.bool,
-          disabled: Types.bool,
-        }),
-      ),
-      size: Types.oneOf(Object.values(Size)),
-
-      validationMessages: Types.shape({
-        required: Types.string,
-        pattern: Types.string,
-        minlength: Types.string,
-        maxlength: Types.string,
-        min: Types.string,
-        max: Types.string,
-      }),
-    }).isRequired,
-
-    locale: Types.string,
-    countryCode: Types.string,
-    onChange: Types.func.isRequired,
-    onFocus: Types.func,
-    onBlur: Types.func,
-    errorMessage: Types.string,
-    warningMessage: Types.string,
-    label: Types.string,
+const Field = (props) => {
+  const onChange = (newModel) => {
+    setChanged(true);
+    setModelAndBroadcast(sanitiseModel(newModel));
   };
 
-  static defaultProps = {
-    locale: 'en-GB',
-    countryCode: null,
-    value: null,
-    errorMessage: null,
-    warningMessage: null,
-    onFocus: null,
-    onBlur: null,
-    label: null,
+  const getValidationKeys = (newModel) =>
+    getValidationFailures(newModel, props.schema, props.required);
+
+  const setModelAndBroadcast = (newModel) => {
+    setModel(newModel);
+    const validationKeys = getValidationKeys(newModel);
+    setValidations(validationKeys);
+
+    const broadcastModel = validationKeys.length ? null : newModel;
+
+    setLastModel(broadcastModel);
+
+    if (broadcastModel !== lastModel) {
+      props.onChange(broadcastModel, props.schema);
+    }
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false,
-      changed: false,
-      error: props.errorMessage,
-    };
-  }
+  const sanitiseModel = (newModel) => getValidModelParts(newModel, props.schema);
 
-  // eslint-disable-next-line
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.errorMessage !== this.props.errorMessage) {
-      this.setState({ error: nextProps.errorMessage });
+  const onFocus = () => setFocused(true);
+  const onBlur = () => {
+    setFocused(false);
+    setBlurred(true);
+  };
+
+  const generateId = () => String(Math.floor(100000000 * Math.random()));
+
+  const [id, setId] = useState('');
+  const [model, setModel] = useState(props.model);
+  const [lastModel, setLastModel] = useState(props.model);
+  const [changed, setChanged] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [blurred, setBlurred] = useState(false);
+  const [validations, setValidations] = useState([]);
+
+  const onSchemaChange = () => {
+    // If no model, change to the default, only run this when the schema changes
+    if (!model && props.schema.default) {
+      setModelAndBroadcast(props.schema.default);
     }
-  }
 
-  onFocus(value) {
-    const { onFocus } = this.props;
-    if (onFocus) {
-      onFocus(value);
+    if (props.schema.const) {
+      setModelAndBroadcast(props.schema.const);
     }
-    this.setState({ focused: true });
-  }
 
-  onBlur(value) {
-    const { onBlur } = this.props;
-
-    if (onBlur) {
-      onBlur(value);
+    if (props.schema.enum && props.schema.enum.length === 1) {
+      setModelAndBroadcast(props.schema.enum[0]);
     }
-    this.setState({ focused: false });
-  }
 
-  onChange(value) {
-    this.props.onChange(value);
-    this.setState({ changed: true, focused: true });
-  }
+    setId(generateId());
+  };
 
-  validateValue(newValue) {
-    const validationFailures = {};
-    const { field } = this.props;
-    const validationFailuresKeys = getValidationFailures(newValue, field);
-    validationFailuresKeys.forEach((failure) => {
-      const messageKey = failure.toLowerCase();
+  const onModelChange = () => {
+    setValidations(getValidationKeys(model));
+  };
 
-      const message =
-        (field.validationMessages && field.validationMessages[messageKey]) ||
-        DefaultValidationMessages[messageKey.toUpperCase()];
+  const isConst = props.schema.const || (props.schema.enum && props.schema.enum.length === 1);
+  const isHidden = props.schema.hidden || isConst;
 
-      if (message) {
-        validationFailures[messageKey] = message;
-      }
-    });
-    return validationFailures;
-  }
+  useEffect(onSchemaChange, [props.schema]);
+  useEffect(onModelChange, [props.model]);
 
-  objectSizeOf = (obj) => (obj ? Object.keys(obj).length : 0);
+  const formGroupClasses = {
+    'form-group': true,
+    'has-error':
+      (!changed && props.errors) ||
+      ((props.submitted || (changed && blurred)) && validations.length),
+    'has-info': focused && props.schema.help,
+  };
 
-  updateAlert(control) {
-    const { value, field, errorMessage, warningMessage } = this.props;
-    const { focused, changed, error } = this.state;
+  const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
 
-    const validationFailures = changed && !focused ? this.validateValue(value) : {};
-
-    if (this.objectSizeOf(validationFailures) > 0) {
-      return {
-        type: Alert.Type.ERROR,
-        content: Object.keys(validationFailures).map((key) => (
-          <div key={key}>{validationFailures[key]}</div>
-        )),
-      };
-    } else if (error && errorMessage) {
-      return {
-        type: Alert.Type.ERROR,
-        content: <>{errorMessage}</>,
-      };
-    } else if (warningMessage) {
-      return {
-        type: Alert.Type.WARNING,
-        content: <>{warningMessage}</>,
-      };
-    } else if (focused && field.help && field.help.message) {
-      return {
-        type: Alert.Type.INFO,
-        content: <>{field.help.message}</>,
-      };
-    } else if (focused && field.help && field.help.list && field.help.list.length > 0) {
-      return {
-        type: Alert.Type.INFO,
-        // eslint-disable-next-line react/no-array-index-key
-        content: field.help.list.map((item, index) => <div key={index}>{item}</div>),
-      };
-    } else if (
-      focused &&
-      field.help &&
-      field.help.do &&
-      field.help.do.length > 0 &&
-      field.help.dont &&
-      field.help.dont.length > 0
-    ) {
-      return {
-        type: Alert.Type.INFO,
-        content: (
-          <div className="m-b-1">
-            <InstructionsList dos={field.help.do} donts={field.help.dont} />
-          </div>
-        ),
-      };
-    } else if (focused && control !== FormControlType.FILE && field.help && field.help.image) {
-      return {
-        type: Alert.Type.INFO,
-        content: <img className="thumbnail m-y-2" src={`${field.help.image}`} alt={field.label} />,
-      };
-    }
-    return {
-      type: null,
-      content: null,
-    };
-  }
-
-  render() {
-    const { name, field, value, locale, label } = this.props;
-
-    const control = field.control || getControlType(field);
-    const alert = this.updateAlert(control);
-
-    const showAlert = !!alert.content;
-    const showLabel =
-      control !== FormControlType.FILE &&
-      control !== FormControlType.UPLOAD &&
-      control !== FormControlType.CHECKBOX;
-
-    return (
-      <div
-        className={classNames('form-group', `tw-field-${name}`, {
-          'has-info': alert.type === Alert.Type.INFO && showAlert,
-          'has-error': alert.type === Alert.Type.ERROR && showAlert,
-          'has-warning': alert.type === Alert.Type.WARNING && showAlert,
-          hidden: field.hidden,
-        })}
-      >
+  return (
+    !isHidden && (
+      <div className={classNames(formGroupClasses)}>
         {showLabel && (
-          // eslint-disable-next-line jsx-a11y/label-has-for
-          <label className="control-label">{label}</label>
+          <label className="control-label" htmlFor={id}>
+            {props.schema.title}
+          </label>
         )}
-        <FormControl
-          {...field}
-          type={control}
-          name={name}
-          locale={locale}
-          value={value}
-          onChange={(event) => this.onChange(event)}
-          onFocus={(event) => this.onFocus(event)}
-          onBlur={(event) => this.onBlur(event)}
+        {/* <SchemaFormControl
+          id={id}
+          schema={props.schema}
+          value={model}
+          locale={props.locale}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        /> */}
+        <ControlFeedback
+          changed={changed}
+          focused={focused}
+          blurred={blurred}
+          submitted={props.submitted}
+          errors={props.errors}
+          schema={props.schema}
+          validations={validations}
         />
-        {showAlert && (
-          <Alert type={alert.type} size={Alert.Size.SMALL} arrow={Alert.ArrowPosition.TOP_LEFT}>
-            {alert.content}
-          </Alert>
-        )}
       </div>
-    );
-  }
-}
+    )
+  );
+};
+
+Field.propTypes = {
+  schema: Types.shape({
+    type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
+    enum: Types.arrayOf(Types.oneOfType([Types.string, Types.number, Types.bool])),
+    const: Types.oneOfType([Types.string, Types.number, Types.bool]),
+    format: Types.string,
+    title: Types.string,
+    values: Types.arrayOf(Types.shape({})),
+    default: Types.oneOfType([Types.string, Types.number, Types.bool]),
+    disabled: Types.bool,
+    hidden: Types.bool,
+    help: Types.shape({}),
+  }).isRequired,
+  model: Types.oneOfType([Types.string, Types.number, Types.bool]),
+  errors: Types.string,
+  translations: Types.shape({}),
+  onChange: Types.func.isRequired,
+  submitted: Types.bool.isRequired,
+  required: Types.bool,
+  locale: Types.string,
+};
+
+Field.defaultProps = {
+  model: null,
+  errors: null,
+  translations: {},
+  required: false,
+  locale: 'en-GB',
+};
+
+export default Field;
