@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Field from './Field';
 import FormControl from '../formControl';
 import { select, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
 
 export default {
   component: Field,
@@ -10,9 +9,6 @@ export default {
 };
 
 export const basic = () => {
-  const control = select('control', Object.values(FormControl.Type));
-  const label = text('label', 'label');
-
   const value = {
     text: 'a value',
     'date-lookup': new Date(),
@@ -21,10 +17,14 @@ export const basic = () => {
     tel: '+447573135343',
     number: 123456,
   };
+  const control = select('control', Object.values(FormControl.Type));
+  const [model, setModel] = useState(value[control] || '');
+
+  const label = text('label', 'label');
 
   return (
     <Field
-      value={value[control] || ''}
+      value={model}
       errorMessage=""
       warningMessage=""
       label={label}
@@ -32,7 +32,6 @@ export const basic = () => {
       field={{
         control,
         type: 'string',
-        format: '',
         displayPattern: '',
         help: {
           message: '',
@@ -53,17 +52,15 @@ export const basic = () => {
         autoComplete: false,
         placeholder: 'a placeholder',
         searchPlaceholder: 'search',
-        minLength: null,
-        maxLength: null,
-        minimum: 10,
-        maximum: 99,
+        minLength: 3,
+        maxLength: 10,
         validationMessages: {
           required: 'Number is required',
-          minimum: 'Must be 10 or greater',
-          maximum: 'Must be 99 or less',
+          minLength: 'Must be 10 or greater',
+          maxLength: 'Must be 99 or less',
         },
       }}
-      onChange={(val) => action(val)}
+      onChange={(val) => setModel(val)}
     />
   );
 };
