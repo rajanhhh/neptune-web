@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import ControlFeedback from './controlFeedback';
+import { Alert } from '@transferwise/components';
 
 import { getValidationFailures } from '../common/validation/validation-failures';
 import { getValidModelParts } from '../common/validation/valid-model';
@@ -27,6 +27,7 @@ const Field = (props) => {
   const getValueFromEmitted = (event) => {
     let newValue;
 
+    // To be refactored into normalizer
     if (event && typeof event === 'object') {
       if (event.target) {
         // This is a SyntheticEvent coming from React
@@ -93,6 +94,43 @@ const Field = (props) => {
     value: model,
   };
 
+  const getValidationsProps = () => {
+    let messageType = null;
+    let message = [];
+
+    const isErrorVisible = !changed && props.errors;
+    const isValidationVisible = (props.submitted || (changed && blurred)) && !!validations.length;
+    const isHelpVisible = focused && props.schema.help && !isValidationVisible;
+
+    if (isErrorVisible) {
+      messageType = 'error';
+      message = props.errors;
+    } else if (isValidationVisible) {
+      messageType = 'error';
+      message = validations.map((validation) => (
+        <div key={validation}>{props.schema.validationMessages[validation]}</div>
+      ));
+    } else if (isHelpVisible) {
+      // Refactor and let props.schema.help only and manage list type from outside.
+      messageType = 'info';
+      if (props.schema.help.message) {
+        message.push(<div>{props.schema.help.message}</div>);
+      }
+      if (props.schema.help.list) {
+        message.push(
+          <ul className="list-unstyled">
+            {props.schema.help.list.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>,
+        );
+      }
+    }
+
+    return { messageType, message };
+  };
+  const { messageType, message } = getValidationsProps();
+
   return (
     !props.isHidden && (
       <div className={classNames(formGroupClasses)}>
@@ -102,22 +140,11 @@ const Field = (props) => {
           </label>
         )}
         {React.cloneElement(props.children, fieldProps)}
-        {/* <SchemaFormControl
-       
-          schema={props.schema}
-          value={model}
-     
-        
-        /> */}
-        <ControlFeedback
-          changed={changed}
-          focused={focused}
-          blurred={blurred}
-          submitted={props.submitted}
-          errors={props.errors}
-          schema={props.schema}
-          validations={validations}
-        />
+        {messageType && (
+          <Alert type={messageType} size="sm">
+            {message}
+          </Alert>
+        )}
       </div>
     )
   );
