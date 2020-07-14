@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,9 +8,49 @@ import { getValidationFailures } from '../common/validation/validation-failures'
 import { getValidModelParts } from '../common/validation/valid-model';
 
 const Field = (props) => {
+  const [model, setModel] = useState(props.model);
+  const [lastModel, setLastModel] = useState(props.model);
+  const [changed, setChanged] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [blurred, setBlurred] = useState(false);
+  const [validations, setValidations] = useState([]);
+
   const onChange = (newModel) => {
+    const newValue = getValueFromEmitted(newModel);
     setChanged(true);
-    setModelAndBroadcast(sanitiseModel(newModel));
+    setModelAndBroadcast(sanitiseModel(newValue));
+  };
+
+  /**
+   * Temporary to be removed
+   */
+  const getValueFromEmitted = (event) => {
+    let newValue;
+
+    if (event && typeof event === 'object') {
+      if (event.target) {
+        // This is a SyntheticEvent coming from React
+        // Input type number target value is a string and needs to be a number.
+        if (props.schema.type === 'number') {
+          newValue = parseFloat(event.target.value);
+        } else {
+          newValue = event.target.value;
+        }
+      } else if (event.value || event.value === 0) {
+        // If we don't have a target but the emitted event
+        // has a value it's coming from our Select or Radio
+        // components
+        newValue = event.value;
+      } else {
+        // In any other case we just emit the event as it is
+        newValue = event;
+      }
+    } else {
+      // This is coming from our Checkbox component which is
+      // a boolean basically, so we must emit that value
+      newValue = event;
+    }
+    return newValue;
   };
 
   const getValidationKeys = (newModel) =>
@@ -38,43 +78,6 @@ const Field = (props) => {
     setBlurred(true);
   };
 
-  const generateId = () => String(Math.floor(100000000 * Math.random()));
-
-  const [id, setId] = useState('');
-  const [model, setModel] = useState(props.model);
-  const [lastModel, setLastModel] = useState(props.model);
-  const [changed, setChanged] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const [blurred, setBlurred] = useState(false);
-  const [validations, setValidations] = useState([]);
-
-  const onSchemaChange = () => {
-    // If no model, change to the default, only run this when the schema changes
-    if (!model && props.schema.default) {
-      setModelAndBroadcast(props.schema.default);
-    }
-
-    if (props.schema.const) {
-      setModelAndBroadcast(props.schema.const);
-    }
-
-    if (props.schema.enum && props.schema.enum.length === 1) {
-      setModelAndBroadcast(props.schema.enum[0]);
-    }
-
-    setId(generateId());
-  };
-
-  const onModelChange = () => {
-    setValidations(getValidationKeys(model));
-  };
-
-  const isConst = props.schema.const || (props.schema.enum && props.schema.enum.length === 1);
-  const isHidden = props.schema.hidden || isConst;
-
-  useEffect(onSchemaChange, [props.schema]);
-  useEffect(onModelChange, [props.model]);
-
   const formGroupClasses = {
     'form-group': true,
     'has-error':
@@ -83,24 +86,28 @@ const Field = (props) => {
     'has-info': focused && props.schema.help,
   };
 
-  const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
+  const fieldProps = {
+    onChange,
+    onBlur,
+    onFocus,
+    value: model,
+  };
 
   return (
-    !isHidden && (
+    !props.isHidden && (
       <div className={classNames(formGroupClasses)}>
-        {showLabel && (
-          <label className="control-label" htmlFor={id}>
+        {props.schema.title && (
+          <label className="control-label" htmlFor={props.id}>
             {props.schema.title}
           </label>
         )}
+        {React.cloneElement(props.children, fieldProps)}
         {/* <SchemaFormControl
-          id={id}
+       
           schema={props.schema}
           value={model}
-          locale={props.locale}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
+     
+        
         /> */}
         <ControlFeedback
           changed={changed}
@@ -135,7 +142,10 @@ Field.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
   required: Types.bool,
-  locale: Types.string,
+
+  id: Types.string,
+  children: Types.node.isRequired,
+  isHidden: Types.bool,
 };
 
 Field.defaultProps = {
@@ -143,7 +153,9 @@ Field.defaultProps = {
   errors: null,
   translations: {},
   required: false,
-  locale: 'en-GB',
+
+  id: '',
+  isHidden: false,
 };
 
 export default Field;

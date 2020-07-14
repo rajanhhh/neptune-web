@@ -1,8 +1,7 @@
 import React from 'react';
 import Field from './Field';
-import FormControl from '../formControl';
-import { select, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+
+import { text } from '@storybook/addon-knobs';
 
 export default {
   component: Field,
@@ -10,60 +9,29 @@ export default {
 };
 
 export const basic = () => {
-  const control = select('control', Object.values(FormControl.Type));
-  const label = text('label', 'label');
-
-  const value = {
-    text: 'a value',
-    'date-lookup': new Date(),
-    date: new Date(),
-    'date-time': new Date(),
-    tel: '+447573135343',
-    number: 123456,
-  };
+  const title = text('title', 'title');
 
   return (
     <Field
-      value={value[control] || ''}
-      errorMessage=""
-      warningMessage=""
-      label={label}
-      name="text"
-      field={{
-        control,
+      schema={{
+        title,
         type: 'string',
-        format: '',
-        displayPattern: '',
-        help: {
-          message: '',
-          image: '',
-          list: [],
-          do: ['good', 'much better'],
-          dont: ['uhm not so good', 'erm no!'],
-        },
-        options: [
-          { label: 'Mars', value: 'mars' },
-          { label: 'Earth', value: 'earth' },
-        ],
-        label: 'a label',
-        required: false,
-        disabled: false,
         hidden: false,
-        readOnly: false,
-        autoComplete: false,
-        placeholder: 'a placeholder',
-        searchPlaceholder: 'search',
-        minLength: null,
-        maxLength: null,
-        minimum: 10,
-        maximum: 99,
+        minLength: 3,
+        maxLength: 10,
         validationMessages: {
           required: 'Number is required',
-          minimum: 'Must be 10 or greater',
-          maximum: 'Must be 99 or less',
+          minLength: 'Must be 3 or greater',
+          maxLength: 'Must be less 10 or smaller',
         },
       }}
-      onChange={(val) => action(val)}
-    />
+      isHidden={false}
+      id="id"
+      model="initial value"
+      onChange={(val) => console.log(val)}
+      required
+    >
+      <input type="text" className="form-control" />
+    </Field>
   );
 };
