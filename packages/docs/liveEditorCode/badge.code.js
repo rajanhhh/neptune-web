@@ -1,4 +1,5 @@
 <Badge
+  border={ Badge.Border.LIGHT }
   size={ Badge.Size.LARGE }
   badge={ <div style={{
     background: 'var(--color-positive)',

@@ -10,8 +10,8 @@ const Badge = ({ badge, className, size, border, children }) => {
     'tw-badge',
     {
       [`tw-badge-border-${border}`]: border,
+      [`tw-badge-${size}`]: size === Badge.Size.LARGE,
     },
-    `tw-badge-${size}`,
     className,
   );
 
@@ -33,7 +33,7 @@ Badge.Border = {
 
 Badge.propTypes = {
   badge: Types.node.isRequired,
-  size: Types.oneOf([Badge.Size.LARGE]),
+  size: Badge.Size.LARGE,
   border: Types.oneOf(Object.values(Badge.Border)),
   className: Types.string,
   children: Types.node.isRequired,
