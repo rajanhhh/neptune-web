@@ -25,25 +25,14 @@ export const basic = () => {
   const border = select('Border', [null, Badge.Border.LIGHT, Badge.Border.DARK]);
 
   return (
-    <>
-      <Badge
-        badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
-        border={border}
-        size={Badge.Size.SMALL}
-      >
-        <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
-          {BadgeInnerText}
-        </div>
-      </Badge>
-      <Badge
-        badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
-        border={border}
-        size={Badge.Size.LARGE}
-      >
-        <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
-          {BadgeInnerText}
-        </div>
-      </Badge>
-    </>
+    <Badge
+      badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
+      border={border}
+      size={Badge.Size.SMALL}
+    >
+      <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
+        {BadgeInnerText}
+      </div>
+    </Badge>
   );
 };
