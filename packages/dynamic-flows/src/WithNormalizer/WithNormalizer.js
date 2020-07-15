@@ -5,6 +5,7 @@ import { isNumber, isNumeric, isSyntheticEvent } from '../common/validation/type
 const WithNormalizer = ({ children }) => {
   const handleOnChange = (event) => {
     let value = event;
+
     if (isSyntheticEvent(event)) {
       value = isNumeric(event.target.value) ? parseFloat(event.target.value) : event.target.value;
     } else if (event && (event.value || isNumber(event.value))) {

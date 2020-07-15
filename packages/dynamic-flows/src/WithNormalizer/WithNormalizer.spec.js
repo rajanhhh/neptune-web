@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import WithNormalizer from './';
 
 describe('withNormalizer', () => {
-  it('when user types it returns string value', () => {
+  it('when user types a string it returns string value', () => {
     const onChange = jest.fn();
     render(
       <WithNormalizer>
@@ -18,7 +18,7 @@ describe('withNormalizer', () => {
     expect(onChange).toHaveBeenCalledWith('username');
   });
 
-  it('when user types a numeric sttring returns numeric value', () => {
+  it('when user types a numeric string returns numeric value', () => {
     const onChange = jest.fn();
     render(
       <WithNormalizer>
@@ -30,7 +30,7 @@ describe('withNormalizer', () => {
     expect(onChange).toHaveBeenCalledWith(123);
   });
 
-  it('when user types a numeric sttring returns numeric value', () => {
+  it('when user select an option it return option value', () => {
     const onChange = jest.fn();
     render(
       <WithNormalizer>
