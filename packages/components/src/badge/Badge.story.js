@@ -1,6 +1,6 @@
 import React from 'react';
 import Badge from './Badge';
-import { text, boolean, select } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 export default {
   component: Badge,
@@ -22,18 +22,28 @@ export const ExampleBadgeCss = {
 export const basic = () => {
   const BadgeInnerText = text('Badge Inner Text', 'Content');
   const BadgeText = text('BadgeText', 'B');
-  const border = select('Border', ['', Badge.Border.LIGHT, Badge.Border.DARK]);
-  const large = boolean('large', false);
+  const border = select('Border', [null, Badge.Border.LIGHT, Badge.Border.DARK]);
 
   return (
-    <Badge
-      badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
-      border={border}
-      size={large ? Badge.Size.LARGE : null}
-    >
-      <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
-        {BadgeInnerText}
-      </div>
-    </Badge>
+    <>
+      <Badge
+        badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
+        border={border}
+        size={Badge.Size.SMALL}
+      >
+        <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
+          {BadgeInnerText}
+        </div>
+      </Badge>
+      <Badge
+        badge={<div style={ExampleBadgeCss}>{BadgeText}</div>}
+        border={border}
+        size={Badge.Size.LARGE}
+      >
+        <div style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.5em 1em' }}>
+          {BadgeInnerText}
+        </div>
+      </Badge>
+    </>
   );
 };
