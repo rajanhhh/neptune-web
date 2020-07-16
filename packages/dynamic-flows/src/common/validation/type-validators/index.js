@@ -26,12 +26,12 @@ function isUndefined(value) {
   return typeof value === 'undefined';
 }
 
-function isSyntheticEvent(value) {
+function isEvent(value) {
   return (
-    value &&
-    value.constructor &&
-    value.constructor.name &&
-    value.constructor.name === 'SyntheticEvent'
+    !isNull(value) &&
+    !isUndefined(value) &&
+    !!value.nativeEvent &&
+    value.nativeEvent instanceof Event
   );
 }
 
@@ -45,5 +45,5 @@ export {
   isArray,
   isNull,
   isUndefined,
-  isSyntheticEvent,
+  isEvent,
 };

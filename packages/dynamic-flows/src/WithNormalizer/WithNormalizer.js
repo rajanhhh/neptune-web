@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { isNumber, isNumeric, isSyntheticEvent } from '../common/validation/type-validators';
+import { isNumber, isNumeric, isEvent } from '../common/validation/type-validators';
 
 const WithNormalizer = ({ children }) => {
   const handleOnChange = (event) => {
     let value = event;
 
-    if (isSyntheticEvent(event)) {
+    if (isEvent(event)) {
       value = isNumeric(event.target.value) ? parseFloat(event.target.value) : event.target.value;
     } else if (event && (event.value || isNumber(event.value))) {
       value = event.value;
