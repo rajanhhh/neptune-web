@@ -33,7 +33,7 @@ Badge.Border = {
 
 Badge.propTypes = {
   badge: Types.node.isRequired,
-  size: Badge.Size.LARGE,
+  size: Types.oneOf(Badge.Size.LARGE),
   border: Types.oneOf(Object.values(Badge.Border)),
   className: Types.string,
   children: Types.node.isRequired,
