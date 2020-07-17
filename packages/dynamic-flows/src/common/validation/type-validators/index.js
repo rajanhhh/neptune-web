@@ -4,6 +4,9 @@ function isString(value) {
 function isNumber(value) {
   return typeof value === 'number' && !Number.isNaN(value);
 }
+function isNumeric(value) {
+  return /^\d+$/.test(value);
+}
 function isInteger(value) {
   return isNumber(value) && Math.floor(value) === value;
 }
@@ -23,4 +26,24 @@ function isUndefined(value) {
   return typeof value === 'undefined';
 }
 
-export { isString, isNumber, isInteger, isBoolean, isObject, isArray, isNull, isUndefined };
+function isEvent(value) {
+  return (
+    !isNull(value) &&
+    !isUndefined(value) &&
+    !!value.nativeEvent &&
+    value.nativeEvent instanceof Event
+  );
+}
+
+export {
+  isString,
+  isNumber,
+  isNumeric,
+  isInteger,
+  isBoolean,
+  isObject,
+  isArray,
+  isNull,
+  isUndefined,
+  isEvent,
+};

@@ -6,6 +6,7 @@ import { Alert } from '@transferwise/components';
 
 import { getValidationFailures } from '../common/validation/validation-failures';
 import { getValidModelParts } from '../common/validation/valid-model';
+import WithNormalizer from '../WithNormalizer';
 
 const Field = (props) => {
   const [model, setModel] = useState(props.model);
@@ -16,42 +17,8 @@ const Field = (props) => {
   const [validations, setValidations] = useState([]);
 
   const onChange = (newModel) => {
-    const newValue = getValueFromEmitted(newModel);
     setChanged(true);
-    setModelAndBroadcast(sanitiseModel(newValue));
-  };
-
-  /**
-   * Temporary to be removed
-   */
-  const getValueFromEmitted = (event) => {
-    let newValue;
-
-    // To be refactored into normalizer
-    if (event && typeof event === 'object') {
-      if (event.target) {
-        // This is a SyntheticEvent coming from React
-        // Input type number target value is a string and needs to be a number.
-        if (props.schema.type === 'number') {
-          newValue = parseFloat(event.target.value);
-        } else {
-          newValue = event.target.value;
-        }
-      } else if (event.value || event.value === 0) {
-        // If we don't have a target but the emitted event
-        // has a value it's coming from our Select or Radio
-        // components
-        newValue = event.value;
-      } else {
-        // In any other case we just emit the event as it is
-        newValue = event;
-      }
-    } else {
-      // This is coming from our Checkbox component which is
-      // a boolean basically, so we must emit that value
-      newValue = event;
-    }
-    return newValue;
+    setModelAndBroadcast(sanitiseModel(newModel));
   };
 
   const getValidationKeys = (newModel) =>
@@ -139,7 +106,7 @@ const Field = (props) => {
             {props.schema.title}
           </label>
         )}
-        {React.cloneElement(props.children, fieldProps)}
+        <WithNormalizer>{React.cloneElement(props.children, fieldProps)}</WithNormalizer>
         {messageType && (
           <Alert type={messageType} size="sm">
             {message}
