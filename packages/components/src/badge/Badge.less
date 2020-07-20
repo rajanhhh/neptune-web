@@ -1,10 +1,17 @@
 @import 'bootstrap/less/variables';
 
-@badge-size-small: 16px;
-@badge-size-large: 20px;
-@badge-offset: 4px;
-@badge-gap: 2px;
+@badge-size-sm: 16px;
+@badge-size-md: 20px;
+@badge-size-lg: 24px;
+
+@badge-offset: 0;
+
+@badge-mask-sm: 2px;
+@badge-mask-md: 2px;
+@badge-mask-lg: 3px;
+
 @badge-border: 1px;
+
 @badge-border-light: rgba(255, 255, 255, 0.08);
 @badge-border-dark: rgba(0, 0, 0, 0.08);
 
@@ -12,12 +19,21 @@
   position: relative;
   display: inline-block;
 
-  --badge-size: @badge-size-small;
+  --badge-size: @badge-size-sm;
+  --badge-mask: @badge-mask-sm;
+
   --badge-mask-offset: calc(var(--badge-size) / 2 - @badge-offset);
+
   --badge-border-color: @badge-border-light;
 
+  &.tw-badge-md {
+    --badge-size: @badge-size-md;
+    --badge-mask: @badge-mask-md;
+  }
+
   &.tw-badge-lg {
-    --badge-size: @badge-size-large;
+    --badge-size: @badge-size-lg;
+    --badge-mask: @badge-mask-lg;
   }
 
   &.tw-badge-border-dark {
@@ -28,8 +44,8 @@
     mask-image: radial-gradient(
       circle at top calc(100% - var(--badge-mask-offset)) left calc(100% - var(--badge-mask-offset)),
       transparent 0,
-      transparent calc(var(--badge-size) / 2 + @badge-gap),
-      black calc(var(--badge-size) / 2 + @badge-gap + 0.5px)
+      transparent calc(var(--badge-size) / 2 + var(--badge-mask)),
+      black calc(var(--badge-size) / 2 + var(--badge-mask) + 0.5px)
     );
   }
 
@@ -57,10 +73,16 @@
     }
   }
 
-  &.tw-badge-border-light > &__content,
-  &.tw-badge-border-dark > &__content {
-    border-style: solid inset solid solid;
-    border-width: @badge-border;
-    border-color: var(--badge-border-color);
+  &.tw-badge-border-light,
+  &.tw-badge-border-dark {
+    & > &__children {
+      mask-image: none;
+    }
+
+    & > &__content {
+      border-style: solid inset solid solid;
+      border-width: @badge-border;
+      border-color: var(--badge-border-color);
+    }
   }
 }

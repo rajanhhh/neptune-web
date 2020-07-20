@@ -10,7 +10,7 @@ const Badge = ({ badge, className, size, border, children }) => {
     'tw-badge',
     {
       [`tw-badge-border-${border}`]: border,
-      [`tw-badge-${size}`]: size === Badge.Size.LARGE,
+      [`tw-badge-${size}`]: size,
     },
     className,
   );
@@ -24,8 +24,11 @@ const Badge = ({ badge, className, size, border, children }) => {
 };
 
 Badge.Size = {
+  SMALL: Size.SMALL,
+  MEDIUM: Size.MEDIUM,
   LARGE: Size.LARGE,
 };
+
 Badge.Border = {
   LIGHT: 'light',
   DARK: 'dark',
