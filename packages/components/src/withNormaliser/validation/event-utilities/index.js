@@ -1,4 +1,4 @@
-import { isNull, isNumber, isUndefined } from '@transferwise/dynamic-flows';
+import { isNull, isNumber, isUndefined } from '../../../common/validation/type-validators';
 
 function isSyntheticEvent(value) {
   return (
