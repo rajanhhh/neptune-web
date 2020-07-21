@@ -57,19 +57,17 @@ const BasicTypeSchema = (props) => {
   return (
     <Field
       isHidden={isHidden}
-      schema={{ title: showLabel && props.schema.title, help: props.schema.help }}
+      schema={{
+        title: showLabel && props.schema.title,
+        help: props.schema.help,
+        type: props.schema.type,
+      }}
       id={id}
       errors={props.errors}
       submitted={props.submitted}
-      onChange={() => {}}
+      onChange={(model) => console.log('model', model)}
     >
-      <SchemaFormControl
-        id={id}
-        schema={props.schema}
-        value={model}
-        locale={props.locale}
-        onChange={() => {}}
-      />
+      <SchemaFormControl schema={props.schema} locale={props.locale} />
     </Field>
   );
 };
