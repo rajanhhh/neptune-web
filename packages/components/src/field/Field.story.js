@@ -24,10 +24,7 @@ export const basic = () => {
           minLength: 'Must be 3 or greater',
           maxLength: 'Must be less 10 or smaller',
         },
-        help: {
-          message: 'help message',
-          messageList: [],
-        },
+        help: 'help message',
       }}
       isHidden={false}
       id="id"

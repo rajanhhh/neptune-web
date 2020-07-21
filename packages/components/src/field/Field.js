@@ -21,7 +21,6 @@ const Field = (props) => {
     setModelAndBroadcast(sanitiseModel(newModel));
   };
 
-  // const getValidationKeys = (newModel) => [];
   const getValidationKeys = (newModel) =>
     getValidationFailures(newModel, props.schema, props.required);
 
@@ -80,20 +79,8 @@ const Field = (props) => {
         <div key={validation}>{props.schema.validationMessages[validation]}</div>
       ));
     } else if (isHelpVisible) {
-      // Refactor and let props.schema.help only and manage list type from outside.
       messageType = 'info';
-      if (props.schema.help.message) {
-        message.push(<div>{props.schema.help.message}</div>);
-      }
-      if (props.schema.help.list) {
-        message.push(
-          <ul className="list-unstyled">
-            {props.schema.help.list.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>,
-        );
-      }
+      message = props.schema.help;
     }
 
     return { messageType, message };
@@ -121,24 +108,19 @@ const Field = (props) => {
 
 Field.propTypes = {
   schema: Types.shape({
-    type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
-    enum: Types.arrayOf(Types.oneOfType([Types.string, Types.number, Types.bool])),
-    const: Types.oneOfType([Types.string, Types.number, Types.bool]),
-    format: Types.string,
     title: Types.string,
-    values: Types.arrayOf(Types.shape({})),
-    default: Types.oneOfType([Types.string, Types.number, Types.bool]),
-    disabled: Types.bool,
+    type: Types.oneOf(['string', 'number', 'integer', 'boolean']),
     hidden: Types.bool,
-    help: Types.shape({}),
+    minLength: 3,
+    maxLength: 10,
+    validationMessages: Types.shape({}),
+    help: Types.node,
   }).isRequired,
-  model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   errors: Types.string,
-  translations: Types.shape({}),
   onChange: Types.func.isRequired,
   submitted: Types.bool.isRequired,
+  model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   required: Types.bool,
-
   id: Types.string,
   children: Types.node.isRequired,
   isHidden: Types.bool,
@@ -147,9 +129,7 @@ Field.propTypes = {
 Field.defaultProps = {
   model: null,
   errors: null,
-  translations: {},
   required: false,
-
   id: '',
   isHidden: false,
 };
