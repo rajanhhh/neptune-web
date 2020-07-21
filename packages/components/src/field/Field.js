@@ -3,9 +3,9 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import Alert from '../alert';
-
-// import { getValidationFailures } from '../common/validation/validation-failures';
-// import { getValidModelParts } from '../common/validation/valid-model';
+// @TODO To be imported in components
+import { getValidationFailures } from '../../../dynamic-flows/src/common/validation/validation-failures';
+import { getValidModelParts } from '../../../dynamic-flows/src/common/validation/valid-model';
 import WithNormaliser from '../withNormaliser';
 
 const Field = (props) => {
@@ -21,9 +21,9 @@ const Field = (props) => {
     setModelAndBroadcast(sanitiseModel(newModel));
   };
 
-  const getValidationKeys = (newModel) => [];
-  // const getValidationKeys = (newModel) =>
-  //   getValidationFailures(newModel, props.schema, props.required);
+  // const getValidationKeys = (newModel) => [];
+  const getValidationKeys = (newModel) =>
+    getValidationFailures(newModel, props.schema, props.required);
 
   const setModelAndBroadcast = (newModel) => {
     setModel(newModel);
@@ -39,8 +39,8 @@ const Field = (props) => {
     }
   };
 
-  const sanitiseModel = (newModel) => [];
-  // const sanitiseModel = (newModel) => getValidModelParts(newModel, props.schema);
+  // const sanitiseModel = (newModel) => [];
+  const sanitiseModel = (newModel) => getValidModelParts(newModel, props.schema);
 
   const onFocus = () => setFocused(true);
   const onBlur = () => {
