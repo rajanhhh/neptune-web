@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 import Alert from '../alert';
 // @TODO To be imported in components
-import { getValidationFailures } from '../../../dynamic-flows/src/common/validation/validation-failures';
-import { getValidModelParts } from '../../../dynamic-flows/src/common/validation/valid-model';
+import { getValidationFailures } from '@transferwise/dynamic-flows/src/common/validation/validation-failures';
+import { getValidModelParts } from '@transferwise/dynamic-flows/src/common/validation/valid-model';
 import WithNormaliser from '../withNormaliser';
 
 const Field = (props) => {

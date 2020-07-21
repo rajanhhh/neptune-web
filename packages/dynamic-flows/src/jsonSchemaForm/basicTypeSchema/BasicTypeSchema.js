@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
-import classNames from 'classnames';
 
 import SchemaFormControl from '../schemaFormControl';
-import ControlFeedback from '../controlFeedback';
+
+import { Field } from '@transferwise/components';
 
 import { getValidationFailures } from '../../common/validation/validation-failures';
-import { getValidModelParts } from '../../common/validation/valid-model';
 
 const BasicTypeSchema = (props) => {
-  const onChange = (newModel) => {
-    setChanged(true);
-    setModelAndBroadcast(sanitiseModel(newModel));
-  };
-
   const getValidationKeys = (newModel) =>
     getValidationFailures(newModel, props.schema, props.required);
 
   const setModelAndBroadcast = (newModel) => {
     setModel(newModel);
     const validationKeys = getValidationKeys(newModel);
-    setValidations(validationKeys);
 
     const broadcastModel = validationKeys.length ? null : newModel;
 
@@ -31,23 +24,11 @@ const BasicTypeSchema = (props) => {
     }
   };
 
-  const sanitiseModel = (newModel) => getValidModelParts(newModel, props.schema);
-
-  const onFocus = () => setFocused(true);
-  const onBlur = () => {
-    setFocused(false);
-    setBlurred(true);
-  };
-
   const generateId = () => String(Math.floor(100000000 * Math.random()));
 
   const [id, setId] = useState('');
   const [model, setModel] = useState(props.model);
   const [lastModel, setLastModel] = useState(props.model);
-  const [changed, setChanged] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const [blurred, setBlurred] = useState(false);
-  const [validations, setValidations] = useState([]);
 
   const onSchemaChange = () => {
     // If no model, change to the default, only run this when the schema changes
@@ -66,54 +47,30 @@ const BasicTypeSchema = (props) => {
     setId(generateId());
   };
 
-  const onModelChange = () => {
-    setValidations(getValidationKeys(model));
-  };
-
   const isConst = props.schema.const || (props.schema.enum && props.schema.enum.length === 1);
-  const isHidden = props.schema.hidden || isConst;
+  const isHidden = !!(props.schema.hidden || isConst);
 
   useEffect(onSchemaChange, [props.schema]);
-  useEffect(onModelChange, [props.model]);
-
-  const formGroupClasses = {
-    'form-group': true,
-    'has-error':
-      (!changed && props.errors) ||
-      ((props.submitted || (changed && blurred)) && validations.length),
-    'has-info': focused && props.schema.help,
-  };
 
   const showLabel = props.schema.format !== 'file' && props.schema.type !== 'boolean';
 
   return (
-    !isHidden && (
-      <div className={classNames(formGroupClasses)}>
-        {showLabel && (
-          <label className="control-label" htmlFor={id}>
-            {props.schema.title}
-          </label>
-        )}
-        <SchemaFormControl
-          id={id}
-          schema={props.schema}
-          value={model}
-          locale={props.locale}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-        />
-        <ControlFeedback
-          changed={changed}
-          focused={focused}
-          blurred={blurred}
-          submitted={props.submitted}
-          errors={props.errors}
-          schema={props.schema}
-          validations={validations}
-        />
-      </div>
-    )
+    <Field
+      isHidden={isHidden}
+      schema={{ title: showLabel && props.schema.title, help: props.schema.help }}
+      id={id}
+      errors={props.errors}
+      submitted={props.submitted}
+      onChange={() => {}}
+    >
+      <SchemaFormControl
+        id={id}
+        schema={props.schema}
+        value={model}
+        locale={props.locale}
+        onChange={() => {}}
+      />
+    </Field>
   );
 };
 
