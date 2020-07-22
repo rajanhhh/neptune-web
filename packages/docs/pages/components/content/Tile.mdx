@@ -1,0 +1,21 @@
+import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
+import code from '../../../liveEditorCode/tile.code';
+
+import { Tile } from '@transferwise/components';
+
+<LiveEditorBlock code={code} scope={{ Tile }} />
+<GeneratePropsTable componentName="Tile" />
+
+## Usage
+TODO: do we need to add information that this is used for major decisions where more context is needed?
+E.g. deciding between two options
+
+## Groups of tiles
+
+TODO: Add information about the picker
+
+TODO: Add notice for not showing more than 2-3 tiles for decision
+
+export const meta = {
+  name: 'Tile',
+}
