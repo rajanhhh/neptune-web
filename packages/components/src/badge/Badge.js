@@ -36,15 +36,15 @@ Badge.Border = {
 
 Badge.propTypes = {
   badge: Types.node.isRequired,
-  size: Types.oneOf(Badge.Size.LARGE),
-  border: Types.oneOf(Object.values(Badge.Border)),
+  size: Types.oneOf([Badge.Size.LARGE, Badge.Size.MEDIUM, Badge.Size.SMALL]),
+  border: Types.oneOf([Badge.Border.DARK, Badge.Border.LIGHT]),
   className: Types.string,
   children: Types.node.isRequired,
 };
 
 Badge.defaultProps = {
-  size: null,
-  border: null,
+  size: Badge.Size.SMALL,
+  border: Badge.Border.LIGHT,
   className: null,
 };
 
