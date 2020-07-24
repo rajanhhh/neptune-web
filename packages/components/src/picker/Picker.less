@@ -1,0 +1,21 @@
+.tw-picker {
+  &__tile-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__navigation-option-container {
+    display: none;
+  }
+}
+
+// Should we use media queries for switching?
+@media (max-width: 768px) {
+  .tw-picker__tile-container {
+    display: none;
+  }
+
+  .tw-picker__navigation-option-container {
+    display: block;
+  }
+}

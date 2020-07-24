@@ -1,9 +1,10 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
-import code from '../../../liveEditorCode/tile.code';
+import tileCode from '../../../liveEditorCode/tile.code';
+import pickerCode from '../../../liveEditorCode/picker.code';
 
-import { Tile } from '@transferwise/components';
+import { Tile, Picker } from '@transferwise/components';
 
-<LiveEditorBlock code={code} scope={{ Tile }} />
+<LiveEditorBlock code={tileCode} scope={{ Tile }} />
 <GeneratePropsTable componentName="Tile" />
 
 ## Usage
@@ -15,6 +16,10 @@ E.g. deciding between two options
 TODO: Add information about the picker
 
 TODO: Add notice for not showing more than 2-3 tiles for decision
+
+<LiveEditorBlock code={pickerCode} scope={{ Picker }} display="vertical" />
+<GeneratePropsTable componentName="Picker" />
+
 
 export const meta = {
   name: 'Tile',

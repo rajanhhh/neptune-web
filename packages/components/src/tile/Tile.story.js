@@ -10,7 +10,7 @@ export default {
 
 export const basic = () => {
   const title = text('title', 'Send money');
-  const body = text('body', 'Click here to be redirected to transferflow.');
+  const body = <p>{text('body', 'Click here to be redirected to transferflow.')}</p>;
 
   return (
     <Tile
