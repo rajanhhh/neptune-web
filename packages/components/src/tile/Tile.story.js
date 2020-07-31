@@ -2,6 +2,7 @@ import React from 'react';
 import { text } from '@storybook/addon-knobs';
 
 import Tile from '.';
+import Avatar from '../avatar';
 
 export default {
   component: Tile,
@@ -9,18 +10,17 @@ export default {
 };
 
 export const basic = () => {
-  const title = text('title', 'Send money');
-  const body = <p>{text('body', 'Click here to be redirected to transferflow.')}</p>;
+  const title = text('title', 'Hank Miller');
+  const body = <p>{text('body', 'Click here to send money to Mr. Miller')}</p>;
 
   return (
     <Tile
       title={title}
       content={body}
-      illustration={
-        <img
-          src="https://transferwise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
-          alt="illustration"
-        />
+      media={
+        <Avatar size="md" theme="light" type="initials" className="text-xs-center">
+          HM
+        </Avatar>
       }
       onClick={() => alert('onClick')}
     />

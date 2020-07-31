@@ -1,6 +1,7 @@
 @import '@transferwise/neptune-css/src/less/neptune-tokens.less';
 
-.tile {
+.tw-tile {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 340px;
@@ -9,14 +10,35 @@
   border-radius: 3px;
   text-align: center;
 
-  &:hover {
-    // TODO: do we want border and drop shadow on hover?
-    cursor: pointer;
+  &__link {
+    text-decoration: none;
+
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
     border: 1px solid var(--color-border-focus);
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   }
 
-  & + .box {
+  & + .tw-tile {
     margin-left: 24px;
   }
 }
