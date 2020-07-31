@@ -1,25 +1,14 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../../utils';
-import tileCode from '../../../liveEditorCode/tile.code';
-import pickerCode from '../../../liveEditorCode/picker.code';
+import code from '../../../liveEditorCode/tile.code';
 
-import { Tile, Picker } from '@transferwise/components';
+import { Tile } from '@transferwise/components';
 
-<LiveEditorBlock code={tileCode} scope={{ Tile }} />
+<LiveEditorBlock code={code} scope={{ Tile }} />
 <GeneratePropsTable componentName="Tile" />
-
-## Usage
-TODO: do we need to add information that this is used for major decisions where more context is needed?
-E.g. deciding between two options
 
 ## Groups of tiles
 
-TODO: Add information about the picker
-
-TODO: Add notice for not showing more than 2-3 tiles for decision
-
-<LiveEditorBlock code={pickerCode} scope={{ Picker }} display="vertical" />
-<GeneratePropsTable componentName="Picker" />
-
+It's recommended to use [`Picker`](https://transferwise.github.io/neptune-web/components/content/Picker) for displaying groups of tiles.
 
 export const meta = {
   name: 'Tile',

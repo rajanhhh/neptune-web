@@ -1,9 +1,10 @@
 () => (
   <Tile
-    illustration={
+    media={
       <img
         src="https://transferwise.com/public-resources/assets/bank-details/bank-details-flow/finish.svg"
         alt="illustration"
+        style={{ width: '100%' }}
       />
     }
     title="Send money"
