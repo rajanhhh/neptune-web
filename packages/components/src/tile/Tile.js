@@ -31,7 +31,7 @@ export const Tile = ({ className, title, content, media, onClick }) => {
 Tile.propTypes = {
   title: Types.node.isRequired,
   content: Types.node,
-  media: Types.node, // TODO: illustration or icon?
+  media: Types.node,
   onClick: Types.func.isRequired,
   className: Types.string,
 };
