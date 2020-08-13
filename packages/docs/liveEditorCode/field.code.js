@@ -2,45 +2,21 @@
   const [value, setValue] = React.useState('a value');
   return (
     <Field
-      value={value}
-      errorMessage=""
-      warningMessage=""
-      label="label"
-      name="text"
-      field={{
-        control: 'text',
-        type: 'string',
-        displayPattern: '',
-        help: {
-          message: '',
-          image: '',
-          list: [],
-          do: ['good', 'much better'],
-          dont: ['not so good', 'erm no!'],
-        },
-        options: [
-          { label: 'Mars', value: 'mars' },
-          { label: 'Earth', value: 'earth' },
-        ],
-        label: 'a label',
-        required: false,
-        disabled: false,
-        hidden: false,
-        readOnly: false,
-        autoComplete: false,
-        placeholder: 'a placeholder',
-        searchPlaceholder: 'search',
-        minLength: null,
-        maxLength: null,
-        minimum: 10,
-        maximum: 99,
-        validationMessages: {
-          required: 'Number is required',
-          minimum: 'Must be 10 or greater',
-          maximum: 'Must be 99 or less',
-        },
+      errors={null}
+      help="help message"
+      id="id"
+      model={value}
+      onChange={(val) => setValue(val)}
+      submitted={false}
+      title={title}
+      type="text"
+      validation={{
+        maxLength: { value: 10, message: 'Must be less 10 or smaller' },
+        minLength: { value: 3, message: 'Must be 3 or more' },
+        required: { value: true, message: 'This field is required' },
       }}
-      onChange={(value) => setValue(value)}
-    />
+    >
+      <input type="text" className="form-control" />
+    </Field>
   );
 };
