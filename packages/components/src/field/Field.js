@@ -18,7 +18,7 @@ const Field = (props) => {
     });
     return validations;
   };
-
+  // @TODO initialize props.model correctly
   const [model, setModel] = useState(props.model);
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -40,7 +40,7 @@ const Field = (props) => {
 
   useEffect(() => {
     const newValidationFailures = getValidationFailures(
-      props.model,
+      model,
       props.type,
       validations.validationRules,
     );
@@ -58,10 +58,9 @@ const Field = (props) => {
     );
     const isValid = newValidationFailures.length === 0;
 
-    props.onChange(newModel, isValid);
-
     setValidationFailures(newValidationFailures);
     setModel(newModel);
+    props.onChange(newModel, isValid);
   };
   // @TODO We need to check if our components support all these props
   const fieldProps = {
