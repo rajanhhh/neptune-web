@@ -8,7 +8,7 @@
       model={value}
       onChange={(val) => setValue(val)}
       submitted={false}
-      title={title}
+      title="title"
       type="text"
       validation={{
         maxLength: { value: 10, message: 'Must be less 10 or smaller' },
