@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[83],{pN0W:function(n,o,p){(window.__NEXT_P=window.__NEXT_P||[]).push(["/styles/core/Typography",function(){return p("BTr6")}])}},[["pN0W",0,1,2,3,4,5,6,7,9,8,10,11,12,19,18,17,14,20,16,21,15,13,22,23]]]);
