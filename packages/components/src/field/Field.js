@@ -31,7 +31,10 @@ const Field = (props) => {
     setModelAndBroadcast(newModel);
   };
 
-  const onFocus = () => setFocused(true);
+  const onFocus = () => {
+    setFocused(true);
+    setBlurred(false);
+  };
 
   const onBlur = () => {
     setFocused(false);
@@ -58,7 +61,7 @@ const Field = (props) => {
     );
     const isValid = newValidationFailures.length === 0;
 
-    setValidationFailures(newValidationFailures);
+    setValidationFailures([]);
     setModel(newModel);
     props.onChange(newModel, isValid);
   };
@@ -72,9 +75,9 @@ const Field = (props) => {
   };
 
   const getMessage = () => {
-    let messageType = null;
+    let messageType = 'error';
     let message = null;
-    const formGroupClasses = ['form-group'];
+    const formGroupClasses = ['form-group', 'has-error'];
 
     const isErrorVisible = !changed && props.errors;
     const isValidationVisible =
@@ -82,17 +85,13 @@ const Field = (props) => {
     const isHelpVisible = focused && props.help && !isValidationVisible;
 
     if (isErrorVisible) {
-      formGroupClasses.push('has-error');
-      messageType = 'error';
       message = props.errors;
     } else if (isValidationVisible) {
-      formGroupClasses.push('has-error');
-      messageType = 'error';
       message = validationFailures.map((validation) => (
         <div key={validation}>{validations.validationMessages[validation]}</div>
       ));
     } else if (isHelpVisible) {
-      formGroupClasses.push('has-info');
+      formGroupClasses.splice(1, 1, 'has-info');
       messageType = 'info';
       message = props.help;
     }
