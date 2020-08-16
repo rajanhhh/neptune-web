@@ -1,14 +1,28 @@
-@import '@transferwise/neptune-css/src/less/neptune-tokens.less';
-
 .tw-tile {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 340px;
-  padding: var(--space-16);
   border: 1px solid var(--color-border-neutral);
   border-radius: 3px;
   text-align: center;
+
+  & &--large {
+    width: 340px;
+    padding: var(--space-32);  
+  }
+
+  &--small {
+    width: 180px;
+    padding: var(--space-16);
+
+    h4 {
+      font-size: var(--font-size);
+    }
+
+    > .tw-tile__content {
+      font-size: var(--font-size-small);
+    }
+  }
 
   &__link {
     text-decoration: none;

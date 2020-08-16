@@ -1,5 +1,5 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 import Tile from '.';
 import Avatar from '../avatar';
@@ -12,6 +12,7 @@ export default {
 export const basic = () => {
   const title = text('title', 'Hank Miller');
   const body = <p>{text('body', 'Click here to send money to Mr. Miller')}</p>;
+  const size = select('Size', Tile.Size, Tile.Size.LARGE);
 
   return (
     <Tile
@@ -22,6 +23,7 @@ export const basic = () => {
           HM
         </Avatar>
       }
+      size={size}
       onClick={() => alert('onClick')}
     />
   );

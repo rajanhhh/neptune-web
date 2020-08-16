@@ -1,3 +1,5 @@
+const { default: Tile } = require('../../components/src/tile');
+
 () => (
   <Tile
     media={
@@ -7,6 +9,7 @@
         style={{ width: '100%' }}
       />
     }
+    size={Tile.Size.LARGE}
     title="Send money"
     content={<p>Click here to be redirected to transferflow.</p>}
     onClick={() => alert('onClick')}

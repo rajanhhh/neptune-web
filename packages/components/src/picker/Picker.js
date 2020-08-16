@@ -8,7 +8,7 @@ import Tile from '../tile';
 
 import './Picker.css';
 
-const Picker = ({ className, items, onClick }) => {
+const Picker = ({ className, items, onClick, small }) => {
   return (
     <div className={classNames('tw-picker', className)}>
       <div className="tw-picker__tile-container p-x-2">
@@ -19,6 +19,7 @@ const Picker = ({ className, items, onClick }) => {
             title={title}
             content={content}
             media={media}
+            size={small && Tile.Size.SMALL}
             onClick={() => onClick(key)}
           />
         ))}
@@ -45,6 +46,7 @@ const Picker = ({ className, items, onClick }) => {
 Picker.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
+  small: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.node.isRequired,
@@ -57,6 +59,7 @@ Picker.propTypes = {
 
 Picker.defaultProps = {
   className: null,
+  small: false,
 };
 
 export default Picker;
