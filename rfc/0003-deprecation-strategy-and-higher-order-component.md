@@ -169,11 +169,8 @@ To offer maximum flexibility and control to the deprecating engineer, we propose
 In adopting this strategy for deprecating Neptune components, we add uncertainty around versioning. As we can now deprecate components, maintaining the legacy API for a period of time, engineers can release what would have been a breaking change as a minor release. To account for this, we propose that contributors to Neptune should no longer be able to release breaking changes. Instead, the #design-systems should control and maintain when a deprecation notice should be removed, and thus the release of breaking changes.
 
 Deprecated component APIs can exist for a pre-agreed amount of time and removed by the design-systems team when necessary, releasing a new major, breaking version of Neptune components.
-​
 
 # Drawbacks
-
-​
 
 - For the deprecation period, in case of critical changes, you'd need to apply them to both components
 - Newly introduced `required` props are not able to be expressed in a useful way. In theory, we can rely on prop-types and the introduction prop-type warnings as errors within tests to account for this.
@@ -218,8 +215,12 @@ The addition of documentation covering:
 3. Communication of a deprecation, and what a good change log item looks like
    ​
 
-# Unresolved questions
+# Conclusion
 
-​
+Since this RFC was first raised, we have established a full time team who maintain Neptune. We (the Neptune team) have, as was suggested in this RFC, taken ownership of breaking changes, and have a more structured release strategy than we did 6 months ago.
 
-1. How does this apply to other platforms? We're unsure of the specifics of how those platforms work to be able to suggest any strategies beyond the usage of a configuration object to describe them
+You can now find information on [versioning and deprecation](https://transferwise.github.io/neptune-web/about/Versioning) in the Neptune documentation.
+
+The first approach outlined in this RFC provides a robust strategy for situations where we plan an extensive signature change of a widely used component. We can revisit this RFC when such a situation arrives.
+
+In the case that we plan on deprecating an entire component or a single method or prop, we can use a simple warning.
