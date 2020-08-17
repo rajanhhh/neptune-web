@@ -1,20 +1,21 @@
 - Start Date: 2019-11-15
-- RFC PR: https://github.com/transferwise/neptune/pull/93
-​
+- Status: Agreed
+
 # Summary
-​
+
 Given Neptune is still early in development, we have given little consideration to how we may make breaking changes to a component's API.
 
 In this RFC, we propose a way to deprecate a React component's API, and consider how the deprecation strategy can be managed across the team.
 
 # Basic example
+
 N/A
 
 # Motivation
 
 We recently had an incident which involved deploying an application which had had its `@transferwise/components` version bumped from one major version to the next. In doing so, the breaking change was not addressed, hence a broken bundle was deployed. In effect, button components were rendered to the page with no labels.
 
-While there are many facets to this, we have agreed one the most part that breaking changes should be made in a more thoughtful manner. Most open-source packages deprecate APIs before removing them entirely in a later version (react being a perfect example of this). This is a controlled exercise and one we propose we adopt at TransferWise for Neptune.
+While there are many facets to this, we have agreed that breaking changes should be made in a more thoughtful manner. Most open-source packages deprecate APIs before removing them entirely in a later version (react being a perfect example of this). This is a controlled exercise and one we propose we adopt at TransferWise for Neptune.
 
 # Detailed design
 
@@ -31,7 +32,7 @@ Take a cut down version of the Button component:
 
 ```js
 function Button({ label }) {
-  return <button>{label}</button>
+  return <button>{label}</button>;
 }
 ```
 
@@ -39,7 +40,7 @@ We want to update the API so `label` becomes `children` so it more closely mirro
 
 ```js
 function Button({ children }) {
-  return <button>{children}</button> 
+  return <button>{children}</button>;
 }
 ```
 
@@ -65,12 +66,12 @@ const EitherOr = (Component1, Component2, decider) => {
 };
 
 // Button/index.js
-import OldButton from "./button";
-import NewButton from "./newButton";
-import EitherOr from "../EitherOr";
+import OldButton from './button';
+import NewButton from './newButton';
+import EitherOr from '../EitherOr';
 
 function decider(props) {
-  return !props.label
+  return !props.label;
 }
 
 export default EitherOr(NewButton, OldButton, decider);
@@ -82,10 +83,10 @@ To satisfy #2, the decider function could also throw warnings:
 
 ```js
 function decider(props) {
-  if(props.label) {
+  if (props.label) {
     console.warn("Button's `label` prop is deprecated, please use `children` instead");
   }
-  
+
   return true;
 }
 
@@ -95,7 +96,9 @@ export default EitherOr(NewButton, OldButton, decider);
 Satisfying #3 is as straight-forward as including a link in the `console.warn`:
 
 ```js
-console.warn("Button's `label` prop is deprecated, please use `children` instead. See https://github.com/transferwise/neptune/blob/master/packages/components/CHANGELOG.md#v1500 for more information");
+console.warn(
+  "Button's `label` prop is deprecated, please use `children` instead. See https://github.com/transferwise/neptune/blob/master/packages/components/CHANGELOG.md#v1500 for more information",
+);
 ```
 
 One possible issue with this, is the emphasis placed on the engineer introducing the deprecation to manually write a good deprecation message for the consumer. For more complex deprecations than the example, it requires the engineer to write a lot of boilerplate code.
@@ -167,44 +170,56 @@ In adopting this strategy for deprecating Neptune components, we add uncertainty
 
 Deprecated component APIs can exist for a pre-agreed amount of time and removed by the design-systems team when necessary, releasing a new major, breaking version of Neptune components.
 ​
+
 # Drawbacks
+
 ​
+
 - For the deprecation period, in case of critical changes, you'd need to apply them to both components
-- Newly introduced `required` props are not able to be expressed in a useful way. In theory, we can rely on prop-types and the introduction  prop-type warnings as errors within tests to account for this.
-​
+- Newly introduced `required` props are not able to be expressed in a useful way. In theory, we can rely on prop-types and the introduction prop-type warnings as errors within tests to account for this.
+  ​
+
 # Alternatives
+
 ​
 There are two clear alternatives:
 
 1. Run with the `function`-only decider, for simpler implementation on our end
 2. Deprecate props within a component directly, e.g.:
 
-  ```js
-  function Button({ label, children }) {
-    const renderedChildren = label || children;
-    
-    if(label) {
-      console.warn("Button's `label` prop is deprecated, please use `children` instead");
-    }
-    
-    return <Button>{renderedChildren}</Button>
-  }
-  ```
+```js
+function Button({ label, children }) {
+  const renderedChildren = label || children;
 
-  The concern here being the increased complexity in understand how the component works, and removing the depecration
+  if (label) {
+    console.warn("Button's `label` prop is deprecated, please use `children` instead");
+  }
+
+  return <Button>{renderedChildren}</Button>;
+}
+```
+
+The concern here being the increased complexity in understand how the component works, and removing the depecration
 ​
+
 # Adoption strategy
+
 ​
 Since this solution is purely an addition, it requires no changes to any existing components. Implementing the HOC would be a one-liner as shown in the examples above.
 ​
+
 # How we teach this
+
 ​
 The addition of documentation covering:
 
 1. When a deprecation should be added
 2. How to use the HoC
 3. Communication of a deprecation, and what a good change log item looks like
-​
+   ​
+
 # Unresolved questions
+
 ​
+
 1. How does this apply to other platforms? We're unsure of the specifics of how those platforms work to be able to suggest any strategies beyond the usage of a configuration object to describe them
