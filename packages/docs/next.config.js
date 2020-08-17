@@ -1,4 +1,3 @@
-const getBranch = require('git-branch');
 const rehypePrism = require('@mapbox/rehype-prism');
 const rehypeSlug = require('rehype-slug');
 const withCSS = require('@zeit/next-css');
@@ -13,7 +12,7 @@ const withTM = require('next-transpile-modules');
 
 const pageExtensions = ['js', 'mdx'];
 
-const branch = getBranch.sync();
+const branch = process.env.CIRCLE_BRANCH;
 const assetPrefix =
   process.env.NODE_ENV === 'production'
     ? `/neptune-web${branch !== 'master' ? `/branch/${branch}` : ''}`
@@ -25,7 +24,13 @@ module.exports = () =>
       withFonts(
         withCSS(
           withMDX({
-            transpileModules: ['@transferwise/dynamic-flows'],
+            transpileModules: [
+              '@transferwise/dynamic-flows',
+              'buble',
+              'regexpu-core',
+              'unicode-match-property-ecmascript',
+              'unicode-match-property-value-ecmascript',
+            ],
             pageExtensions,
             assetPrefix,
             env: {
@@ -33,7 +38,7 @@ module.exports = () =>
             },
             webpack: (config) => {
               config.module.rules.push({
-                test: /\.code.js$/,
+                test: [/\.code.js$/, /\.txt$/],
                 use: 'raw-loader',
               });
 

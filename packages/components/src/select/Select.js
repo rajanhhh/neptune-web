@@ -363,7 +363,7 @@ export default class Select extends Component {
   }
 
   selectOption(option) {
-    if (!option.placeholder) {
+    if (option && !option.placeholder) {
       this.props.onChange(option);
     } else {
       this.props.onChange(null);
@@ -430,6 +430,7 @@ export default class Select extends Component {
               onClick={stopPropagation}
               value={searchValue || this.state.searchValue}
               ref={this.searchBoxRef}
+              spellCheck="false"
             />
           </div>
         </a>

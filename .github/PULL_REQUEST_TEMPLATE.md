@@ -1,16 +1,19 @@
-☝️ make the title meaningful and follow conventional commits standards
+## 🖼 Context
 
-## 📎 Jira ticket
+<!-- Why is this PR necessary? Please include links to mockups, JIRA ticket or other relevant documentation. -->
 
-## ❓ Context <!-- why this change is made -->
+## 🚀 Changes
 
-## 🚀 Changes <!-- what this PR does -->
+ <!-- What changes have you made? -->
 
-## 💬 Considerations <!-- additional info for reviewing (e.g links to Mockups, docs etc.), discussion topics -->
+## 🤔 Considerations
+
+<!-- Anything else we should keep in mind? -->
 
 ## ✅ Checklist
 
-- [ ] All changes are covered by tests
-- [ ] All changes have been crossbrowser checked, especially IE11
-- [ ] The changes are covered in docs
-- [ ] Accessibility checks have been performed. Browser's console doesn't contain any violations (Accessibility checks)[https://github.com/transferwise/neptune-web/blob/master/packages/components/CONTRIBUTING.md#accessibility]
+- [ ] Make PR title meaningful and follow [the commit lint format](https://github.com/transferwise/neptune-web/blob/master/CONTRIBUTING.md#versioning-and-commit-lint) (it will appear in the changelog)
+- [ ] Changes are tested and all tests pass
+- [ ] Changes meet [accessibility standards](https://github.com/transferwise/neptune-web/blob/master/ACCESSIBILITY.md) and there are no violations in the console
+- [ ] Changes work in all supported browsers (don't forget IE11)
+- [ ] You've updated the documentation if necessary

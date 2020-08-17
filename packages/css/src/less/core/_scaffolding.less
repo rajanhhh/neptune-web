@@ -256,14 +256,16 @@ dd {
   }
 }
 
+/* Deprecated - use the Neptune Web DefinitionList component */
 .dl-horizontal {
   dd {
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       display: table;
       content: ' ';
     }
-    &:after {
+
+    &::after {
       clear: both;
     }
   }
@@ -280,12 +282,13 @@ dd {
     }
 
     dd {
-      margin-bottom: var(--space-16);
+      margin-bottom: var(--space-8);
       margin-left: 180px;
     }
   }
 }
 
+/* Deprecated - use the Neptune Web DefinitionList component */
 .dl-horizontal-item {
   display: flex;
   flex-wrap: nowrap;
@@ -306,7 +309,9 @@ hr {
   height: 0; // Normalize 8.0.1
   margin: var(--space-16) auto;
   overflow: visible; // Normalize 8.0.1
-  border-top-width: 1px;
+
+  border: 0;
+  border-top: 1px solid var(--brand-smoke-plus-10);
 
   @media (--screen-sm) {
     margin: var(--space-24) auto;

@@ -2,7 +2,7 @@ import React from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 import BackButton from './backButton';
-import Avatar from './avatar';
+import AvatarWrapper from './avatarWrapper';
 import Logo from './logo';
 import Stepper from '../stepper';
 import Header from '../header';
@@ -34,7 +34,7 @@ const FlowNavigation = ({
   onGoBack,
   theme,
 }) => {
-  const avatar = done ? null : <Avatar url={avatarUrl} profileType={profileType} />;
+  const avatar = done ? null : <AvatarWrapper url={avatarUrl} profileType={profileType} />;
   const closeButton = onClose && (
     <button
       className={classNames(
@@ -62,7 +62,7 @@ const FlowNavigation = ({
         </div>
       }
       rightContent={
-        <div className="m-lg-t-1">
+        <div className="tw-flow-navigation__avatar-with-close-button m-lg-t-1">
           {avatar}
           {closeButton}
         </div>

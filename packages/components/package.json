@@ -1,6 +1,6 @@
 {
   "name": "@transferwise/components",
-  "version": "27.7.0",
+  "version": "28.3.2",
   "description": "TransferWise styleguide components in react",
   "license": "Apache-2.0",
   "main": "./build/umd/polyfill/main.js",
@@ -31,12 +31,13 @@
     "build:copy-files": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/polyfill",
     "build:copy-files2": "cpx 'src/**/!(db)/*.{css,json,svg}' build/es/no-polyfill",
     "docs": "yarn build",
-    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:bundleSize && yarn test:lint",
+    "test": "jest --env=jsdom --runInBand --config=../../node_modules/@transferwise/test-config/jest.config.js && yarn test:lint",
     "test:watch": "jest --watch --env=jsdom --config=../../node_modules/@transferwise/test-config/jest.config.js",
     "test:lint": "jest --config ../../node_modules/@transferwise/test-config/test/jest.lint.js",
-    "test:bundleSize": "bundlesize",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "lintless": "stylelint ./src/**/*.less",
+    "lintless:fix": "yarn lintless --fix"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -53,11 +54,11 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@transferwise/less-config": "^1.0.1",
-    "@transferwise/test-config": "^1.0.1",
+    "@transferwise/less-config": "^2.0.2",
+    "@transferwise/neptune-tokens": "^0.1.0",
+    "@transferwise/test-config": "^1.0.5",
     "babel-loader": "^8.1.0",
     "babel-preset-minify": "^0.5.1",
-    "bundlesize": "^0.18.0",
     "lodash.times": "^4.3.2",
     "rollup": "^2.7.6",
     "rollup-plugin-babel": "^4.4.0",
@@ -65,7 +66,6 @@
     "rollup-plugin-uglify": "^6.0.4"
   },
   "peerDependencies": {
-    "bootstrap": "github:transferwise/bootstrap#semver:^5.20.0",
     "currency-flags": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
@@ -75,7 +75,7 @@
     "@babel/runtime": "^7.9.2",
     "@transferwise/formatting": "^2.1.0",
     "@transferwise/icons": "^1.0.0",
-    "@transferwise/neptune-css": "^1.2.1",
+    "@transferwise/neptune-css": "^2.1.2",
     "classnames": "^2.2.6",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.5",
@@ -86,15 +86,7 @@
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.2.1"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "resolutions": {
+    "@storybook/**/kind-of": "^6.0.3"
   }
 }

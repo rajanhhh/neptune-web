@@ -3,6 +3,133 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@2.1.1...@transferwise/neptune-css@2.1.2) (2020-08-12)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
+## [2.1.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@2.1.0...@transferwise/neptune-css@2.1.1) (2020-08-06)
+
+
+### Bug Fixes
+
+* adding stylelinting and fixing up basic linting errors ([#461](https://github.com/transferwise/neptune-web/issues/461)) ([bcff126](https://github.com/transferwise/neptune-web/commit/bcff126da2bd28dfe29fce24da54c4a0ace0bf16))
+* removing bootstrap and updating tokens / neptune css documentation ([#478](https://github.com/transferwise/neptune-web/issues/478)) ([3c6a650](https://github.com/transferwise/neptune-web/commit/3c6a6505cbe65e26b5b3138d54da13dc94a510f1))
+* replace bootstrap variables with neptune tokens ([#452](https://github.com/transferwise/neptune-web/issues/452)) ([ab0d0fd](https://github.com/transferwise/neptune-web/commit/ab0d0fd7cf24eab48eb02a928527d822605bcbb2)), closes [#468](https://github.com/transferwise/neptune-web/issues/468)
+
+
+
+
+
+# [2.1.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@2.0.0...@transferwise/neptune-css@2.1.0) (2020-07-20)
+
+
+### Features
+
+* add dynamic layout and associated components ([23f6306](https://github.com/transferwise/neptune-web/commit/23f630654f625ca05c79b9d8edb2879f1985962b))
+
+
+
+
+
+# [2.0.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.3.1...@transferwise/neptune-css@2.0.0) (2020-07-14)
+
+
+* feat!: definition list improvements and more (#476) ([c330ed9](https://github.com/transferwise/neptune-web/commit/c330ed93363feb0864f3636c9fc5e79399df6d20)), closes [#476](https://github.com/transferwise/neptune-web/issues/476)
+
+
+### BREAKING CHANGES
+
+* Breaking changes in definition list
+
+
+
+
+
+## [1.3.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.3.0...@transferwise/neptune-css@1.3.1) (2020-07-10)
+
+
+### Bug Fixes
+
+* force resolution of kind-of to 6.0.3 to prevent security vulnerability ([#472](https://github.com/transferwise/neptune-web/issues/472)) ([18316d0](https://github.com/transferwise/neptune-web/commit/18316d05279547a64f7c3d46e8b636b9f05f7db4))
+
+
+
+
+
+# [1.3.0](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.6...@transferwise/neptune-css@1.3.0) (2020-07-09)
+
+
+### Features
+
+* expose legacy variables ([#469](https://github.com/transferwise/neptune-web/issues/469)) ([3bda7df](https://github.com/transferwise/neptune-web/commit/3bda7df031963683ad22189a9e5a372c2005dd59))
+
+
+
+
+
+## [1.2.6](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.5...@transferwise/neptune-css@1.2.6) (2020-07-07)
+
+
+### Bug Fixes
+
+* adding missing HR border style ([#463](https://github.com/transferwise/neptune-web/issues/463)) ([0aeebe0](https://github.com/transferwise/neptune-web/commit/0aeebe0869d5de8ea041150cd266da2f4e1c2e73))
+
+
+
+
+
+## [1.2.5](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.4...@transferwise/neptune-css@1.2.5) (2020-07-06)
+
+
+### Bug Fixes
+
+* move class styling to less ([#458](https://github.com/transferwise/neptune-web/issues/458)) ([8b17a8b](https://github.com/transferwise/neptune-web/commit/8b17a8b8bf5cc36851dbc37d4c4f9929ce2b137e))
+
+
+
+
+
+## [1.2.4](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.3...@transferwise/neptune-css@1.2.4) (2020-07-01)
+
+
+### Bug Fixes
+
+* reduce margin for horizontal definition lists ([#435](https://github.com/transferwise/neptune-web/issues/435)) ([70b3966](https://github.com/transferwise/neptune-web/commit/70b396652a252067c37bf3cb86c5d8123f0da8b8))
+
+
+
+
+
+## [1.2.3](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.2...@transferwise/neptune-css@1.2.3) (2020-06-24)
+
+**Note:** Version bump only for package @transferwise/neptune-css
+
+
+
+
+
+## [1.2.2](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.1...@transferwise/neptune-css@1.2.2) (2020-06-21)
+
+### Bug Fixes
+
+* Fixing docs css reload ([#409](https://github.com/transferwise/neptune-web/pull/439/commits/04b1424cf694c6e047086b9d83ea0e3ecb4280e5))
+
+* WCAG AA compliant color for grey backgrounds ([#426](https://github.com/transferwise/neptune-web/pull/439/commits/64f265dc352f5c3770f2d61f3cf8664055e979af))
+
+* Support for custom media in drawer component ([#427](https://github.com/transferwise/neptune-web/pull/439/commits/1d0cba5dde570056878f8d430628bf36532e78dc))
+
+* Change dates in the date lookup to use buttons ([#431](https://github.com/transferwise/neptune-web/pull/439/commits/3fb6e10c8ffef4f19c6bb3c0f66db8aee59bb0d4))
+
+### Misc
+
+* Improving docs and tools ([#424](https://github.com/transferwise/neptune-web/pull/439/commits/a9ab3ed8ebedc5baa908e79ea078a578be68693a))
+
+* Doc improvements for components ([#373](https://github.com/transferwise/neptune-web/pull/439/commits/d3696abb3c4485be02738ff7a6a3a55bc8214cf9))
+
 ## [1.2.1](https://github.com/transferwise/neptune-web/compare/@transferwise/neptune-css@1.2.0...@transferwise/neptune-css@1.2.1) (2020-06-03)
 
 
