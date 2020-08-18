@@ -9,13 +9,10 @@
   }
 }
 
-// Should we use media queries for switching?
-@media (max-width: 768px) {
-  .tw-picker__tile-container {
-    display: none;
-  }
+.tw-picker[max-width~="768px"] > .tw-picker__tile-container {
+  display: none;
+}
 
-  .tw-picker__navigation-option-container {
-    display: block;
-  }
+.tw-picker[max-width~="768px"] > .tw-picker__navigation-option-container {
+  display: block;
 }

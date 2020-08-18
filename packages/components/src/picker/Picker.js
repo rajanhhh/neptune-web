@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import ElementQueries from 'css-element-queries/src/ElementQueries';
 
 import NavigationOption from '../navigationOption';
 import NavigationOptionList from '../navigationOptionsList';
 import Tile from '../tile';
 
 import './Picker.css';
+
+ElementQueries.listen();
 
 const Picker = ({ className, items, onClick, small }) => {
   return (
@@ -39,6 +42,7 @@ const Picker = ({ className, items, onClick, small }) => {
           ))}
         </NavigationOptionList>
       </div>
+      {ElementQueries.init()}
     </div>
   );
 };
