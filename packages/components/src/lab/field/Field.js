@@ -59,9 +59,10 @@ const Field = (props) => {
       props.type,
       validations.validationRules,
     );
+
     const isValid = newValidationFailures.length === 0;
 
-    setValidationFailures([]);
+    setValidationFailures(newValidationFailures);
     setModel(newModel);
     props.onChange(newModel, isValid);
   };
@@ -83,7 +84,7 @@ const Field = (props) => {
     const isValidationVisible =
       (props.submitted || (changed && blurred)) && !!validationFailures.length;
     const isHelpVisible = focused && props.help && !isValidationVisible;
-    console.log('validationFailures', validationFailures);
+
     if (isErrorVisible) {
       formGroupClasses.push('has-error');
       message = props.errors;
