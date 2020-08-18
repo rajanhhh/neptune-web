@@ -44,13 +44,21 @@ Component.propTypes = {
 ```
 
 ```
-<Component title='a title' translations={{title:'a title', description:'a description' alt:'an alt'}} />
+<Component title='a title' description='a description' alt='an alt' translations={{title:'a title', description:'a description' alt:'an alt'}} />
 
 Component.propTypes = {
     /**
-     * @Deprecated in favour of translations.
+     * @Deprecated in favour of translations.title.
      */
     title: Types.node,
+    /**
+     * @Deprecated in favour of translations.description.
+     */
+    description: Types.node,
+    /**
+     * @Deprecated in favour of translations.alt.
+     */
+    alt: Types.node,
     translations: Types.shape({
         title: Types.node,
         description: Types.node,
