@@ -1,5 +1,5 @@
 - Start Date: 18-08-2020
-- RFC PR:
+- RFC PR: https://github.com/transferwise/neptune-web/pull/527
   ​
 
 # Summary
