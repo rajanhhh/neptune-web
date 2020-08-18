@@ -1,5 +1,6 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Field } from '@transferwise/components/build/es/polyfill/lab';
+import { Checkbox } from '@transferwise/components';
 import code from '../../liveEditorCode/field.code';
 
 Field is a new component that provides styling and
@@ -7,7 +8,9 @@ validation to children. It's still under an experimental phase but it would be g
 to help imporve it before the final release.
 
 <LiveEditorBlock code={code} scope={{ Field }} />
-<GeneratePropsTable componentName="Field" /> <Field
+<GeneratePropsTable componentName="Field" />{' '}
+
+<Field
   errors={null}
   help="help message"
   id="id"
@@ -32,14 +35,29 @@ to help imporve it before the final release.
   onChange={(val) => console.log(val)}
   submitted={false}
   title="title"
-  type="text"
+  type="number"
   validation={{
-    maxLength: { value: 10, message: 'Must be less 10 or smaller' },
-    minLength: { value: 3, message: 'Must be 3 or more' },
+    minimum: { value: 3, message: 'Must be bigger than 3' },
+    maximum: { value: 10, message: 'Must be smaller than 10' },
     required: { value: true, message: 'This field is required' },
   }}
 >
-  <input type="text" className="form-control" />
+  <input type="number" className="form-control" />
+</Field>
+
+<Field
+  errors={null}
+  help="help message"
+  id="id"
+  model={'transferwise is cool'}
+  onChange={(val) => console.log(val)}
+  submitted={false}
+  type="checkbox"
+  validation={{
+    required: { value: true, message: 'This field is required' },
+  }}
+>
+  <Checkbox label={'label'} onChange={(val) => console.log(val)} checked={false} />
 </Field>
 
 export const meta = {

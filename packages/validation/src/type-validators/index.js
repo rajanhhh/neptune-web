@@ -19,8 +19,22 @@ function isArray(value) {
 function isNull(value) {
   return value === null;
 }
+
+function isFalse(value) {
+  return value === false;
+}
 function isUndefined(value) {
   return typeof value === 'undefined';
 }
 
-export { isString, isNumber, isInteger, isBoolean, isObject, isArray, isNull, isUndefined };
+export {
+  isString,
+  isNumber,
+  isInteger,
+  isBoolean,
+  isObject,
+  isArray,
+  isNull,
+  isFalse,
+  isUndefined,
+};

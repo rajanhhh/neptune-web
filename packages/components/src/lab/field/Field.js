@@ -20,6 +20,8 @@ const Field = (props) => {
   };
   // @TODO initialize props.model correctly
   const [model, setModel] = useState(props.model);
+  const [checked, setChecked] = useState(props.checked);
+
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
   const [blurred, setBlurred] = useState(false);
@@ -51,11 +53,16 @@ const Field = (props) => {
   }, [props.submitted]);
 
   const setModelAndBroadcast = (newModel) => {
-    if (newModel === model) {
+    let modelToValidate = newModel;
+    if (props.type === 'radio' || props.type === 'checkbox') {
+      setChecked(!checked);
+      modelToValidate = !checked;
+    } else if (newModel === model) {
       return;
     }
+
     const newValidationFailures = getValidationFailures(
-      newModel,
+      modelToValidate,
       props.type,
       validations.validationRules,
     );
@@ -65,14 +72,6 @@ const Field = (props) => {
     setValidationFailures(newValidationFailures);
     setModel(newModel);
     props.onChange(newModel, isValid);
-  };
-  // @TODO We need to check if our components support all these props
-  const fieldProps = {
-    onChange,
-    onBlur,
-    onFocus,
-    value: model,
-    id: props.id,
   };
 
   const getMessage = () => {
@@ -104,6 +103,20 @@ const Field = (props) => {
 
   const { messageType, message, formGroupClasses } = getMessage();
 
+  // @TODO We need to check if our components support all these props
+  const fieldProps = {
+    onChange,
+    onBlur,
+    onFocus,
+    id: props.id,
+    value: model,
+  };
+
+  // @TODO normalize this?
+  if (props.type === 'radio' || props.type === 'checkbox') {
+    fieldProps.checked = checked;
+  }
+
   return (
     <div className={classNames(formGroupClasses)}>
       {props.title && (
@@ -127,6 +140,7 @@ Field.propTypes = {
   help: Types.node,
   id: Types.string,
   model: Types.oneOfType([Types.string, Types.number]),
+  checked: Types.oneOfType([Types.bool]),
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   title: Types.string,
@@ -140,6 +154,7 @@ Field.defaultProps = {
   id: '',
   model: Types.oneOfType([Types.string, Types.number, Types.bool]),
   submitted: false,
+  checked: false,
   title: '',
   validation: {},
 };

@@ -1,5 +1,6 @@
 import {
   isNull,
+  isFalse,
   isString,
   isNumber,
   isValidMaxLength,
@@ -13,7 +14,7 @@ import {
 function getValidationFailures(value, type, validations) {
   const isRequired = validations.required;
 
-  if (isNull(value)) {
+  if (isNull(value) || isFalse(value)) {
     return isRequired ? ['required'] : [];
   }
 
