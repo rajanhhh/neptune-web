@@ -4,9 +4,10 @@ exports[`Switch renders component when checked 1`] = `
 <DocumentFragment>
   <span
     aria-checked="true"
+    aria-label="a label"
     class="switch switch--checked a-class-name"
     id="id"
-    role="checkbox"
+    role="switch"
     tabindex="0"
   >
     <span
@@ -40,9 +41,10 @@ exports[`Switch renders component when unchecked 1`] = `
 <DocumentFragment>
   <span
     aria-checked="false"
+    aria-label="a label"
     class="switch switch--unchecked a-class-name"
     id="id"
-    role="checkbox"
+    role="switch"
     tabindex="0"
   >
     <span

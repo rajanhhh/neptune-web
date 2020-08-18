@@ -8,11 +8,18 @@ export default {
 
 export const basic = () => {
   const [checked, setCheck] = useState(false);
+  const labelText = 'A possible label';
 
   return (
     <>
-      <label htmlFor="myFieldId">A Possible label</label>
-      <Switch checked={checked} onClick={() => setCheck(!checked)} id="myFieldId" />
+      <label htmlFor="myFieldId">{labelText}</label>
+      <Switch
+        checked={checked}
+        className="a-class-name"
+        onClick={() => setCheck(!checked)}
+        id="myFieldId"
+        translations={{ ariaDescription: labelText }}
+      />
     </>
   );
 };

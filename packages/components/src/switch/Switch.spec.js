@@ -9,21 +9,46 @@ const props = {
   onClick: jest.fn(),
   id: 'id',
   className: 'a-class-name',
+  translations: { ariaDescription: 'a label' },
 };
 
 describe('Switch', () => {
   it('renders component when checked', () => {
-    const { asFragment } = render(<Switch {...props} />);
+    const { asFragment } = render(
+      <Switch
+        checked={props.checked}
+        onClick={props.onClick}
+        className={props.className}
+        id={props.id}
+        translations={props.translations}
+      />,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders component when unchecked', () => {
-    const { asFragment } = render(<Switch {...props} checked={false} />);
+    const { asFragment } = render(
+      <Switch
+        checked={false}
+        onClick={props.onClick}
+        className={props.className}
+        id={props.id}
+        translations={props.translations}
+      />,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('calls onClick when user press space key', () => {
-    const { getAllByRole } = render(<Switch {...props} />);
+    const { getAllByRole } = render(
+      <Switch
+        checked={props.checked}
+        onClick={props.onClick}
+        className={props.className}
+        id={props.id}
+        translations={props.translations}
+      />,
+    );
 
     const input = getAllByRole('checkbox')[0];
     fireEvent.keyDown(input, { key: '33', keyCode: KeyCodes.ENTER });

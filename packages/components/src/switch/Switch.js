@@ -35,11 +35,13 @@ const CrossCircle = () => (
  * @param {function} onClick - function that manage the check logic.
  * @param {string} [id=null] - string that identifies the element.It can be use to couple the switch to its label.
  * @param {string} [className=null] - string that contains extra-classes.
+ * @param {object} translations - map of keys to translated labels
+ * @param {string} translations.ariaDescription - provide a description of what you are toggling
  *
  * @usage '<Switch checked={checked} onClick={() => setCheck(!checked)} id='id' className='extra-class-name' />'
  * */
 
-const Switch = ({ checked, onClick, className, id }) => {
+const Switch = ({ checked, onClick, className, id, translations }) => {
   const handleKeyDown = (event) => {
     if (event.code === 32 || event.keyCode === KeyCodes.SPACE) {
       event.preventDefault();
@@ -59,8 +61,9 @@ const Switch = ({ checked, onClick, className, id }) => {
       onClick={onClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      role="checkbox"
+      role="switch"
       aria-checked={checked}
+      aria-label={translations.ariaDescription}
       id={id}
     >
       <span className="switch--thumb">
@@ -76,6 +79,9 @@ Switch.propTypes = {
   onClick: Types.func.isRequired,
   className: Types.string,
   id: Types.string,
+  translations: Types.shape({
+    ariaDescription: Types.string.isRequired,
+  }).isRequired,
 };
 Switch.defaultProps = {
   checked: false,
