@@ -27,6 +27,7 @@ module.exports = () =>
             transpileModules: [
               '@transferwise/dynamic-flows',
               '@transferwise/neptune-validation',
+              '@transferwise/components',
               'buble',
               'regexpu-core',
               'unicode-match-property-ecmascript',

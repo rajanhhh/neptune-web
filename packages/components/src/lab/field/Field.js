@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Types from 'prop-types';
 import classNames from 'classnames';
 
-import Alert from '../alert';
+import Alert from '../../alert';
 import { getValidationFailures } from './utils/getValidationFailures';
-import WithNormaliser from '../withNormaliser';
+import WithNormaliser from '../../withNormaliser';
 
 const Field = (props) => {
   const getValidations = () => {
@@ -77,21 +77,23 @@ const Field = (props) => {
   const getMessage = () => {
     let messageType = 'error';
     let message = null;
-    const formGroupClasses = ['form-group', 'has-error'];
+    const formGroupClasses = ['form-group'];
 
     const isErrorVisible = !changed && props.errors;
     const isValidationVisible =
       (props.submitted || (changed && blurred)) && !!validationFailures.length;
     const isHelpVisible = focused && props.help && !isValidationVisible;
-
+    console.log('validationFailures', validationFailures);
     if (isErrorVisible) {
+      formGroupClasses.push('has-error');
       message = props.errors;
     } else if (isValidationVisible) {
+      formGroupClasses.push('has-error');
       message = validationFailures.map((validation) => (
         <div key={validation}>{validations.validationMessages[validation]}</div>
       ));
     } else if (isHelpVisible) {
-      formGroupClasses.splice(1, 1, 'has-info');
+      formGroupClasses.push('has-info');
       messageType = 'info';
       message = props.help;
     }
