@@ -4,11 +4,11 @@
 
 # Summary
 
-Currently there's no a consistent API to manage internalisation in neptune web components. This RFC aims to provide an overview on the suggested solution and on the deprecation strategy for the new translation API.
+Currently there's not a consistent API to manage internalisation in neptune web components. This RFC aims to provide an overview on the suggested solution and on the deprecation strategy for the new translation API.
 
 # Motivation
 
-- Some of our components have hardcoded string which makes impossible to achieve a full internalisation.
+- Some of our components have hardcoded strings which makes impossible to achieve a full internalisation.
 - The way we manage strings is not very scalable and can be improved by grouping all the texts into an object.
 
 ## Code example
