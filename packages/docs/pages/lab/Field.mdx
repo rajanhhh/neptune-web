@@ -3,9 +3,13 @@ import { Field } from '@transferwise/components/build/es/polyfill/lab';
 import { Checkbox, Alert } from '@transferwise/components';
 import code from '../../liveEditorCode/field.code';
 
-Field is a new component that provides validation to its children. Validation messages are automatically attached to the validated component with styling.
-Currently the supported children types are:
-
+<Alert type={Alert.Type.WARNING}>
+  Please note that this component is still under an experimental phase and we do not guarantee that
+  the API will remain the same. Please feel free to test it and provide us a feedback to help
+  improve it before the final release.
+</Alert>
+Field is a new component that provides validation to its children. Validation messages are automatically
+attached to the validated component with styling. Currently the supported children types are:
 <table className="docs-table table">
   <thead>
     <tr>
@@ -32,11 +36,6 @@ Currently the supported children types are:
     </tr>
   </tbody>
 </table>
-<Alert type={Alert.Type.WARNING}>
-  Please note that this component is still under an experimental phase and we do not guarantee that
-  the API will remain the same. Please feel free to test it and provide us a feedback to help
-  improve it before the final release.
-</Alert>
 
 <LiveEditorBlock code={code} scope={{ Field }} />
 <GeneratePropsTable componentName="Field" />{' '}
