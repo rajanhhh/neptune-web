@@ -23,7 +23,7 @@ export const basic = () => {
       checked={checked}
       disabled={disabled}
       secondary={secondary}
-      onChange={() => console.log('val')}
+      onChange={action('checked')}
     />
   );
 };
