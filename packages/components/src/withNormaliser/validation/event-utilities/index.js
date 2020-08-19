@@ -11,7 +11,7 @@ function isSyntheticEvent(value) {
 
 const normalizeEvent = (event, type) => {
   let value = event;
-  console.log('value', event);
+
   if (event) {
     if (isSyntheticEvent(event)) {
       value = type === 'number' ? parseFloat(event.target.value) : event.target.value;

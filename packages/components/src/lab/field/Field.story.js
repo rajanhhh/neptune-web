@@ -31,7 +31,7 @@ export const basic = () => {
       <Field
         errors={null}
         help="help message"
-        id="id"
+        id="id1"
         model="a"
         onChange={(val) => action(val)}
         submitted={false}
@@ -48,7 +48,7 @@ export const basic = () => {
       <Field
         errors={null}
         help="help message"
-        id="id1"
+        id="id2"
         model
         onChange={(val) => action(val)}
         submitted={false}
@@ -58,7 +58,7 @@ export const basic = () => {
           required: { value: true, message: 'This field is required' },
         }}
       >
-        <Checkbox label="label" onChange={(val) => console.log(val)} checked={false} />
+        <Checkbox label="label" onChange={(val) => action(val)} checked={false} />
       </Field>
     </>
   );
