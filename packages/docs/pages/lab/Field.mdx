@@ -1,27 +1,60 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Field } from '@transferwise/components/build/es/polyfill/lab';
-import { Checkbox } from '@transferwise/components';
+import { Checkbox, Alert } from '@transferwise/components';
 import code from '../../liveEditorCode/field.code';
 
-Field is a new component that provides styling and
-validation to children. It's still under an experimental phase but it would be great to have feedback
-to help imporve it before the final release.
+Field is a new component that provides validation to its children. Validation messages are automatically attached to the validated component with styling.
+Currently the supported children types are:
+
+<table className="docs-table table">
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>type</th>
+      <th>Validation supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>input</td>
+      <td>text</td>
+      <td>minLenght, maxLength, required</td>
+    </tr>
+    <tr>
+      <td>input</td>
+      <td> number</td>
+      <td>minimum, maximum, required</td>
+    </tr>
+    <tr>
+      <td>Checkbox</td>
+      <td>custom</td>
+      <td>required</td>
+    </tr>
+  </tbody>
+</table>
+<Alert type={Alert.Type.WARNING}>
+  Please note that this component is still under an experimental phase and we do not guarantee that
+  the API will remain the same. Please feel free to test it and provide us a feedback to help
+  improve it before the final release.
+</Alert>
 
 <LiveEditorBlock code={code} scope={{ Field }} />
 <GeneratePropsTable componentName="Field" />{' '}
 
+## Demos
+
 <Field
   errors={null}
-  help="help message"
+  help="Please fill this form with a value length between 3 and 10"
   id="id"
-  model={'transferwise is cool'}
+  model={'Neptune is cool'}
   onChange={(val) => console.log(val)}
   submitted={false}
-  title="title"
+  title="Input type text"
   type="text"
   validation={{
-    maxLength: { value: 10, message: 'Must be less 10 or smaller' },
-    minLength: { value: 3, message: 'Must be 3 or more' },
+    maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
+    minLength: { value: 3, message: 'The value should be longer than 3 characters' },
     required: { value: true, message: 'This field is required' },
   }}
 >
@@ -29,16 +62,15 @@ to help imporve it before the final release.
 </Field>
 <Field
   errors={null}
-  help="help message"
+  help="Please fill this form with a value between 3 and 10"
   id="id"
-  model={'transferwise is cool'}
+  model={null}
   onChange={(val) => console.log(val)}
   submitted={false}
-  title="title"
-  type="number"
+  title="Input type number"
   validation={{
-    minimum: { value: 3, message: 'Must be bigger than 3' },
-    maximum: { value: 10, message: 'Must be smaller than 10' },
+    minimum: { value: 3, message: 'The value should bigger than 3' },
+    maximum: { value: 10, message: 'The value should smaller than 10' },
     required: { value: true, message: 'This field is required' },
   }}
 >
@@ -47,9 +79,9 @@ to help imporve it before the final release.
 
 <Field
   errors={null}
-  help="help message"
+  help="Please check to accept the Neptune Web conditions."
   id="id"
-  model={'transferwise is cool'}
+  model={null}
   onChange={(val) => console.log(val)}
   submitted={false}
   type="checkbox"

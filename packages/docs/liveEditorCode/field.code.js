@@ -1,18 +1,17 @@
 () => {
-  const [value, setValue] = React.useState('a value');
   return (
     <Field
       errors={null}
-      help="help message"
+      help="Please fill this form with a value length between 3 and 10"
       id="id"
-      model={value}
-      onChange={(val) => setValue(val)}
+      model="Neptune is cool"
+      onChange={(val) => console.log(val)}
       submitted={false}
-      title="title"
+      title="Input type text"
       type="text"
       validation={{
-        maxLength: { value: 10, message: 'Must be less 10 or smaller' },
-        minLength: { value: 3, message: 'Must be 3 or more' },
+        maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
+        minLength: { value: 3, message: 'The value should be longer than 3 characters' },
         required: { value: true, message: 'This field is required' },
       }}
     >

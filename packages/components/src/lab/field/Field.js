@@ -131,30 +131,32 @@ const Field = (props) => {
     </div>
   );
 };
-// @TODO check if all props are correct
+
 Field.propTypes = {
   children: Types.node.isRequired,
   errors: Types.node,
   help: Types.node,
   id: Types.string,
   model: Types.oneOfType([Types.string, Types.number]),
-  checked: Types.oneOfType([Types.bool]),
+  checked: Types.bool,
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   title: Types.string,
   type: Types.oneOf(['text', 'number', 'checkbox']).isRequired,
-  validation: Types.shape({}),
+  validation: Types.shape({
+    value: Types.oneOfType([Types.bool, Types.number]),
+    message: Types.node,
+  }).isRequired,
 };
 
 Field.defaultProps = {
-  errors: '',
+  errors: null,
   help: null,
   id: '',
-  model: Types.oneOfType([Types.string, Types.number, Types.bool]),
+  model: null,
   submitted: false,
   checked: false,
   title: '',
-  validation: {},
 };
 
 export default Field;
