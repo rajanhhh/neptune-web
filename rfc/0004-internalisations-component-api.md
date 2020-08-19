@@ -24,8 +24,8 @@ This is an example of hardcoded string in our code base that can be extracted
 The above example will turn into the following one where consumers can pass placeholder in any language they need.
 
 ```
-<MoneyInput translations={{placeholder:"your placeholder translated"}}>
-    <Select placeholder={props.translations.placeholder} />
+<MoneyInput translations={{ select: { placeholder: 'your placeholder translated' }}}/>
+    <Select translations={{...props.translations.select}} />
 </MoneyInput>
 ```
 
