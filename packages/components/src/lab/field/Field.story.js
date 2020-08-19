@@ -1,6 +1,7 @@
 import React from 'react';
 import Field from './Field';
 import { Checkbox } from '@transferwise/components';
+import { action } from '@storybook/addon-actions';
 
 export default {
   component: Field,
@@ -15,7 +16,7 @@ export const basic = () => {
         help="help message"
         id="id"
         model="a"
-        onChange={(val) => console.log(val)}
+        onChange={(val) => action(val)}
         submitted={false}
         title="Input text"
         type="text"
@@ -32,7 +33,7 @@ export const basic = () => {
         help="help message"
         id="id"
         model="a"
-        onChange={(val) => console.log(val)}
+        onChange={(val) => action(val)}
         submitted={false}
         title="Input number"
         type="number"
@@ -49,7 +50,7 @@ export const basic = () => {
         help="help message"
         id="id1"
         model
-        onChange={(val) => console.log(val)}
+        onChange={(val) => action(val)}
         submitted={false}
         title="Input checkbox"
         type="checkbox"
