@@ -1,8 +1,6 @@
 import React from 'react';
 import Field from './Field';
-import { Checkbox, Radio } from '@transferwise/components';
-
-import { text } from '@storybook/addon-knobs';
+import { Checkbox } from '@transferwise/components';
 
 export default {
   component: Field,
@@ -10,8 +8,6 @@ export default {
 };
 
 export const basic = () => {
-  const title = text('title', 'title');
-
   return (
     <>
       <Field
@@ -21,11 +17,11 @@ export const basic = () => {
         model="a"
         onChange={(val) => console.log(val)}
         submitted={false}
-        title={title}
+        title="Input text"
         type="text"
         validation={{
-          maxLength: { value: 10, message: 'Must be less 10 or smaller' },
-          minLength: { value: 3, message: 'Must be 3 or more' },
+          maxLength: { value: 10, message: 'String should be shorter than 10 characters' },
+          minLength: { value: 3, message: 'String should be longer than 3 characters' },
           required: { value: true, message: 'This field is required' },
         }}
       >
@@ -34,33 +30,34 @@ export const basic = () => {
       <Field
         errors={null}
         help="help message"
+        id="id"
+        model="a"
+        onChange={(val) => console.log(val)}
+        submitted={false}
+        title="Input number"
+        type="number"
+        validation={{
+          minimum: { value: 3, message: 'Value must be bigger than 3' },
+          maximum: { value: 10, message: 'Value must be smaller than 10' },
+          required: { value: true, message: 'This field is required' },
+        }}
+      >
+        <input type="number" className="form-control" />
+      </Field>
+      <Field
+        errors={null}
+        help="help message"
         id="id1"
         model
         onChange={(val) => console.log(val)}
         submitted={false}
-        title={title}
+        title="Input checkbox"
         type="checkbox"
         validation={{
           required: { value: true, message: 'This field is required' },
         }}
       >
         <Checkbox label="label" onChange={(val) => console.log(val)} checked={false} />
-      </Field>
-      <Field
-        errors={null}
-        help="help message"
-        id="id2"
-        model="a value"
-        checked={false}
-        onChange={(val) => console.log(val)}
-        submitted={false}
-        title={title}
-        type="radio"
-        validation={{
-          required: { value: true, message: 'This field is required' },
-        }}
-      >
-        <Radio label="label" name="name" onChange={(val) => console.log('val', val)} />
       </Field>
     </>
   );

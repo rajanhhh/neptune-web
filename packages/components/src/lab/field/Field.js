@@ -18,10 +18,9 @@ const Field = (props) => {
     });
     return validations;
   };
-  // @TODO initialize props.model correctly
+
   const [model, setModel] = useState(props.model);
   const [checked, setChecked] = useState(props.checked);
-
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
   const [blurred, setBlurred] = useState(false);
@@ -53,24 +52,24 @@ const Field = (props) => {
   }, [props.submitted]);
 
   const setModelAndBroadcast = (newModel) => {
-    let modelToValidate = newModel;
-    if (props.type === 'radio' || props.type === 'checkbox') {
-      setChecked(!checked);
-      modelToValidate = !checked;
-    } else if (newModel === model) {
-      return;
+    if (props.type === 'checkbox') {
+      if (newModel === checked) {
+        return;
+      }
+      setChecked(newModel);
+    } else {
+      if (newModel === model) {
+        return;
+      }
+      setModel(newModel);
     }
-
     const newValidationFailures = getValidationFailures(
-      modelToValidate,
+      newModel,
       props.type,
       validations.validationRules,
     );
-
     const isValid = newValidationFailures.length === 0;
-
     setValidationFailures(newValidationFailures);
-    setModel(newModel);
     props.onChange(newModel, isValid);
   };
 
@@ -103,18 +102,17 @@ const Field = (props) => {
 
   const { messageType, message, formGroupClasses } = getMessage();
 
-  // @TODO We need to check if our components support all these props
   const fieldProps = {
     onChange,
     onBlur,
     onFocus,
     id: props.id,
-    value: model,
   };
 
-  // @TODO normalize this?
-  if (props.type === 'radio' || props.type === 'checkbox') {
+  if (props.type === 'checkbox') {
     fieldProps.checked = checked;
+  } else {
+    fieldProps.value = model;
   }
 
   return (
@@ -144,7 +142,7 @@ Field.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   title: Types.string,
-  type: Types.oneOf(['text', 'number', 'checkbox', 'radio']).isRequired,
+  type: Types.oneOf(['text', 'number', 'checkbox']).isRequired,
   validation: Types.shape({}),
 };
 
