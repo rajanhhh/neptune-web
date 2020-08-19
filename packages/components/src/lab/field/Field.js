@@ -111,6 +111,8 @@ const Field = (props) => {
 
   if (props.type === 'checkbox') {
     fieldProps.checked = checked;
+  } else if (props.type === 'select') {
+    fieldProps.selected = props.model;
   } else {
     fieldProps.value = model;
   }
