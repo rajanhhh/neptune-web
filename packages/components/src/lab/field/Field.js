@@ -144,7 +144,7 @@ Field.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   title: Types.string,
-  type: Types.oneOf(['text', 'number', 'checkbox']).isRequired,
+  type: Types.oneOf(['text', 'number', 'checkbox', 'select']).isRequired,
   validation: Types.shape({
     value: Types.oneOfType([Types.bool, Types.number]),
     message: Types.node,
