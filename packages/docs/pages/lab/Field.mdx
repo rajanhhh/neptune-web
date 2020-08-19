@@ -1,6 +1,6 @@
 import { LiveEditorBlock, GeneratePropsTable } from '../../utils';
 import { Field } from '@transferwise/components/build/es/polyfill/lab';
-import { Checkbox, Alert } from '@transferwise/components';
+import { Checkbox, Alert, DateInput, PhoneNumberInput, Select } from '@transferwise/components';
 import code from '../../liveEditorCode/field.code';
 
 <Alert type={Alert.Type.WARNING}>
@@ -31,6 +31,16 @@ attached to the validated component with styling. Currently the supported childr
     </tr>
     <tr>
       <td>Checkbox</td>
+      <td>custom</td>
+      <td>required</td>
+    </tr>
+    <tr>
+      <td>DateInput</td>
+      <td>custom</td>
+      <td>required</td>
+    </tr>
+    <tr>
+      <td>PhoneNumberInput</td>
       <td>custom</td>
       <td>required</td>
     </tr>
@@ -89,6 +99,95 @@ attached to the validated component with styling. Currently the supported childr
   }}
 >
   <Checkbox label={'label'} onChange={(val) => console.log(val)} checked={false} />
+</Field>
+
+<Field
+  errors={null}
+  help="Please insert a date."
+  id="id"
+  title="Date Input field"
+  model={null}
+  onChange={(val) => console.log(val)}
+  submitted={false}
+  type="checkbox"
+  validation={{
+    required: { value: true, message: 'This field is required' },
+  }}
+>
+  <DateInput
+    onChange={(val) => console.log(val)}
+    size={DateInput.Size.MEDIUM}
+    value={new Date('')}
+    placeholders={{
+      day: 'dd',
+      month: 'mm',
+      year: 'YYYY',
+    }}
+  />
+</Field>
+<Field
+  errors={null}
+  help="Please insert a phone number."
+  id="id"
+  title="Phone Number Input field"
+  model={null}
+  onChange={(val) => console.log(val)}
+  submitted={false}
+  type="checkbox"
+  validation={{
+    required: { value: true, message: 'This field is required' },
+  }}
+>
+  <PhoneNumberInput
+    onChange={(v) => console.log(v)}
+    initialValue={null}
+    locale="en-GB"
+    countryCode=""
+    disabled={false}
+    required={false}
+    size="md"
+    searchPlaceholder="searchPlaceholder"
+    placeholder="placeholder"
+  />
+</Field>
+<Field
+  errors={null}
+  help="Please insert a phone number."
+  id="id"
+  title="Phone Number Input field"
+  model={null}
+  onChange={(val) => console.log(val)}
+  submitted={false}
+  type="checkbox"
+  validation={{
+    required: { value: true, message: 'This field is required' },
+  }}
+>
+  <Select
+    size="md"
+    placeholder="Placeholder"
+    dropdownRight="xs"
+    dropdownWidth="lg"
+    inverse={false}
+    block
+    selected={{
+      value: 0,
+      label: 'A thing',
+      note: 'with a note',
+    }}
+    disabled={false}
+    onChange={(v) => setSelected(v)}
+    required={false}
+    searchPlaceholder="Search placeholder"
+    dropdownUp={false}
+    search
+    options={[
+      { header: 'Basic' },
+      { value: 0, label: 'A thing', note: 'with a note' },
+      { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
+      { value: 2, label: 'A disabled thing', disabled: true },
+    ]}
+  />
 </Field>
 
 export const meta = {
