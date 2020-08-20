@@ -102,7 +102,7 @@ const Field = (props) => {
 
   const { messageType, message, formGroupClasses } = getMessage();
 
-  const fieldProps = {
+  const childProps = {
     onChange,
     onBlur,
     onFocus,
@@ -110,11 +110,9 @@ const Field = (props) => {
   };
 
   if (props.type === 'checkbox') {
-    fieldProps.checked = checked;
-  } else if (props.type === 'select') {
-    fieldProps.selected = props.model;
+    childProps.checked = checked;
   } else {
-    fieldProps.value = model;
+    childProps.value = model;
   }
 
   return (
@@ -124,7 +122,7 @@ const Field = (props) => {
           {props.title}
         </label>
       )}
-      <WithNormaliser>{React.cloneElement(props.children, fieldProps)}</WithNormaliser>
+      <WithNormaliser>{React.cloneElement(props.children, childProps)}</WithNormaliser>
       {message && (
         <Alert type={messageType} size="sm">
           {message}
@@ -144,7 +142,7 @@ Field.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   title: Types.string,
-  type: Types.oneOf(['text', 'number', 'checkbox', 'select']).isRequired,
+  type: Types.oneOf(['text', 'number', 'checkbox']).isRequired,
   validation: Types.shape({
     value: Types.oneOfType([Types.bool, Types.number]),
     message: Types.node,

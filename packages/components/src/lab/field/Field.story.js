@@ -1,6 +1,6 @@
 import React from 'react';
 import Field from './Field';
-import { Checkbox, Select, DateInput, PhoneNumberInput } from '@transferwise/components';
+import { Checkbox, DateInput } from '@transferwise/components';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -9,19 +9,6 @@ export default {
 };
 
 export const basic = () => {
-  const options = [
-    { header: 'Basic' },
-    { value: null, label: '' },
-    { value: 0, label: 'A thing', note: 'with a note' },
-    { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
-    { value: 2, label: 'A disabled thing', disabled: true },
-  ];
-  const [selected, setSelected] = React.useState(options[1]);
-
-  const handleSelected = (val) => {
-    setSelected(options.filter((option) => option.value === val)[0]);
-  };
-
   return (
     <>
       <Field
@@ -80,59 +67,6 @@ export const basic = () => {
             month: 'mm',
             year: 'YYYY',
           }}
-        />
-      </Field>
-      <Field
-        errors={null}
-        help="Please insert a phone number."
-        id="id"
-        title="Phone Number Input field"
-        model={null}
-        onChange={(val) => action(val)}
-        submitted={false}
-        type="checkbox"
-        validation={{
-          required: { value: true, message: 'This field is required' },
-        }}
-      >
-        <PhoneNumberInput
-          onChange={(v) => action(v)}
-          initialValue={null}
-          locale="en-GB"
-          countryCode=""
-          disabled={false}
-          required={false}
-          size="md"
-          searchPlaceholder="searchPlaceholder"
-          placeholder="placeholder"
-        />
-      </Field>
-      <Field
-        errors={null}
-        help="Please select an option."
-        id="id"
-        title="Select Input field"
-        model={selected}
-        onChange={(val) => handleSelected(val)}
-        submitted={false}
-        type="select"
-        validation={{
-          required: { value: true, message: 'This field is required' },
-        }}
-      >
-        <Select
-          size="md"
-          placeholder="Placeholder"
-          dropdownRight="xs"
-          dropdownWidth="lg"
-          inverse={false}
-          block
-          disabled={false}
-          required={false}
-          searchPlaceholder="Search placeholder"
-          dropdownUp={false}
-          search
-          options={options}
         />
       </Field>
       <Field

@@ -118,65 +118,6 @@ attached to the validated component with styling. Currently the supported childr
 </Field>
 <Field
   errors={null}
-  help="Please insert a phone number."
-  id="id"
-  title="Phone Number Input field"
-  model={null}
-  onChange={(val) => console.log(val)}
-  submitted={false}
-  type="checkbox"
-  validation={{
-    required: { value: true, message: 'This field is required' },
-  }}
->
-  <PhoneNumberInput
-    onChange={(v) => console.log(v)}
-    initialValue={null}
-    locale="en-GB"
-    countryCode=""
-    disabled={false}
-    required={false}
-    size="md"
-    searchPlaceholder="searchPlaceholder"
-    placeholder="placeholder"
-  />
-</Field>
-<Field
-  errors={null}
-  help="Please select an option."
-  id="id"
-  title="Select Input field"
-  model={{ value: null, label: '' }}
-  onChange={(val) => console.log(val)}
-  submitted={false}
-  type="select"
-  validation={{
-    required: { value: true, message: 'This field is required' },
-  }}
->
-  <Select
-    size="md"
-    placeholder="Placeholder"
-    dropdownRight="xs"
-    dropdownWidth="lg"
-    inverse={false}
-    block
-    disabled={false}
-    required={false}
-    searchPlaceholder="Search placeholder"
-    dropdownUp={false}
-    search
-    options={[
-      { header: 'Basic' },
-      { value: null, label: '' },
-      { value: 0, label: 'A thing', note: 'with a note' },
-      { value: 1, label: 'Another thing', secondary: 'with secondary text this time' },
-      { value: 2, label: 'A disabled thing', disabled: true },
-    ]}
-  />
-</Field>
-<Field
-  errors={null}
   help="Please check to accept the Neptune Web conditions."
   id="id"
   model={null}

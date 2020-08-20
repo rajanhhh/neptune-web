@@ -244,7 +244,7 @@ describe('Field', () => {
     expect(props.onChange).toHaveBeenNthCalledWith(2, 'aa', false);
     expect(props.onChange).toHaveBeenNthCalledWith(3, 'aaa', true);
   });
-  // Checkbox needs to be revisited
+  // Checkbox needs to be revisited.
   // it('broadcast model onChange for type checkbox', () => {
   //   const { container } = render(
   //     <Field {...props} type="checkbox" checked={false}>
