@@ -45,6 +45,10 @@ aliases:
     name: Test packages
     command: yarn test
 
+  - &chromatic
+    name: Visual Test packages
+    command: yarn chromatic
+
   - &add-npm-release-token
     name: Set NPM publish token
     command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" >> ~/.npmrc
@@ -89,6 +93,13 @@ jobs:
     steps:
       - *attach-workspace
       - run: *test
+      - *persist-workspace
+
+  test-chromatic:
+    <<: *container
+    steps:
+      - *attach-workspace
+      - run: *chromatic
       - *persist-workspace
 
   test-master:
@@ -157,6 +168,16 @@ workflows:
 
       # On current branch the flow should NOT be blocked if there is an error in commit message
       - test:
+          context: frontend-build
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
+
+      - test-chromatic:
           context: frontend-build
           requires:
             - build
