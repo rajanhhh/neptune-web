@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Alert from './Alert';
 import { select, text, boolean } from '@storybook/addon-knobs';
+import Alert from './Alert';
 
 export default {
   component: Alert,
