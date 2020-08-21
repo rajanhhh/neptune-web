@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   component: Field,
-  label: 'Field',
+  title: 'Lab/Field',
 };
 
 export const basic = () => {
@@ -23,6 +23,7 @@ export const basic = () => {
         validation={{
           maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
           minLength: { value: 3, message: 'The value should be longer than 3 characters' },
+          pattern: { value: '[a-z]', message: 'Only lowercase allowed' },
           required: { value: true, message: 'This field is required' },
         }}
       >
@@ -47,15 +48,23 @@ export const basic = () => {
 
       <Field
         errors={null}
-        help="Please insert a date."
+        help="Please insert a date between 2 and 3 of January 2000."
         id="id"
         label="Date Input field"
         model={null}
         onChange={(val) => action(val)}
         submitted={false}
-        type="checkbox"
+        type="text"
         validation={{
           required: { value: true, message: 'This field is required' },
+          minimum: {
+            value: '2000-01-02',
+            message: 'Please insert a date later than 2 of January 2000',
+          },
+          maximum: {
+            value: '2000-01-03',
+            message: 'Please insert a date earlier than 3 of January 2000',
+          },
         }}
       >
         <DateInput

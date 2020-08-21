@@ -24,7 +24,7 @@ attached to the validated component with styling. Currently the supported childr
     <tr>
       <td>input</td>
       <td>text</td>
-      <td>minLenght, maxLength, required</td>
+      <td>minLenght, maxLength, pattern, required</td>
     </tr>
     <tr>
       <td>input</td>
@@ -32,12 +32,12 @@ attached to the validated component with styling. Currently the supported childr
       <td>minimum, maximum, required</td>
     </tr>
     <tr>
-      <td>Checkbox</td>
+      <td>DateInput</td>
       <td>custom</td>
-      <td>required</td>
+      <td>minimum,maximum,required</td>
     </tr>
     <tr>
-      <td>DateInput</td>
+      <td>Checkbox</td>
       <td>custom</td>
       <td>required</td>
     </tr>
@@ -53,13 +53,14 @@ attached to the validated component with styling. Currently the supported childr
   help="Please fill this form with a value length between 3 and 10"
   id="id"
   model="Neptune is cool"
-  onChange={(val) => console.log(val)}
+  onChange={(val) => action(val)}
   submitted={false}
   label="Input type text"
   type="text"
   validation={{
     maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
     minLength: { value: 3, message: 'The value should be longer than 3 characters' },
+    pattern: { value: '[a-z]', message: 'Only lowercase allowed' },
     required: { value: true, message: 'This field is required' },
   }}
 >
@@ -84,19 +85,27 @@ attached to the validated component with styling. Currently the supported childr
 </Field>
 <Field
   errors={null}
-  help="Please insert a date."
+  help="Please insert a date between 2 and 3 of January 2000."
   id="id"
   label="Date Input field"
   model={null}
-  onChange={(val) => console.log(val)}
+  onChange={(val) => action(val)}
   submitted={false}
-  type="checkbox"
+  type="text"
   validation={{
     required: { value: true, message: 'This field is required' },
+    minimum: {
+      value: '2000-01-02',
+      message: 'Please insert a date later than 2 of January 2000',
+    },
+    maximum: {
+      value: '2000-01-03',
+      message: 'Please insert a date earlier than 3 of January 2000',
+    },
   }}
 >
   <DateInput
-    onChange={(val) => console.log(val)}
+    onChange={(val) => action(val)}
     size={DateInput.Size.MEDIUM}
     value={new Date()}
     placeholders={{
