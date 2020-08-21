@@ -21,19 +21,19 @@ describe('Field', () => {
         minLength: { value: 3, message: 'Must be 3 or more' },
         required: { value: true, message: 'This field is required' },
       },
-      title: 'title',
+      label: 'label',
     };
   });
   afterEach(() => {
     cleanup();
   });
-  it('renders title', () => {
+  it('renders label', () => {
     render(
       <Field {...props}>
         <input type="text" />
       </Field>,
     );
-    expect(screen.getByText(props.title)).toBeTruthy();
+    expect(screen.getByText(props.label)).toBeTruthy();
   });
 
   it('renders children', () => {
@@ -43,7 +43,7 @@ describe('Field', () => {
       </Field>,
     );
 
-    expect(screen.getByLabelText(props.title)).toBeTruthy();
+    expect(screen.getByLabelText(props.label)).toBeTruthy();
   });
 
   describe('when manual errors are provided', () => {
@@ -82,7 +82,7 @@ describe('Field', () => {
           <input type="text" />
         </Field>,
       );
-      userEvent.click(screen.getByLabelText(props.title));
+      userEvent.click(screen.getByLabelText(props.label));
 
       expect(() => screen.getByText(helpMessage)).toThrow('Unable to find an element');
       const alert = screen.getByText(errorMessage);
@@ -107,7 +107,7 @@ describe('Field', () => {
 
       expect(alert).toBeTruthy();
       expect(alert.className).toContain('alert-danger');
-      const input = screen.getByLabelText(props.title);
+      const input = screen.getByLabelText(props.label);
       input.focus();
       userEvent.type(input, 'a');
 
@@ -127,7 +127,7 @@ describe('Field', () => {
           <input type="text" />
         </Field>,
       );
-      screen.getByLabelText(props.title).focus();
+      screen.getByLabelText(props.label).focus();
       const alert = screen.getByText(helpMessage);
 
       expect(alert).toBeTruthy();
@@ -167,7 +167,7 @@ describe('Field', () => {
       </Field>,
     );
 
-    expect(screen.getByText(props.title).parentElement.className).toContain('form-group');
+    expect(screen.getByText(props.label).parentElement.className).toContain('form-group');
   });
 
   it('attaches has-error class when errrors are provided', () => {
@@ -177,7 +177,7 @@ describe('Field', () => {
       </Field>,
     );
 
-    expect(screen.getByText(props.title).parentElement.className).toContain('has-error');
+    expect(screen.getByText(props.label).parentElement.className).toContain('has-error');
   });
 
   it('returns a wrapper with correct classes', () => {
@@ -187,7 +187,7 @@ describe('Field', () => {
       </Field>,
     );
 
-    expect(screen.getByText(props.title).parentElement.className).toContain('form-group');
+    expect(screen.getByText(props.label).parentElement.className).toContain('form-group');
 
     rerender(
       <Field {...props} model="a" errors="an error">
@@ -195,7 +195,7 @@ describe('Field', () => {
       </Field>,
     );
 
-    expect(screen.getByText(props.title).parentElement.className).toContain('has-error');
+    expect(screen.getByText(props.label).parentElement.className).toContain('has-error');
   });
 
   it('attaches info class when help is provided and input is focused', () => {
@@ -204,7 +204,7 @@ describe('Field', () => {
         <input type="text" />
       </Field>,
     );
-    const input = screen.getByLabelText(props.title);
+    const input = screen.getByLabelText(props.label);
     input.focus();
     expect(input.parentElement.className).toContain('has-info');
   });
@@ -217,7 +217,7 @@ describe('Field', () => {
     );
     triggerValidationError();
 
-    expect(screen.getByText(props.title).parentElement.className).toContain('has-error');
+    expect(screen.getByText(props.label).parentElement.className).toContain('has-error');
   });
 
   it('attaches error class when submit is true and value is wrong', () => {
@@ -228,7 +228,7 @@ describe('Field', () => {
     );
     triggerValidationError();
 
-    expect(screen.getByText(props.title).parentElement.className).toContain('has-error');
+    expect(screen.getByText(props.label).parentElement.className).toContain('has-error');
   });
 
   it('broadcast model onChange', () => {
@@ -237,7 +237,7 @@ describe('Field', () => {
         <input type="text" />
       </Field>,
     );
-    const input = screen.getByLabelText(props.title);
+    const input = screen.getByLabelText(props.label);
     userEvent.type(input, 'aaa');
 
     expect(props.onChange).toHaveBeenNthCalledWith(1, 'a', false);
@@ -257,7 +257,7 @@ describe('Field', () => {
 });
 
 const triggerValidationError = () => {
-  const input = screen.getByLabelText(props.title);
+  const input = screen.getByLabelText(props.label);
   userEvent.clear(input);
   userEvent.type(input, 'a');
   input.blur();

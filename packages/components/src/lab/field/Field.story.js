@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   component: Field,
-  title: 'Field',
+  label: 'Field',
 };
 
 export const basic = () => {
@@ -18,7 +18,7 @@ export const basic = () => {
         model="Neptune is cool"
         onChange={(val) => action(val)}
         submitted={false}
-        title="Input type text"
+        label="Input type text"
         type="text"
         validation={{
           maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
@@ -35,7 +35,7 @@ export const basic = () => {
         model={null}
         onChange={(val) => action(val)}
         submitted={false}
-        title="Input type number"
+        label="Input type number"
         validation={{
           minimum: { value: 3, message: 'The value should bigger than 3' },
           maximum: { value: 10, message: 'The value should smaller than 10' },
@@ -49,7 +49,7 @@ export const basic = () => {
         errors={null}
         help="Please insert a date."
         id="id"
-        title="Date Input field"
+        label="Date Input field"
         model={null}
         onChange={(val) => action(val)}
         submitted={false}

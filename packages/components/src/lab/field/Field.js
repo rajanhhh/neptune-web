@@ -6,6 +6,38 @@ import Alert from '../../alert';
 import { getValidationFailures } from './utils/getValidationFailures';
 import WithNormaliser from '../../withNormaliser';
 
+/**
+ * Field component performs basic validations and provides a styled message to wrapped components.
+ *
+ * @param {boolean} [checked=false] - Initial value for the field type checkbox.
+ * @param {boolean} [submitted=false] - Flag that indicates whether the field has been submitted or not.
+ * @param {boolean} [type] - Type of component wrapped. This prop switches the type of validation perfomed.
+ * @param {function} [onChange] - Handler for onChange event.
+ * @param {object} [children] - Element that needs to be validated.
+ * @param {object} [errors=null] - Translatable message for manual error messages. If specified it has priority over validation errors.
+ * @param {object} [validation] - Object that contains the value to be validated against and the translatable message that will appear on validation failure.
+ * @param {string|number} [model=null] - Initial value for the field type text or number.
+ * @param {string} [id] - Field id. Required for accessibility in order to couple label and field with via htmlFor attribute.
+ * @param {string} [label=''] - Label associated to field.
+ *
+ * @usage `<Field
+ *          errors={'an error message'}
+ *          help="Please fill this form with a value between 3 and 10"
+ *          id="id"
+ *          model={1}
+ *          onChange={(val) => console.log(val)}
+ *          submitted={false}
+ *          label="Input type number"
+ *          validation={{
+ *           minimum: { value: 3, message: 'The value should bigger than 3' },
+ *           maximum: { value: 10, message: 'The value should smaller than 10' },
+ *           required: { value: true, message: 'This field is required' },
+ *          }}
+ *       >
+ *         <input type="number" className="form-control" />
+ *     </Field>`
+ * */
+
 const Field = (props) => {
   const getValidations = () => {
     const validations = {
@@ -117,9 +149,9 @@ const Field = (props) => {
 
   return (
     <div className={classNames(formGroupClasses)}>
-      {props.title && (
+      {props.label && (
         <label className="control-label" htmlFor={props.id}>
-          {props.title}
+          {props.label}
         </label>
       )}
       <WithNormaliser>{React.cloneElement(props.children, childProps)}</WithNormaliser>
@@ -136,12 +168,12 @@ Field.propTypes = {
   children: Types.node.isRequired,
   errors: Types.node,
   help: Types.node,
-  id: Types.string,
+  id: Types.string.isRequired,
   model: Types.oneOfType([Types.string, Types.number]),
   checked: Types.bool,
   onChange: Types.func.isRequired,
   submitted: Types.bool,
-  title: Types.string,
+  label: Types.string,
   type: Types.oneOf(['text', 'number', 'checkbox']).isRequired,
   validation: Types.shape({
     value: Types.oneOfType([Types.bool, Types.number]),
@@ -152,11 +184,10 @@ Field.propTypes = {
 Field.defaultProps = {
   errors: null,
   help: null,
-  id: '',
   model: null,
   submitted: false,
   checked: false,
-  title: '',
+  label: '',
 };
 
 export default Field;
