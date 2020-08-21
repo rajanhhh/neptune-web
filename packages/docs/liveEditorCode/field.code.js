@@ -7,7 +7,7 @@
       model="Neptune is cool"
       onChange={(val) => console.log(val)}
       submitted={false}
-      title="Input type text"
+      label="Input type text"
       type="text"
       validation={{
         maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },

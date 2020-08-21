@@ -55,7 +55,7 @@ attached to the validated component with styling. Currently the supported childr
   model="Neptune is cool"
   onChange={(val) => console.log(val)}
   submitted={false}
-  title="Input type text"
+  label="Input type text"
   type="text"
   validation={{
     maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
@@ -73,7 +73,7 @@ attached to the validated component with styling. Currently the supported childr
   onChange={(val) => console.log(val)}
   submitted={false}
   type="number"
-  title="Input type number"
+  label="Input type number"
   validation={{
     minimum: { value: 3, message: 'The value should bigger than 3' },
     maximum: { value: 10, message: 'The value should smaller than 10' },
@@ -86,7 +86,7 @@ attached to the validated component with styling. Currently the supported childr
   errors={null}
   help="Please insert a date."
   id="id"
-  title="Date Input field"
+  label="Date Input field"
   model={null}
   onChange={(val) => console.log(val)}
   submitted={false}
