@@ -7,6 +7,8 @@ describe('Alert', () => {
   const props = {
     children: 'Lorem ipsum dolor sit amet.',
     dismissed: false,
+    className: 'a-class-name',
+    translations: { ariaLabel: 'a label' },
   };
   let component;
 

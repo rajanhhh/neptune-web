@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Alert from './Alert';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
 
 export default {
   component: Alert,
@@ -19,14 +18,18 @@ export const basic = () => {
     'Content',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ',
   );
+  const [dismissed, setDismissed] = useState(false);
 
-  return (
+  return dismissed ? (
+    <></>
+  ) : (
     <Alert
       dismissible={dismissible}
-      onDismiss={action('Alert dismissed')}
+      onDismiss={() => setDismissed(true)}
       size={size}
       arrow={arrow}
       type={type}
+      translations={{ ariaLabel: 'Close' }}
     >
       {content}
     </Alert>
