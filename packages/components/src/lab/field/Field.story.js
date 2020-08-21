@@ -32,7 +32,7 @@ export const basic = () => {
       <Field
         errors={null}
         help="Please fill this form with a value between 3 and 10"
-        id="id"
+        id="id1"
         model={null}
         onChange={(val) => action(val)}
         submitted={false}
@@ -49,7 +49,7 @@ export const basic = () => {
       <Field
         errors={null}
         help="Please insert a date between 2 and 3 of January 2000."
-        id="id"
+        id="id2"
         label="Date Input field"
         model={null}
         onChange={(val) => action(val)}
@@ -81,7 +81,7 @@ export const basic = () => {
       <Field
         errors={null}
         help="Please check to accept the Neptune Web conditions."
-        id="id"
+        id="id3"
         model={null}
         onChange={(val) => action(val)}
         submitted={false}
