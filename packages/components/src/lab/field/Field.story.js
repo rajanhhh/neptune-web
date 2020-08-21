@@ -19,11 +19,11 @@ export const basic = () => {
         onChange={(val) => action(val)}
         submitted={false}
         label="Input type text"
-        type="text"
+        type="string"
         validation={{
           maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
           minLength: { value: 3, message: 'The value should be longer than 3 characters' },
-          pattern: { value: '[a-z]', message: 'Only lowercase allowed' },
+          pattern: { value: '^[a-z ]+$', message: 'Only lowercase allowed' },
           required: { value: true, message: 'This field is required' },
         }}
       >
@@ -54,7 +54,7 @@ export const basic = () => {
         model={null}
         onChange={(val) => action(val)}
         submitted={false}
-        type="text"
+        type="string"
         validation={{
           required: { value: true, message: 'This field is required' },
           minimum: {
@@ -85,7 +85,7 @@ export const basic = () => {
         model={null}
         onChange={(val) => action(val)}
         submitted={false}
-        type="checkbox"
+        type="boolean"
         validation={{
           required: { value: true, message: 'This field is required' },
         }}

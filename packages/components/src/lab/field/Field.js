@@ -84,7 +84,7 @@ const Field = (props) => {
   }, [props.submitted]);
 
   const setModelAndBroadcast = (newModel) => {
-    if (props.type === 'checkbox') {
+    if (props.type === 'boolean') {
       if (newModel === checked) {
         return;
       }
@@ -141,7 +141,7 @@ const Field = (props) => {
     id: props.id,
   };
 
-  if (props.type === 'checkbox') {
+  if (props.type === 'boolean') {
     childProps.checked = checked;
   } else {
     childProps.value = model;
@@ -174,7 +174,7 @@ Field.propTypes = {
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   label: Types.string,
-  type: Types.oneOf(['text', 'number', 'checkbox']).isRequired,
+  type: Types.oneOf(['string', 'number', 'boolean']).isRequired,
   validation: Types.shape({
     value: Types.oneOfType([Types.bool, Types.number]),
     message: Types.node,

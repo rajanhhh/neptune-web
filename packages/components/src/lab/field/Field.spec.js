@@ -15,7 +15,7 @@ describe('Field', () => {
       model: 'initial value',
       onChange: jest.fn(),
       submitted: null,
-      type: 'text',
+      type: 'string',
       validation: {
         maxLength: { value: 10, message: 'Must be less 10 or smaller' },
         minLength: { value: 3, message: 'Must be 3 or more' },

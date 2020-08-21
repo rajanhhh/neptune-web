@@ -19,7 +19,7 @@ function getValidationFailures(value, type, validations) {
   }
 
   switch (type) {
-    case 'text':
+    case 'string':
       return getStringValidationFailures(value, validations, isRequired);
     case 'number':
       return getNumberValidationFailures(value, validations, isRequired);
@@ -36,7 +36,7 @@ function getStringValidationFailures(value, validations, isRequired) {
   if (value === '' && isRequired) {
     return ['required'];
   }
-  console.log('value', isValidMinimum(value, validations.minimum));
+
   const failures = [];
   if (!isValidRequired(value, isRequired)) {
     failures.push('required');
@@ -51,7 +51,6 @@ function getStringValidationFailures(value, validations, isRequired) {
     failures.push('pattern');
   }
   if (!isValidMinimum(value, validations.minimum)) {
-    console.log('value', value);
     failures.push('minimum');
   }
   if (!isValidMaximum(value, validations.maximum)) {

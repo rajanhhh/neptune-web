@@ -23,22 +23,22 @@ attached to the validated component with styling. Currently the supported childr
   <tbody>
     <tr>
       <td>input</td>
-      <td>text</td>
+      <td>string</td>
       <td>minLenght, maxLength, pattern, required</td>
     </tr>
     <tr>
       <td>input</td>
-      <td> number</td>
+      <td>number</td>
       <td>minimum, maximum, required</td>
     </tr>
     <tr>
       <td>DateInput</td>
-      <td>custom</td>
+      <td>string</td>
       <td>minimum,maximum,required</td>
     </tr>
     <tr>
       <td>Checkbox</td>
-      <td>custom</td>
+      <td>boolean</td>
       <td>required</td>
     </tr>
   </tbody>
@@ -56,11 +56,11 @@ attached to the validated component with styling. Currently the supported childr
   onChange={(val) => action(val)}
   submitted={false}
   label="Input type text"
-  type="text"
+  type="string"
   validation={{
     maxLength: { value: 10, message: 'The value should be shorter than 10 characters' },
     minLength: { value: 3, message: 'The value should be longer than 3 characters' },
-    pattern: { value: '[a-z]', message: 'Only lowercase allowed' },
+    pattern: { value: '^[a-z ]+$', message: 'Only lowercase allowed' },
     required: { value: true, message: 'This field is required' },
   }}
 >
@@ -91,7 +91,7 @@ attached to the validated component with styling. Currently the supported childr
   model={null}
   onChange={(val) => action(val)}
   submitted={false}
-  type="text"
+  type="string"
   validation={{
     required: { value: true, message: 'This field is required' },
     minimum: {
@@ -122,7 +122,7 @@ attached to the validated component with styling. Currently the supported childr
   model={null}
   onChange={(val) => console.log(val)}
   submitted={false}
-  type="checkbox"
+  type="boolean"
   validation={{
     required: { value: true, message: 'This field is required' },
   }}
