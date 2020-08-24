@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tile matches snapshot when regular size 1`] = `
+<DocumentFragment>
+  <div
+    class="tw-tile tw-tile--large"
+  >
+    <div
+      class="m-y-2 m-x-auto"
+    >
+      <svg
+        data-testid="illustration"
+      />
+    </div>
+    <a
+      class="tw-tile__link"
+      role="button"
+      tabindex="0"
+    >
+      <h4
+        class="m-b-1"
+      >
+        Receive money
+      </h4>
+    </a>
+    <div
+      class="tw-tile__content"
+    >
+      <span>
+        Receive money from friends and familty like a local.
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Tile matches snapshot when small size 1`] = `
+<DocumentFragment>
+  <div
+    class="tw-tile tw-tile--small"
+  >
+    <div
+      class="m-y-2 m-x-auto"
+    >
+      <svg
+        data-testid="illustration"
+      />
+    </div>
+    <a
+      class="tw-tile__link"
+      role="button"
+      tabindex="0"
+    >
+      <h4
+        class="m-b-1"
+      >
+        Receive money
+      </h4>
+    </a>
+    <div
+      class="tw-tile__content"
+    >
+      <span>
+        Receive money from friends and familty like a local.
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
