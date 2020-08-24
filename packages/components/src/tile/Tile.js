@@ -6,14 +6,12 @@ import { Size } from '../common';
 
 import './Tile.css';
 
-const { LARGE, SMALL } = Size;
-
 export const Tile = ({ className, title, content, media, size, onClick }) => {
   return (
     <div
       className={classNames('tw-tile', className, {
         'tw-tile--small': size === Tile.Size.SMALL,
-        'tw-tile--large': size === Tile.Size.LARGE || size !== Tile.Size.SMALL,
+        'tw-tile--large': size !== Tile.Size.SMALL,
       })}
     >
       <div className="m-y-2 m-x-auto">{media}</div>
@@ -37,7 +35,7 @@ export const Tile = ({ className, title, content, media, size, onClick }) => {
   );
 };
 
-Tile.Size = { LARGE, SMALL };
+Tile.Size = Size;
 
 Tile.propTypes = {
   title: Types.node.isRequired,
