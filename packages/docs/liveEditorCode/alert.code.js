@@ -7,7 +7,7 @@
       arrow={Alert.ArrowPosition.TOP_LEFT}
       type={Alert.Type.WARNING}
       onDismiss={() => setDismissed(true)}
-      translations={{ ariaLabel: 'Close' }}
+      translations={{ closeButton: { ariaLabel: 'Close' } }}
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
       been the industry's standard dummy text ever since the 1500s when an unknown printer

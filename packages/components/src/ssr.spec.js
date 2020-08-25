@@ -82,6 +82,9 @@ describe('Server side rendering', () => {
     SnackbarContext: {
       children: jest.fn(),
     },
+    Alert: {
+      translations: { closeButton: { ariaLabel: 'ariaLabel' } },
+    },
   };
 
   componentNames.forEach((componentName) => {

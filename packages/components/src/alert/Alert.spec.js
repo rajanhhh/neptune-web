@@ -5,7 +5,11 @@ import Alert from './Alert';
 
 describe('Alert', () => {
   const component = shallow(
-    <Alert dismissed={false} className="a-class-name" translations={{ ariaLabel: 'a label' }}>
+    <Alert
+      dismissed={false}
+      className="a-class-name"
+      translations={{ closeButton: { ariaLabel: 'a label' } }}
+    >
       Lorem ipsum dolor sit amet.
     </Alert>,
   );

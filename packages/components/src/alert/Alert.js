@@ -13,7 +13,7 @@ import { Size, MessageType, ArrowPosition } from '../common';
  * @param {function} [onDismiss] - Callback invoked on close button click. Required for dismissable alert only.
  * @param {string} [size=Alert.Size.LARGE] - Size of the Alert.
  * @param {object} [translations] - map of keys to translated labels
- * @param {string} [translations.ariaLabel] - Provides an aria label for the close button.
+ * @param {string} [translations.closeButton.ariaLabel] - Provides an aria label for the close button.
  * @param {string} type - Controls what type of alert to display: Success, Warning, Error, Info.
  *
  * @usage '<Alert
@@ -65,7 +65,7 @@ const Alert = ({
           className="close"
           data-dismiss="alert"
           onClick={onDismiss}
-          aria-label={translations.ariaLabel}
+          aria-label={translations.closeButton.ariaLabel}
         >
           <span aria-hidden="true">×</span>
         </button>
@@ -119,7 +119,7 @@ Alert.propTypes = {
     Alert.ArrowPosition.BOTTOM_RIGHT,
   ]),
   translations: Types.shape({
-    ariaLabel: Types.string.isRequired,
+    closeButton: Types.shape({ ariaLabel: Types.string.isRequired }),
   }).isRequired,
   className: Types.string,
 };
