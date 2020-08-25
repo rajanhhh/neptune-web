@@ -119,8 +119,8 @@ Alert.propTypes = {
     Alert.ArrowPosition.BOTTOM_RIGHT,
   ]),
   translations: Types.shape({
-    closeButton: Types.shape({ ariaLabel: Types.string.isRequired }),
-  }).isRequired,
+    closeButton: Types.shape({ ariaLabel: Types.string }),
+  }),
   className: Types.string,
 };
 
@@ -130,6 +130,9 @@ Alert.defaultProps = {
   dismissible: false,
   arrow: null,
   className: '',
+  translations: {
+    closeButton: { ariaLabel: 'Close' },
+  },
 };
 
 export default Alert;
