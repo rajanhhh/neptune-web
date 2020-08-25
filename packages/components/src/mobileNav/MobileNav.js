@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { isIpadOsSafari, isMobileSafari } from './utils';
 
-import './mobileNavNeptune.css';
+import './MobileNav.css';
 
 function useMobileNavRef() {
   const [mobileNav, setMobileNav] = useState(null);
@@ -16,11 +16,9 @@ function useMobileNavRef() {
   return [mobileNav, ref];
 }
 
-const mobileNavTypes = {
-  CALL_TO_ACTION: 'call-to-action',
-};
+const mobileNavType = { CALL_TO_ACTION: 'call-to-action' };
 
-const MobileNavNeptune = ({ items, activeItemPath }) => {
+const MobileNav = ({ items, activeItemPath }) => {
   const [hasBanner, setHasBanner] = useState(false);
   const [mobileNav, ref] = useMobileNavRef();
 
@@ -102,7 +100,7 @@ const MobileNavNeptune = ({ items, activeItemPath }) => {
           <li
             key={item.path}
             className={classNames('mobileNavItem', {
-              'mobileNavItem--call-to-action': item.type === mobileNavTypes.CALL_TO_ACTION,
+              'mobileNavItem--call-to-action': item.type === mobileNavType.CALL_TO_ACTION,
               'mobileNavItem--active': activeItemPath === item.path,
             })}
           >
@@ -119,22 +117,23 @@ const MobileNavNeptune = ({ items, activeItemPath }) => {
   );
 };
 
-MobileNavNeptune.propTypes = {
+MobileNav.mobileNavType = mobileNavType;
+
+MobileNav.propTypes = {
   activeItemPath: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       icon: PropTypes.node.isRequired,
       label: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
-      type: PropTypes.oneOf([mobileNavTypes.CALL_TO_ACTION]),
+      type: PropTypes.oneOf([mobileNavType.CALL_TO_ACTION]),
       hidden: PropTypes.bool,
     }),
   ).isRequired,
 };
 
-MobileNavNeptune.defaultProps = {
+MobileNav.defaultProps = {
   activeItemPath: null,
 };
 
-export default MobileNavNeptune;
-export { mobileNavTypes };
+export default MobileNav;
