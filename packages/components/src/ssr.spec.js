@@ -83,7 +83,7 @@ describe('Server side rendering', () => {
       children: jest.fn(),
     },
     Alert: {
-      translations: { closeButton: { ariaLabel: 'ariaLabel' } },
+      translations: { closeButton: { ariaLabel: 'aria-label' } },
     },
   };
 
