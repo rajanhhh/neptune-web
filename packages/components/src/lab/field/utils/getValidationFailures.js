@@ -17,7 +17,6 @@ function getValidationFailures(value, type, validations) {
   if (isNull(value) || isFalse(value)) {
     return isRequired ? ['required'] : [];
   }
-  console.log(type);
 
   switch (type) {
     case 'string':
