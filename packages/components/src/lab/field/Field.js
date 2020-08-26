@@ -9,14 +9,13 @@ import WithNormaliser from '../../withNormaliser';
 /**
  * Field component performs basic validations and provides a styled message to wrapped components.
  *
- * @param {boolean} [checked=false] - Initial value for the field type checkbox.
  * @param {boolean} [submitted=false] - Flag that indicates whether the field has been submitted or not.
  * @param {boolean} [type] - Type of component wrapped. This prop switches the type of validation perfomed.
  * @param {function} [onChange] - Handler for onChange event.
  * @param {object} [children] - Element that needs to be validated.
  * @param {object} [errors=null] - Translatable message for manual error messages. If specified it has priority over validation errors.
  * @param {object} [validation] - Object that contains the value to be validated against and the translatable message that will appear on validation failure.
- * @param {string|number} [model=null] - Initial value for the field type text or number.
+ * @param {string|number} [initValue=null] - Initial value for the field type text or number.
  * @param {string} [id] - Field id. Required for accessibility in order to couple label and field with via htmlFor attribute.
  * @param {string} [label=''] - Label associated to field.
  *
@@ -24,7 +23,7 @@ import WithNormaliser from '../../withNormaliser';
  *          errors={'an error message'}
  *          help="Please fill this form with a value between 3 and 10"
  *          id="id"
- *          model={1}
+ *          initValue={1}
  *          onChange={(val) => console.log(val)}
  *          submitted={false}
  *          label="Input type number"
@@ -51,8 +50,7 @@ const Field = (props) => {
     return validations;
   };
 
-  const [model, setModel] = useState(props.model);
-  const [checked, setChecked] = useState(props.checked);
+  const [model, setModel] = useState(props.initValue);
   const [changed, setChanged] = useState(false);
   const [focused, setFocused] = useState(false);
   const [blurred, setBlurred] = useState(false);
@@ -84,17 +82,10 @@ const Field = (props) => {
   }, [props.submitted]);
 
   const setModelAndBroadcast = (newModel) => {
-    if (props.type === 'boolean') {
-      if (newModel === checked) {
-        return;
-      }
-      setChecked(newModel);
-    } else {
-      if (newModel === model) {
-        return;
-      }
-      setModel(newModel);
+    if (newModel === model) {
+      return;
     }
+    setModel(newModel);
     const newValidationFailures = getValidationFailures(
       newModel,
       props.type,
@@ -142,7 +133,7 @@ const Field = (props) => {
   };
 
   if (props.type === 'boolean') {
-    childProps.checked = checked;
+    childProps.checked = model;
   } else {
     childProps.value = model;
   }
@@ -169,8 +160,7 @@ Field.propTypes = {
   errors: Types.node,
   help: Types.node,
   id: Types.string.isRequired,
-  model: Types.oneOfType([Types.string, Types.number]),
-  checked: Types.bool,
+  initValue: Types.oneOfType([Types.string, Types.number]),
   onChange: Types.func.isRequired,
   submitted: Types.bool,
   label: Types.string,
@@ -184,9 +174,8 @@ Field.propTypes = {
 Field.defaultProps = {
   errors: null,
   help: null,
-  model: null,
+  initValue: null,
   submitted: false,
-  checked: false,
   label: '',
 };
 

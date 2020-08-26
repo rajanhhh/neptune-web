@@ -15,7 +15,7 @@ export const basic = () => {
         errors={null}
         help="Please fill this form with a value length between 3 and 10"
         id="id"
-        model="Neptune is cool"
+        initValue="Neptune is cool"
         onChange={(val) => action(val)}
         submitted={false}
         label="Input type text"
@@ -33,10 +33,11 @@ export const basic = () => {
         errors={null}
         help="Please fill this form with a value between 3 and 10"
         id="id1"
-        model={null}
+        initValue={null}
         onChange={(val) => action(val)}
         submitted={false}
         label="Input type number"
+        type="number"
         validation={{
           minimum: { value: 3, message: 'The value should bigger than 3' },
           maximum: { value: 10, message: 'The value should smaller than 10' },
@@ -51,7 +52,7 @@ export const basic = () => {
         help="Please insert a date between 2 and 3 of January 2000."
         id="id2"
         label="Date Input field"
-        model={null}
+        initValue={null}
         onChange={(val) => action(val)}
         submitted={false}
         type="string"
@@ -82,7 +83,7 @@ export const basic = () => {
         errors={null}
         help="Please check to accept the Neptune Web conditions."
         id="id3"
-        model={null}
+        initValue={null}
         onChange={(val) => action(val)}
         submitted={false}
         type="boolean"

@@ -52,7 +52,7 @@ attached to the validated component with styling. Currently the supported childr
   errors={null}
   help="Please fill this form with a value length between 3 and 10"
   id="id"
-  model="Neptune is cool"
+  initValue="Neptune is cool"
   onChange={(val) => action(val)}
   submitted={false}
   label="Input type text"
@@ -70,7 +70,7 @@ attached to the validated component with styling. Currently the supported childr
   errors={null}
   help="Please fill this form with a value between 3 and 10"
   id="id"
-  model={null}
+  initValue={null}
   onChange={(val) => console.log(val)}
   submitted={false}
   type="number"
@@ -88,7 +88,7 @@ attached to the validated component with styling. Currently the supported childr
   help="Please insert a date between 2 and 3 of January 2000."
   id="id"
   label="Date Input field"
-  model={null}
+  initValue={null}
   onChange={(val) => action(val)}
   submitted={false}
   type="string"
@@ -119,7 +119,7 @@ attached to the validated component with styling. Currently the supported childr
   errors={null}
   help="Please check to accept the Neptune Web conditions."
   id="id"
-  model={null}
+  initValue={null}
   onChange={(val) => console.log(val)}
   submitted={false}
   type="boolean"

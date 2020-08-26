@@ -12,7 +12,7 @@ describe('Field', () => {
       errors: null,
       help: 'help message',
       id: 'id',
-      model: 'initial value',
+      initValue: 'initial value',
       onChange: jest.fn(),
       submitted: null,
       type: 'string',
@@ -97,7 +97,7 @@ describe('Field', () => {
       const errorMessage = 'an error message';
       const helpMessage = 'an help message';
       render(
-        <Field {...props} errors={errorMessage} help={helpMessage} model="">
+        <Field {...props} errors={errorMessage} help={helpMessage} initValue="">
           <input type="text" />
         </Field>,
       );
@@ -149,7 +149,7 @@ describe('Field', () => {
 
     it('show validation if field has wrong value and submitted', () => {
       render(
-        <Field {...props} model="a" submitted>
+        <Field {...props} initValue="a" submitted>
           <input type="text" />
         </Field>,
       );
@@ -162,7 +162,7 @@ describe('Field', () => {
 
   it('attaches form-group class by default', () => {
     render(
-      <Field {...props} model="a">
+      <Field {...props} initValue="a">
         <input type="text" />
       </Field>,
     );
@@ -172,7 +172,7 @@ describe('Field', () => {
 
   it('attaches has-error class when errrors are provided', () => {
     render(
-      <Field {...props} model="a" errors="an error">
+      <Field {...props} initValue="a" errors="an error">
         <input type="text" />
       </Field>,
     );
@@ -182,7 +182,7 @@ describe('Field', () => {
 
   it('returns a wrapper with correct classes', () => {
     const { rerender } = render(
-      <Field {...props} model="a">
+      <Field {...props} initValue="a">
         <input type="text" />
       </Field>,
     );
@@ -190,7 +190,7 @@ describe('Field', () => {
     expect(screen.getByText(props.label).parentElement.className).toContain('form-group');
 
     rerender(
-      <Field {...props} model="a" errors="an error">
+      <Field {...props} initValue="a" errors="an error">
         <input type="text" />
       </Field>,
     );
@@ -200,7 +200,7 @@ describe('Field', () => {
 
   it('attaches info class when help is provided and input is focused', () => {
     render(
-      <Field {...props} model="a" help="a message">
+      <Field {...props} initValue="a" help="a message">
         <input type="text" />
       </Field>,
     );
@@ -211,7 +211,7 @@ describe('Field', () => {
 
   it('attaches error class when validation has been triggered', () => {
     render(
-      <Field {...props} model="a" help="a message">
+      <Field {...props} initValue="a" help="a message">
         <input type="text" />
       </Field>,
     );
@@ -222,7 +222,7 @@ describe('Field', () => {
 
   it('attaches error class when submit is true and value is wrong', () => {
     render(
-      <Field {...props} model="a" submit="a message">
+      <Field {...props} initValue="a" submit="a message">
         <input type="text" />
       </Field>,
     );

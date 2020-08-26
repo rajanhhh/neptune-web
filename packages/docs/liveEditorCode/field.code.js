@@ -4,7 +4,7 @@
       errors={null}
       help="Please fill this form with a value length between 3 and 10"
       id="id"
-      model="Neptune is cool"
+      initValue="Neptune is cool"
       onChange={(val) => console.log(val)}
       submitted={false}
       label="Input type text"
