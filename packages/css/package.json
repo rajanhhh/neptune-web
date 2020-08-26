@@ -1,7 +1,7 @@
 {
   "name": "@transferwise/neptune-css",
   "description": "Neptune CSS is TransferWise's Design System CSS library",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "build:clean": "rm -rf dist",
     "build:copy-assets": "npm-run-all --parallel copy:*",
     "build:compile-less": "gulp compileLess --src='src/less'",
-    "build:copy-props": "gulp copyCustomProps --src='src/less'",
+    "build:copy-props": "gulp copyCustomProps --src='src/props'",
+    "build:copy-vars": "gulp copyVariables --src='src/variables'",
     "dev": "npm-run-all --parallel dev:*",
     "dev:link": "node ./linkFolder.js",
     "dev:less": "gulp watchLess --src='src/less/**'",
