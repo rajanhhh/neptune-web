@@ -200,7 +200,7 @@ export default class Field extends Component {
   validateValue(newValue) {
     const validationFailures = {};
     const { field } = this.props;
-    const validationFailuresKeys = getValidationFailures(newValue, field);
+    const validationFailuresKeys = getValidationFailures(newValue, field, field.required);
     validationFailuresKeys.forEach((failure) => {
       const messageKey = failure.toLowerCase();
 
