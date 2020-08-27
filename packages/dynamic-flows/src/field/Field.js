@@ -30,8 +30,8 @@ const DefaultValidationMessages = {
   PATTERN: 'Incorrect format',
   MINLENGTH: 'The value is too short',
   MAXLENGTH: 'The value is too long',
-  MIN: 'The value is too low',
-  MAX: 'The value is too high',
+  MINIMUM: 'The value is too low',
+  MAXIMUM: 'The value is too high',
 };
 
 export default class Field extends Component {
@@ -133,8 +133,8 @@ export default class Field extends Component {
         pattern: Types.string,
         minlength: Types.string,
         maxlength: Types.string,
-        min: Types.string,
-        max: Types.string,
+        minimum: Types.string,
+        maximum: Types.string,
       }),
     }).isRequired,
 
