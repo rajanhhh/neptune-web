@@ -46,6 +46,9 @@ describe('Given a library for identifying validation failures', () => {
     it('should return [type] when incorrect data type', () => {
       expect(getValidationFailures(1234, schema)).toEqual(['type']);
     });
+    it('should return only [required] when value is empty string and required', () => {
+      expect(getValidationFailures('', schema, true)).toEqual(['required']);
+    });
   });
 
   describe('when validating a string date', () => {
