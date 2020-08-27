@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[33],{HHz7:function(n,w,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/about/Setup",function(){return o("e66W")}])}},[["HHz7",0,1,2,4,6,3,7,8,9,10,11,12,13,14,15,20,19,17,22,21,23,16,18,24,25,5]]]);
