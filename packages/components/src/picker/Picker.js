@@ -27,21 +27,19 @@ const Picker = ({ className, items, onClick, small }) => {
           />
         ))}
       </div>
-      <div className="tw-picker__navigation-option-container">
-        <NavigationOptionList>
-          {items.map(({ title, content, media, key }) => (
-            <NavigationOption
-              key={key}
-              onClick={() => onClick(key)}
-              title={title}
-              content={content}
-              media={media}
-              showMediaAtAllSizes
-              showMediaCircle={false}
-            />
-          ))}
-        </NavigationOptionList>
-      </div>
+      <NavigationOptionList>
+        {items.map(({ title, content, media, key }) => (
+          <NavigationOption
+            key={key}
+            onClick={() => onClick(key)}
+            title={title}
+            content={content}
+            media={media}
+            showMediaAtAllSizes
+            showMediaCircle={false}
+          />
+        ))}
+      </NavigationOptionList>
       {ElementQueries.init()}
     </div>
   );
