@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
+import KeyCodes from '../common/keyCodes';
+
 import Tile from '.';
 
 describe(Tile, () => {
@@ -36,5 +38,21 @@ describe(Tile, () => {
     fireEvent.click(title);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onClick when space or enter keys are pressed', async () => {
+    render(<Tile {...defaultProps} />);
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const title = await screen.findByText('Receive money');
+
+    fireEvent.keyDown(title, { key: '33', keyCode: KeyCodes.ENTER });
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(title, { key: '32', keyCode: KeyCodes.SPACE });
+
+    expect(onClick).toHaveBeenCalledTimes(2);
   });
 });

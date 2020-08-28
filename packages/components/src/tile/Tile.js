@@ -3,6 +3,7 @@ import Types from 'prop-types';
 import classNames from 'classnames';
 
 import { Size } from '../common';
+import KeyCodes from '../common/keyCodes';
 
 import './Tile.css';
 
@@ -23,7 +24,13 @@ export const Tile = ({ className, title, content, media, size, onClick }) => {
         tabIndex="0"
         role="button"
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === 'Spacebar') {
+          if (
+            e.keyCode === KeyCodes.ENTER ||
+            e.keyCode === KeyCodes.SPACE ||
+            e.code === 32 ||
+            e.code === 32
+          ) {
+            e.preventDefault();
             onClick();
           }
         }}
