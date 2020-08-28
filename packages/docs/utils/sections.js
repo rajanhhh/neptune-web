@@ -25,11 +25,6 @@ export default [
     dir: 'styles',
     children: [
       {
-        title: 'Tokens',
-        dir: 'styles/tokens',
-        fileOrder: ['Colors', 'Spacing', 'Breakpoints'],
-      },
-      {
         title: 'Core',
         dir: 'styles/core',
         fileOrder: ['Typography'],
@@ -38,6 +33,11 @@ export default [
         title: 'Addons',
         dir: 'styles/addons',
         fileOrder: ['BackgroundUtilities', 'DisplayUtilities', 'SpacingUtilities'],
+      },
+      {
+        title: 'Tokens',
+        dir: 'styles/tokens',
+        fileOrder: ['Colors', 'Spacing', 'Breakpoints'],
       },
     ],
   },
@@ -75,5 +75,9 @@ export default [
       },
     ],
     searchable: true,
+  },
+  {
+    title: 'Lab 👩‍🔬',
+    dir: 'lab',
   },
 ];

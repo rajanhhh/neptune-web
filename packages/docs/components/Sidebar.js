@@ -6,6 +6,7 @@ import Link from './Link';
 import { getPagesInSection } from '../utils/pageUtils';
 
 const getLinks = ({ pathname, section }) => {
+  console.log(getPagesInSection(section));
   return getPagesInSection(section).map(({ group, component, path }, index) => {
     const key = index.toString();
     if (group) {

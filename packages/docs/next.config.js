@@ -26,6 +26,7 @@ module.exports = () =>
           withMDX({
             transpileModules: [
               '@transferwise/dynamic-flows',
+              '@transferwise/components',
               'buble',
               'regexpu-core',
               'unicode-match-property-ecmascript',
